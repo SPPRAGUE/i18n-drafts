@@ -242,15 +242,21 @@ th.bytes { font-size: 20px; }
 </tbody>
 </table>
 <!--p>There are, however, some limitations to the grapheme cluster rules: for example, the Bangla user-perceived character <i class="foreign">ksha</i> <span lang="bn">(ক্ষ)</span> mentioned above is not fully covered by the grapheme cluster rules, and is seen by applications as two adjacent grapheme clusters, unless some script-specific tailoring is applied.</p-->
-<p>Currently there are, however, some limitations to the grapheme cluster rules: for example, the rules  split the Bangla user-perceived character <i class="foreign">kshī</i> (<span lang="bn">ক্ষী</span>) into two adjacent grapheme clusters, rather than enveloping the whole orthographic syllable. Applications that need to work with user-perceived characters in Bangla therefore need to apply some script-specific tailoring of the grapheme cluster rules.</p>
+
+<p>Currently, however, there are some limitations to the grapheme cluster rules. When complex scripts create stacks or merge glyphs to indicate a consonant cluster, the resulting orthographic syllable should not be broken by most typographic operations.  However, until Unicode version 15.1, the grapheme cluster rules  split the Bangla orthographic syllable <i class="foreign">kshī</i> (<span lang="bn">ক্ষী</span>) into two adjacent grapheme clusters, rather than enveloping the whole orthographic syllable. This was because grapheme cluster component building stopped when it came to a letter, rather than a combining mark.</p>
+
 <table class="graphemes"><tbody>
 <tr>
 <th>user-perceived character</th><td><img src="index-data/ksha.png" alt="Vietnamese ề"></td></tr>
 <tr>
-<th>decomposition &amp; grapheme cluster boundaries</th><td><img src="index-data/ksha-parts-gc.png" alt="Vietnamese ề deconstructed"></td>
+<th>decomposition &amp; grapheme cluster boundaries prior to Unicode 15.1</th><td><img src="index-data/ksha-parts-gc.png" alt="Vietnamese ề deconstructed"></td>
 </tr>
 </tbody>
 </table>
+
+
+<p>Applications that need to work with user-perceived characters in Bangla therefore needed to apply some script-specific tailoring of the grapheme cluster rules.  Unicode 15.1 updated the rules for Bengali and a few other scripts so that they now recognize a consonant preceded by a virama as a continuation of the same grapheme cluster.  However, there are other scripts, such as Balinese, Newa, Khmer, etc, that have not yet had these new rules applied.</p>
+
 <p>The appropriate units for editing operations sometimes vary according to what you want to do. For example, if you backspace over the Hindi word <span lang="hi">हूँ (<span class="codepoint" translate="no"><span class="uname">U+0939 DEVANAGARI LETTER HA</span> + <span class="uname">U+0942 DEVANAGARI VOWEL SIGN UU​</span> + <span class="uname">U+0901 DEVANAGARI SIGN CANDRABINDU​</span></span>) </span>the application will typically first delete each of the two combining characters, and then the base. However, if you 'forward-delete' while the cursor is at the left of the word most applications will delete the whole grapheme cluster in one go.</p>
 <p>CSS, in order to refer to an indivisible text unit in a given context,  uses the term <dfn id="def_typographic_character_unit">typographic character unit</dfn>. The definition of what constitutes a typographic character unit depends on the operation that is being applied. So when working with the example of  ề above, when deleting forwards there would be a single typographic character unit, but three when backspacing. Also, typographic character units cover the cases such as Bengali <i class="foreign">ksha</i>, which grapheme clusters currently don't. The determination of what constitutes a typographic character unit in a given language and editing context is deferred to the application, rather than spelled out in rules.</p>
 </section>
