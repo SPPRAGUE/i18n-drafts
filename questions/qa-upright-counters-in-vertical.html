@@ -461,8 +461,7 @@ li::marker {
 </div>
 </div>
 
-
-<p>The CSS <code class="kw" translate="no">::marker</code> pseudo-element allows you to apply the following adjustments:</p>
+<p>The CSS specification says that the <code class="kw" translate="no">::marker</code> pseudo-element allows you to apply the following adjustments:</p>
     
 <ol>
 <li>all font properties</li>
@@ -472,6 +471,8 @@ li::marker {
 <li>the <code class="kw" translate="no">content</code> property</li>
 <li>all animation and transition properties</li>
 </ol>
+
+<p>These are supported by Gecko and Blink browsers, but WebKit browsers don't support some of them, including, as we have seen, <code class="kw" translate="no">text-combine-upright</code>. On the other hand, some browsers may support additional CSS properties, but these extra styling options are unlikely to be interoperably supported. (<a target="_blank" href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Col%3E%0A%3Cli%20id%3D%22color%22%3Ecolor%3C%2Fli%3E%0A%3Cli%20id%3D%22content%22%3Econtent%3C%2Fli%3E%0A%3Cli%20id%3D%22fontstyle%22%3Efont-style%3C%2Fli%3E%0A%3Cli%20id%3D%22fontvariant%22%3Efont-variant%3C%2Fli%3E%0A%3Cli%20id%3D%22fontweight%22%3Efont-weight%3C%2Fli%3E%0A%3Cli%20id%3D%22fontfamily%22%3Efont-family%3C%2Fli%3E%0A%3Cli%20id%3D%22direction%22%3Edirection%3C%2Fli%3E%0A%3Cli%20id%3D%22textshadow%22%3Etext-shadow%3C%2Fli%3E%0A%3Cli%20id%3D%22texttransform%22%3Etext-transform%3C%2Fli%3E%0A%3C%2Fol%3E&css=.test%20li%20%7B%20list-style-type%3A%20lower-alpha%3B%20margin-inline-start%3A%203rem%3B%20%7D%0A%23color%3A%3Amarker%20%7B%20color%3A%20lightgreen%3B%20%7D%0A%23content%3A%3Amarker%20%7B%20content%3A%20'%40.%20'%3B%20%7D%0A%23fontstyle%3A%3Amarker%20%7B%20font-style%3A%20italic%3B%20%7D%0A%23fontvariant%3A%3Amarker%20%7B%20font-variant%3A%20small-caps%3B%20%7D%0A%23fontweight%3A%3Amarker%20%7B%20font-weight%3A%20bold%3B%20%7D%0A%23fontfamily%3A%3Amarker%20%7B%20font-family%3A%20Consolas%2C%20'Andale%20Mono'%2C%20'Lucida%20Console'%2C%20'Lucida%20Sans%20Typewriter'%2C%20Monaco%2C%20'Courier%20New'%2C%20'monospace'%3B%20%7D%0A%23direction%3A%3Amarker%20%7B%20direction%3A%20rtl%3B%20%7D%0A%23textshadow%3A%3Amarker%20%7B%20text-shadow%3A%200%200%205px%3B%20%7D%0A%23texttransform%3A%3Amarker%20%7B%20text-transform%3A%20uppercase%3B%20%7D%0A&fontSize=36&width=500&height=500&a=Various%20styles%20indicated%20in%20the%20CSS%20spec%20are%20supported%20for%20%3A%3Amarker.&i=Test%20passes%20if%20you%20see%20the%20expected%20styling%20for%20each%20line.">Test for styles in my browser.</a>)</p>
 </section>
 </section>
 
