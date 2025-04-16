@@ -1,6 +1,6 @@
 var g = { }
 
-var base = '' 
+var base = ''
 if (! window.location.href.match('www.w3.org') && ! window.location.href.match('localhost')) {
 		 base = 'https://www.w3.org'
 		}
@@ -88,7 +88,7 @@ function stickyConneg (filename, cLang, targetLang) {
 g.siteSearch = '<div class="noprint"><form method="get" action="/International/site-search.php" enctype="application/x-www-form-urlencoded"><div id="searchSite" class="topRight"><input name="q" type="text" size="15" id="searchField" placeholder="🔍 '+s.searchI18nSite+'" accesskey="E" maxlength="255"/></div></form></div></div>'
 
 g.breadcrumbs = "<a href='"+base+"/International/'>"+s.home+"</a> &gt; <a href='"+base+"/International/resources'>"+s.resources+"</a> &gt; "
-if (f.breadcrumb == 'tests') g.breadcrumbs += "<a href='"+base+"/International/tests/'>"+s.tests+"</a>" 
+if (f.breadcrumb == 'tests') g.breadcrumbs += "<a href='"+base+"/International/tests/'>"+s.tests+"</a>"
 else g.breadcrumbs += "<a href='"+base+"/International/articlelist#"+f.breadcrumb+"'>"+s.articles+"</a>"
 
 g.about = "<h2 id='abouthead' class='notoc'>"+s.aboutThisArticle+"</h2>\n"
@@ -114,7 +114,7 @@ if (trans.versions && !(trans.versions[0] == f.clang && trans.versions.length ==
 	versionList += '</p>';
 	}
 
-if (g.isTranslation) g.disclaimer = '<div id="disclaimer"><p>'+s.translationDisclaimer+'</p><p>'+s.translatedBy+f.translators+'</p></div>' 
+if (g.isTranslation) g.disclaimer = '<div id="disclaimer"><p>'+s.translationDisclaimer+'</p><p>'+s.translatedBy+f.translators+'</p></div>'
 else g.disclaimer = ''
 
 
@@ -128,10 +128,10 @@ var mainNavigation = '<div id="search">'+g.siteSearch+'</div>'+
 '	<div id="sitelinks" class="noprint">'+
 '	<bdi><a href="'+base+'/International/i18n-drafts/nav/learn" title="'+s.taskBasedIndex+'">'+s.techniques+'</a></bdi>&#xA0;'+s.rlm+
 '	<bdi><a href="'+base+'/International/i18n-drafts/nav/find" title="'+s.informationResources+'">'+s.resources+'</a></bdi>&#xA0;'+s.rlm+
-'	<bdi><a href="'+base+'/International/i18n-drafts/nav/ask" title="'+s.askI18nActivity+'">'+s.ask+'</a></bdi>&#xA0;'+s.rlm+ 
+'	<bdi><a href="'+base+'/International/i18n-drafts/nav/ask" title="'+s.askI18nActivity+'">'+s.ask+'</a></bdi>&#xA0;'+s.rlm+
 '	<bdi><a href="'+base+'/International/i18n-drafts/nav/follow" title="'+s.newsFiltersAndFeeds+'">'+s.news+'</a></bdi>&#xA0;'+s.rlm+
-'	<bdi><a href="'+base+'/International/i18n-drafts/nav/participate" title="'+s.groupsThatMakeUp+'">'+s.groups+'</a></bdi>&#xA0;'+s.rlm+ 
-'	<bdi><a href="'+base+'/International/i18n-drafts/nav/about" title="'+s.aboutI18nActivity+'">'+s.about+'</a></bdi>&#xA0;'+s.rlm+ 
+'	<bdi><a href="'+base+'/International/i18n-drafts/nav/participate" title="'+s.groupsThatMakeUp+'">'+s.groups+'</a></bdi>&#xA0;'+s.rlm+
+'	<bdi><a href="'+base+'/International/i18n-drafts/nav/about" title="'+s.aboutI18nActivity+'">'+s.about+'</a></bdi>&#xA0;'+s.rlm+
 '	&#xA0; </div><div id="line">&#xA0;</div>'+
 '	</nav>'+
 '	<div class="directory"><div id="site-navigation">'+
@@ -152,7 +152,7 @@ else mainNavigation += '<nav class="noprint" id="level2toc">'+
 // UPDATES
 
 var outOfDateTranslation = false
-if (trans.outofdatetranslations.length > 0) { 
+if (trans.outofdatetranslations.length > 0) {
 	for (var lang in trans.outofdatetranslations) {
 		if (f.clang == trans.outofdatetranslations[lang]) {
 			outOfDateTranslation = true
@@ -161,7 +161,7 @@ if (trans.outofdatetranslations.length > 0) {
 		}
 	}
 var unlinkedTranslation = false
-if (trans.unlinkedtranslations.length > 0) { 
+if (trans.unlinkedtranslations.length > 0) {
 	for (var lang in trans.unlinkedtranslations) {
 		if (f.clang == trans.unlinkedtranslations[lang]) {
 			unlinkedTranslation = true
@@ -170,7 +170,7 @@ if (trans.unlinkedtranslations.length > 0) {
 		}
 	}
 var updatedTranslation = false
-if (trans.updatedtranslations.length > 0) { 
+if (trans.updatedtranslations.length > 0) {
 	for (var lang in trans.updatedtranslations) {
 		if (f.clang == trans.updatedtranslations[lang]) {
 			updatedTranslation = true
@@ -183,8 +183,8 @@ g.updated = ''
 if (! g.isTranslation && f.firstPubDate && f.lastSubstUpdate && f.firstPubDate != f.lastSubstUpdate) {
 	g.updated = "<p class='updated'>"+s.updated+" <time datetime='"+f.lastSubstUpdate.date+"T"+f.lastSubstUpdate.time+"Z'>"+f.lastSubstUpdate.date+" "+f.lastSubstUpdate.time+"</time></p>"
 	}
-if (outOfDateTranslation) g.updated += "<p class='outofdate'>"+s.untranslatedChanges+" </p>" 
-else if (unlinkedTranslation) g.updated += "<p class='unlinked'>"+s.unlinkedTranslation+" </p>" 
+if (outOfDateTranslation) g.updated += "<p class='outofdate'>"+s.untranslatedChanges+" </p>"
+else if (unlinkedTranslation) g.updated += "<p class='unlinked'>"+s.unlinkedTranslation+" </p>"
 else if (g.isTranslation && updatedTranslation) {g.updated ="<p class='updated'>"+s.translation_updated+" <time datetime='"+f.thisVersion.date+"T"+f.thisVersion.time+"Z'>"+f.thisVersion.date+" "+f.thisVersion.time+"</time></p>" }
 
 
@@ -201,7 +201,7 @@ g.survey = 	'<p>'+s.tellUsWhatYouThink+'</p>'+
 			'<p style="margin-top:1em">'+s.followOurNews+'</p>'+
 			'<p><a class="interaction" href="https://twitter.com/webi18n" title="Twitter: @webi18n"><img src="'+f.path+'icons/twitter-bird.png" style="vertical-align: middle;" alt=" " /> &#x200E;@webi18n</a></p>'+
 			'<p><a class="interaction" href="https://www.w3.org/blog/International/feed/rdf/" title="RSS"><img src="'+f.path+'icons/rssLink.png" alt=" " /> RSS</a></p>'
-			
+
 
 
 // BOTTOM OF PAGE
@@ -210,7 +210,7 @@ g.dateStamp = ''
 if (g.isTranslation) g.dateStamp = '<small>'+s.translatedFromEnglishVer+'</small>'
 else g.dateStamp = "<small id='version'>Content first published <time datetime='"+f.firstPubDate+"'>"+f.firstPubDate+"</time>. Last substantive update <time datetime='"+f.lastSubstUpdate.date+"T"+f.lastSubstUpdate.time+"Z'>"+f.lastSubstUpdate.date+" "+f.lastSubstUpdate.time+" GMT</time>. This version <time datetime='"+f.thisVersion.date+"T"+f.thisVersion.time+"Z'>"+f.thisVersion.date+" "+f.thisVersion.time+" GMT</time></small>";
 
-if (g.isTranslation == 'yes') g.dateStamp = '<p>'+s.translatedFromEnglishVer+'</p>' 
+if (g.isTranslation == 'yes') g.dateStamp = '<p>'+s.translatedFromEnglishVer+'</p>'
 else g.dateStamp = "<span id='version' dir='auto'>"+s.lastChanged+dt.thisVersionPlain+"</span>";
 
 var previousCredit = ''
@@ -231,7 +231,7 @@ var copyright = '<span class="copyright" dir="ltr">Copyright © '+
 	dt.copyrightYear+' <a href="https://www.w3.org/">World Wide Web Consortium</a>.<br> <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#disclaimers">liability</a>, <a href="https://www.w3.org/policies/#trademarks">trademark</a> and <a rel="license" href="https://www.w3.org/copyright/document-license/" title="W3C Document License">permissive license</a> rules apply.</span>';
 
 
-g.bottomOfPage = 
+g.bottomOfPage =
 '<div id="referencesList"></div>'+
 '<hr style="margin-top: 3em; margin-inline: 5rem;">'+
 '<div class="section">'+
@@ -285,7 +285,7 @@ function fillinTranslations () {
 function getURLs () {
 	// makes a list of URLs and adds footnote markers and footnotes to the bottom of the page
 	// this is revealed only when printing, and applies only to a tags with class print
-	
+
 	var links = document.querySelectorAll('a.print')
 	var out = '<h3 class="notoc"><a href="#printLinks">Links in this document:</a></h3><ol>\n'
 	for (var l=0;l<links.length;l++) {
@@ -297,5 +297,48 @@ function getURLs () {
 	container.id = "printLinks"
 	container.innerHTML = out
 	document.querySelector('#referencesList').appendChild(container)
-	
+
 	}
+
+
+// Keyboard shortcuts for search functionality
+document.addEventListener('keydown', function(event) {
+  // Check if the key pressed is '/'
+  if (event.key === '/') {
+    // Don't trigger when typing in input fields, textareas, or contenteditable elements
+    if (
+      event.target.tagName === 'INPUT' ||
+      event.target.tagName === 'TEXTAREA' ||
+      event.target.isContentEditable
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+
+    // Find the search field and focus it
+    const searchField = document.getElementById('searchField');
+    if (searchField) {
+      searchField.focus();
+
+      // If the search field has a default value, select it so typing will replace it
+      if (searchField.value && searchField.value !== '') {
+        searchField.select();
+      }
+    }
+  }
+
+  // Check if the key pressed is 'Escape'
+  if (event.key === 'Escape') {
+    // Only handle Escape if we're in the search field
+    if (event.target.id === 'searchField') {
+      // Clear the search field
+      event.target.value = '';
+
+      // Blur (unfocus) the search field
+      event.target.blur();
+
+      event.preventDefault();
+    }
+  }
+});
