@@ -199,7 +199,7 @@ var title = 'Feedback on '+f.directory+f.filename
 g.survey = 	'<p>'+s.tellUsWhatYouThink+'</p>'+
 			'<p><a class="interaction" target="_blank" href="https://github.com/w3c/i18n-drafts/issues/new?title='+title+'&body='+body+'%0A%0A">'+s.sendAComment+'</a></p>'+
 			'<p style="margin-top:1em">'+s.followOurNews+'</p>'+
-			'<p><a class="interaction" href="https://twitter.com/webi18n" title="Twitter: @webi18n"><img src="'+f.path+'icons/twitter-bird.png" style="vertical-align: middle;" alt=" " /> &#x200E;@webi18n</a></p>'+
+			//'<p><a class="interaction" href="https://twitter.com/webi18n" title="Twitter: @webi18n"><img src="'+f.path+'icons/twitter-bird.png" style="vertical-align: middle;" alt=" " /> &#x200E;@webi18n</a></p>'+
 			'<p><a class="interaction" href="https://www.w3.org/blog/International/feed/rdf/" title="RSS"><img src="'+f.path+'icons/rssLink.png" alt=" " /> RSS</a></p>'
 
 
