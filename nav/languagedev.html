@@ -15,12 +15,12 @@ f.previousauthors = ''; // as above
 f.modifiers = ''; // people making substantive changes, and their affiliation
 f.searchString = 'level2-languagedev'; // blog search string - usually the filename without extensions
 f.firstPubDate = '2015-07-20'; // date of the first publication of the document (after review)
-f.lastSubstUpdate = { date:'2020-08-10', time:'12:18'}  // date and time of latest substantive changes to this document
+f.lastSubstUpdate = { date:'2025-04-19', time:'15:05'}  // date and time of latest substantive changes to this document
 f.status = 'notreviewed';  // should be one of draft, review, published, notreviewed or obsolete
 f.path = '../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
-f.thisVersion = { date:'2020-08-10', time:'12:18'} // date and time of latest edits to this document/translation
+f.thisVersion = { date:'2025-04-19', time:'15:05'} // date and time of latest edits to this document/translation
 f.contributors = ''; // people providing useful contributions or feedback during review or at other times
 // also make sure that the lang attribute on the html tag is correct!
 
@@ -75,25 +75,37 @@ f.additionalLinks = ''
 <p>The <a class="highlightLink" href="http://www.w3.org/International/typography/gap-analysis/language-matrix">Language Matrix</a> is a heat-map that shows where  people around the world have problems when using their native language and writing system. Links from the matrix lead to more detailed gap analysis information for that language.</p>
 <p>The set of languages listed in the matrix was initially based on speaker populations or features of special interest. We are interested in expanding the list wherever we have experts who are willing to contribute the necessary information.</p>
 </dd>
-<dt>Language Enablement Index</dt>
+<dt>Gap analysis documents</dt>
 <dd>
-<p>The <a class="highlightLink" href="https://www.w3.org/TR/typography/">Language Enablement Index</a> points browser implementers and specification developers to information about how to support typographic features of scripts or writing systems from around the world, and also points to relevant information in specifications, to tests, and to useful articles and papers. It is not exhaustive, and will be added to constantly. In addition, it points to other articles and documents that can help understand how typography and layout works in non-Latin scripts.</p>
+<p>We have gap-analysis documents for each script we are working with. These documents list gaps for that script, describing the original problem, the action taken to resolve them, and the current outcome. To find a gap-analysis document follow the pointers in the <a href="#reviews">Repositories and Task Forces</a> section below, and look for the links on the repository home page.</p>
+<p>As an example, see the <a href="https://www.w3.org/TR/adlm-gap/">Adlam Gap Analysis</a> document.</p>
+<p>The gap data is maintained in GitHub issues, and automatically pulled into the gap-analysis documents. This makes it easier to edit the gap reports, but also benefits from the behaviours that GitHub supports, such as feeding the gap-analysis pipeline.</p>
 </dd>
 <dt>Gap-analysis pipeline</dt>
 <dd>
 <p>The <a class="highlightLink" href="https://github.com/orgs/w3c/projects/95/views/1">Gap-analysis pipeline</a> is a dashboard used to identify critical missing pieces of the internationalized Web and track support for filling those gaps. A card is added for each gap  raised during the language enablement work. The columns in the pipeline indicate next steps, and cards are labelled so that they can be filtered in various ways.</p>
 </dd>
 
+<dt>Notification system</dt>
+<dd>
+<p>As discussions take place within the repositories dedicated to language enablement, notifications are sent to subscribers of the repo's associated mailing list in the form of a digest.  The digest includes not only developments in the associated language enablement repository, but also includes links to the discussions in CSS, HTML, SVG, and other W3C repositories that have been tagged with a relevant language enablement label.</p>
+<p>Digests are only sent when new activity is detected and, when there is activity, subscribers receive a maximum of one email per day per list subscribed to.  This provides a very low bandwidth way for experts to keep abreast of developments in the specific areas they are interested in. It also provides a way for the language enablement community to reach out to experts for information about how a particular script works.</p>
+</dd>
+
+<dt>Language Enablement Index</dt>
+<dd>
+<p>The <a class="highlightLink" href="https://www.w3.org/TR/typography/">Language Enablement Index</a> points browser implementers and specification developers to information about how to support typographic features of scripts or writing systems from around the world, and also points to relevant information in specifications, to tests, and to useful articles and papers. It is not exhaustive, and will be added to constantly. In addition, it points to other articles and documents that can help understand how typography and layout works in non-Latin scripts.</p>
+</dd>
 <dt>Type samples</dt>
 <dd>
 <p>The <a class="highlightLink" href="https://w3c.github.io/type-samples/">Type samples</a> repository contains samples of typographic features which can be used for reference or for examples. You can contribute samples via the <a href="https://github.com/w3c/type-samples">GitHub issues interface</a>.</p>
 </dd>
-<dt>Layout issue tracker</dt>
+<!--dt>Layout issue tracker</dt>
 <dd>
 <p>While specifications are being developed, questions arise about whether a feature works well for all languages, or whether perhaps additional requirements need to be taken into account. </p>
 <p>The <a class="highlightLink" href="https://www.w3.org/International/i18n-activity/textlayout/">Language enablement issue tracker</a> points you to questions for which we are still trying to find answers. It  also points you to discussions currently under way that affect support for a particular language or group of languages, and what browser bug submissions we are tracking.</p>
 <p>The data can be filtered to show results for a specific language or group of languages.</p>
-</dd>
+</dd-->
 </dl>
 </section>
 
