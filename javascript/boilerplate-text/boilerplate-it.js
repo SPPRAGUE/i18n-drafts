@@ -75,24 +75,24 @@ s.status_obsolete="Il presente articolo risulta obsoleto. Non é piú sottoposto
 s.gotoW3cHome = "Vai alla Home Page del W3C"  // title text for W3C logo
 s.gotoI18nHome = "Vai alla Home Page di Internationalization" // title text for i18n banner
 s.internationalizationTitle = "Internationalization"  // the word above the orange line
-s.worldwide = "Making the World Wide Web worldwide!"  // the words below the orange line
+s.worldwide = "Creando il Web Mondiale!"  // the words below the orange line
 s.techniques = "Impara"  // site links link text, top left
-s.taskBasedIndex = "Learn techniques and requirements for internationalization."  // title text for s.techniques
+s.taskBasedIndex = "Impara le tecniche e i requisiti dell’internazionalizzazione."  // title text for s.techniques
 s.resources = "Scopri"  // site links link text, top left
-s.informationResources = "Find information on this site."  // title text for s.resources
+s.informationResources = "Scopri le informazioni sul nostro sito."  // title text for s.resources
 s.ask = "Chiedi"  // site links link text, top left
-s.askI18nActivity = "Ask for help or information."  // title text for s.ask
+s.askI18nActivity = "Chiedi aiuto o informazioni."  // title text for s.ask
 s.news = "Segui"  // site links link text, top left
-s.newsFiltersAndFeeds = "Follow the work at W3C Internationalization."  // title text for s.news
+s.newsFiltersAndFeeds = "Segui il lavoro di W3C Internationalization."  // title text for s.news
 s.groups = "Partecipa" // site links link text, top left
-s.groupsThatMakeUp = "Participate in W3C Internationalization work." // title text for s.groups
+s.groupsThatMakeUp = "Participa al lavoro di W3C Internationalization." // title text for s.groups
 s.about = "Riguardo i18n" // site links link text, top left
-s.aboutI18nActivity = "About W3C Internationalization." // title text for s.about
+s.aboutI18nActivity = "Riguardo W3C Internationalization." // title text for s.about
 
 
 // document status information, below main heading
 s.intendedAudience = "Destinatari: "  // preface to audience description (being faded out)
-s.lastChanged = "Last changed "
+s.lastChanged = "Ultima modifica "
 
 
 // bottom right comment and news feed box
@@ -105,7 +105,7 @@ s.sendAComment = "Inviaci i tuoi commenti" // link text
 // or its equivalent, eg. "By: " in english, but "作者：" in chinese
 s.sentenceDelimiter = "."  // provides a sentence terminator to use between list of authors, modifiers, & translators
 s.author = "Autore: " // followed by name of author(s)
-s.previousAuthors = "Previously by: " // followed by name of previous author(s), before substantive changes were made by the current author
+s.previousAuthors = "Prima versione di: " // followed by name of previous author(s), before substantive changes were made by the current author
 s.modifiedBy = "Modificato da: " // person's name appears after colon
 s.translatedBy = "Traduttore: " // person's name appears after colon
 s.acknowledgements = "Un ringraziamento anche a coloro il cui contributo o riscontro é stato incluso: " // used at bottom of page to list people who provided feedback. The list comes after this text. 
@@ -152,7 +152,7 @@ s.newResourcesAlt = "Per avere informazioni ogni volta che viene pubblicata una 
 s.newResources = "Nuove risorse"
 s.homePageNewsAlt = "Tutte le novità presenti sulla home page."
 s.homePageNews = "Le novità presenti nella home page"
-s.followOurNews = "Follow our news feed."
+s.followOurNews = "Segui le nostre ultime notizie."
 
 // obsolete in most recent articles — used to be in footer
 s.validXHTML = "XHTML 1.0 valido!"
