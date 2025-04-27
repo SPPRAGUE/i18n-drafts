@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Localizzazione vs. Internazionalizzazione</title>
+<meta name="description" content="Cosa significano e come sono correlati i termini “internazionalizzazione” e “localizzazione”?">
+<script>
+var f = { }
+
+// AUTHORS should fill in these assignments:
+f.directory = 'questions'+'/' // the path to this file, not including /International or the file name
+f.filename = 'qa-i18n' // the file name WITHOUT extensions
+f.authors = 'Richard Ishida, W3C, Susan K. Miller, Boeing' // author(s) and affiliations
+f.previousauthors = '' // as above
+f.modifiers = '' // people making substantive changes, and their affiliation
+f.searchString = 'qa-i18n' // blog search string - usually the filename without extensions
+f.firstPubDate = '2005-12-05' // date of the first publication of the document (after review)
+f.lastSubstUpdate = { date:'2005-12-05', time:'20:40'}  // date and time of latest substantive changes to this document
+f.status = 'published'  // should be one of draft, review, published, notreviewed or obsolete
+f.path = '../' // what you need to prepend to a URL to get to the /International directory
+
+// AUTHORS AND TRANSLATORS should fill in these assignments:
+f.thisVersion = { date:'2025-04-27', time:'16:14'} // date and time of latest edits to this document/translation
+f.contributors = '' // people providing useful contributions or feedback during review or at other times
+// also make sure that the lang attribute on the html tag is correct!
+f.sources = '' // describes sources of information
+
+// TRANSLATORS should fill in these assignments:
+f.translators = 'Alessia Bosio' // translator(s) and their affiliation - a elements allowed, but use double quotes for attributes
+
+f.breadcrumb = 'other'
+
+f.additionalLinks = ''
+</script>
+<script src="qa-i18n-data/translations.js"> </script>
+<script src="../javascript/doc-structure/article-dt.js"> </script>
+<script src="../javascript/boilerplate-text/boilerplate-it.js"> </script>
+<!--TRANSLATORS must change -en in the line just above to the subtag for their language! -->
+<script src="../javascript/doc-structure/article-2022.js"> </script>
+<script src="../javascript/articletoc-2022.js"></script>
+<link rel="stylesheet" href="../style/article-2022.css">
+<link rel="copyright" href="#copyright">
+</head>
+
+<body>
+<header>
+  <nav id="mainNavigation"></nav><script>document.getElementById('mainNavigation').innerHTML = mainNavigation</script>
+
+  <h1>Localizzazione vs. Internazionalizzazione</h1>
+</header>
+
+
+<div id="sidebarExtras"></div>
+
+
+<div id="audience">
+    <div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script>
+    </div>
+<h2 id="question"><a href="#question">Domanda</a></h2>
+   <p class="question">Cosa significano e come sono correlati i termini “Internazionalizzazione” e “Localizzazione”?</p>
+
+
+
+<section id="answer">
+<h2>Risposta</h2>
+<p>Ognuno ha la propria definizione preferita per queste parole. Di seguito, proponiamo delle descrizioni generali
+  e di alto livello su come utilizziamo questi termini sul sito di W3C International. </p>
+
+
+
+
+<section id="l10n">
+<h3>Localizzazione</h3>
+    <p>La localizzazione indica l'<strong>adattamento</strong> di un prodotto, di un’applicazione o del contenuto di un documento in modo da soddisfare la lingua,
+      la cultura e le altre caratteristiche di uno specifico mercato target (un <span class="qterm">locale</span>, definito cioè da lingua e luogo).</p>
+  <p>Alcune volte, la localizzazione è indicata in inglese con <span class="qterm">l10n</span>,  dove 10 è il numero di lettere compreso tra la prima <span class="qchar">l</span> e l'ultima <span class="qchar">n</span>.</p>
+  <p>Anche se spesso considerata sinonimo della traduzione dell'interfaccia utente e della documentazione, la localizzazione
+    è di solito un processo molto più complesso, che può richiedere soluzioni su misura per quanto riguarda:</p>
+<ol>
+<li> Formati numerici, date e orari;</li>
+<li> Valuta in uso;</li>
+<li> Tastiera in uso;</li>
+<li> Sistemi di classificazione e ordinamento;</li>
+<li> Simboli, icone e colori;</li>
+<li> Testi e grafiche con riferimenti a oggetti, azioni o idee che in una determinata cultura potrebbero essere interpretati in modo errato o offensivi;</li>
+<li> Variazioni di requisiti legali;</li>
+<li> E molto altro ancora.</li>
+</ol>
+<p>La localizzazione può comportare il ripensamento generale della logica, del progetto grafico, o della presentazione nel caso in cui il modo di fare affari
+  (es. contabilità) o il modello di apprendimento (es. l’attenzione sull’individuo oppure sul gruppo) di un determinato locale siano notevolmente
+  diversi rispetto alla cultura di origine. </p>
+</section>
+
+
+
+
+  <section id="i18n">
+<h3>Internazionalizzazione</h3>
+      <p>Le definizioni di internazionalizzazione variano. Di seguito, offriamo la definizione operativa
+        e di alto livello in uso nei materiali di W3C International Activity. Alcuni usano altri termini, ad esempio <span class="qterm">globalizzazione</span>, per riferirsi allo stesso concetto.</p>
+
+    <p>Per internazionalizzazione si intende la progettazione e lo sviluppo di un prodotto, di un’applicazione o del contenuto di un documento in modo da <strong>permettere</strong>
+      una facile localizzazione verso i pubblici target, i quali variano per cultura, regione o lingua. </p>
+<p>L’internazionalizzazione è spesso indicata in inglese con il termine <span class="qterm">i18n</span>, dove 18 fa riferimento al numero di lettere tra la prima <span class="qchar">i</span> e l'ultima <span class="qchar">n</span>.</p>
+    <p>Tipicamente, l’internazionalizzazione comprende:</p>
+<ol>
+<li> Progettare e sviluppare in modo da rimuovere le barriere che ostacolano la localizzazione e l’internazionalizzazione.
+  Ciò include, ad esempio, abilitare l’uso di Unicode, garantire la corretta gestione delle codifiche
+  dei caratteri legacy quando opportuno, o gestire con attenzione la concatenazione delle stringhe, evitando nel codice la dipendenza dai valori dei campi dell’interfaccia utente, ecc.</li>
+<li> Offrire supporto per funzionalità che potrebbero non essere utilizzate prima della fase di localizzazione.
+  Per esempio: aggiungere markup nel tuo DTD per supportare testo bidirezionale o identificare la lingua.
+  Oppure, aggiungere al CSS il supporto per testi verticali o sistemi tipografici non latini.</li>
+<li> Consentire al codice di supportare lingue locali e regionali o preferenze culturali. Di solito, ciò comporta
+  incorporare dati e funzionalità relative alla localizzazione ricavate da librerie esistenti o dalle preferenze dell’utente.
+  Ad esempio: i formati di data e ora, i calendari locali, la raccolta e presentazione di elenchi,
+  la gestione dei nomi propri e dei moduli degli indirizzi, ecc.</li>
+<li> Separare gli elementi localizzabili dal codice sorgente o dal contenuto. In questo modo, le versioni localizzate possano essere caricate o
+  selezionate su richiesta, in base alle preferenze internazionali dell’utente.</li>
+</ol>
+<p>Si noti che questi punti non includono necessariamente la localizzazione del contenuto, dell’applicazione, o del prodotto in un’altra lingua.
+  Vanno considerate come norme di progettazione e sviluppo in grado di  facilitare una migrazione di questo tipo in futuro,
+  ma importanti anche nel caso in cui la localizzazione non venga mai messa in atto. </p>
+  </section>
+
+
+
+
+  <section id="value">
+<h3>Il valore dell’internazionalizzazione</h3>
+      <p>L’internazionalizzazione impatta notevolmente sulla facilità di localizzazione del prodotto. Ovviamente, rimodernare un prodotto già incentrato su una lingua e una cultura
+        per un mercato globale è molto più difficile e dispendioso di tempo rispetto a progettare un prodotto con l’intento di presentarlo a livello globale.
+        (Ripensate al Millennium Bug o Y2K e agli sforzi per cercare di “disfare” i campi dei dati relativi agli anni, inizialmente creati a due cifre con il principio del “19xx”).</p>
+    <p>In conclusione, idealmente, l’internazionalizzazione avviene come uno step fondamentale nel processo di progettazione e sviluppo,
+      e non come pensiero a posteriori che spesso porta a opere di re-ingegnerizzazione complesse e costose.</p>
+</section>
+</section>
+
+
+<section id="endlinks">
+<h2>Altre Letture</h2>
+<aside class="section" id="survey"> </aside><script>document.getElementById('survey').innerHTML = g.survey</script>
+
+<ul id="full-links">
+    <li>
+      <p><a href="/International/techniques/authoring-html"><cite>Tecniche di internazionalizzazione: Creare pagine Web.</cite></a></p>
+</li>
+  </ul>
+</section>
+
+<footer id="thefooter"></footer><script>document.getElementById('thefooter').innerHTML = g.bottomOfPage</script>
+<script>completePage()</script>
+</body>
+</html>
