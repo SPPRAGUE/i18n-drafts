@@ -14,6 +14,7 @@ s.rlm = ""
 
 
 // TRANSLATE THE FOLLOWING
+// but do not translate anything inside ${...} – but do move those items where needed to fit the syntax of the translation
 
 
 // used when changing the language of the page
