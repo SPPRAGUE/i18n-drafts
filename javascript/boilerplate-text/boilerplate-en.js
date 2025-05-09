@@ -55,7 +55,7 @@ s.cookieMsg = "If you let the browser set a cookie, you will continue to see W3C
 // items in top right beige column
 s.worldMap = "World map"  // title text for image, top right
 s.searchI18nSite = "I18n site search" // placeholder text for search box, top right
-s.translationDisclaimer = 'This document is a translation provided by a volunteer. In the case of any discrepancy or errors, the <a href="'+f.filename+'.en">latest English original</a> should be considered authoritative. Original copyright belongs to W3C, as shown below.'  // text appears only on translated pages
+s.translationDisclaimer = `This document is a translation provided by a volunteer. In the case of any discrepancy or errors, the <a href="${ f.filename }.en">latest English original</a> should be considered authoritative. Original copyright belongs to W3C, as shown below.`  // text appears only on translated pages
 s.articles = "Articles" // used in breadcrumbs, top right of page
 s.tests="Tests" // used at the end of breadcrumbs for test related pages
 s.home = "Home" // start of breadcrumbs
@@ -109,16 +109,16 @@ s.previousAuthors = "Previously by: " // followed by name of previous author(s),
 s.modifiedBy = "Changed by: " // person's name appears after colon
 s.translatedBy = "Translator: " // person's name appears after colon
 s.acknowledgements = "Thanks also to the following people whose contribution or feedback was included: " // used at bottom of page to list people who provided feedback. The list comes after this text. 
-s.translatedFromEnglishVer = "Translated from English content dated "+dt.enVersion+". Translated version last changed "+dt.thisVersionPlain+" GMT"
+s.translatedFromEnglishVer = `Translated from English content dated ${ dt.enVersion }. Translated version last changed ${ dt.thisVersionPlain } GMT`
 s.translation_updated="Translation updated: " // date appears after (add colon+whitespace) 
-s.historyOfDocumentChanges = 'For the history of document changes, see the <a href="https://www.w3.org/blog/International/tag/'+f.searchString+'/">news feed</a> for substantive changes, and the <a href="https://github.com/w3c/i18n-drafts/commits/gh-pages/'+f.directory+f.filename+'.en.html">Github commit list</a> for all changes since Jan 2016.'
-//s.supercededTranslation = '<strong>Avertissement :</strong> Ceci est une version dépassée de ce document! Il est recommandé de lire <a href="'+g.betterfilename+'.en">la dernière version</a> et si vous le pouvez, de modifier le marque-page ou le lien qui vous a redirigé ici.'
+s.historyOfDocumentChanges = `For the history of document changes, see the <a href="https://www.w3.org/blog/International/tag/${ f.searchString }/">news feed</a> for substantive changes, and the <a href="https://github.com/w3c/i18n-drafts/commits/gh-pages/${ f.directory }${ f.filename }.en.html">Github commit list</a> for all changes since Jan 2016.`
+//s.supercededTranslation = "<strong>Avertissement :</strong> Ceci est une version dépassée de ce document! Il est recommandé de lire <a href=""+g.betterfilename+".en">la dernière version</a> et si vous le pouvez, de modifier le marque-page ou le lien qui vous a redirigé ici."
 
 
 // banner on translated pages that are missing some translation
-s.untranslatedChanges = '<strong>Note:</strong> Changes have been made to <a href="'+f.filename+'.en">the English original</a> since this document was translated. The changes were incorporated into this page, so you may see some passages in English until the translation is updated.'
-s.unlinkedTranslation = '<strong>Warning:</strong> Substantive changes have been made to the English original since this document was translated. You are advised to read <a href="'+f.filename+'">a version in another language</a> until this translation has been updated.'
-s.githubRedirect = "<strong>NOTE!</strong> &nbsp; This is only an editor\'s draft of this article. All links and bookmarks should point to the <a href='https://www.w3.org/International/"+f.directory+f.filename+"."+f.clang+"'>version on the W3C site</a>, rather than to this page." // used for github-based versions of published articles
+s.untranslatedChanges = `<strong>Note:</strong> Changes have been made to <a href="${ f.filename }.en">the English original</a> since this document was translated. The changes were incorporated into this page, so you may see some passages in English until the translation is updated.`
+s.unlinkedTranslation = `<strong>Warning:</strong> Substantive changes have been made to the English original since this document was translated. You are advised to read <a href="${ f.filename }">a version in another language</a> until this translation has been updated.`
+s.githubRedirect = `<strong>NOTE!</strong> &nbsp; This is only an editor's draft of this article. All links and bookmarks should point to the <a href='https://www.w3.org/International/${ f.directory }${ f.filename }.${ f.clang }'>version on the W3C site</a>, rather than to this page.` // used for github-based versions of published articles
 
 
 s.new="New"// placed alongside new articles at https://www.w3.org/International/articlelist 
@@ -165,7 +165,7 @@ s.codedInUtf8 = "Encoded in UTF-8!"
 // other — may be obsolete, or used in old format pages
 s.i18nActivityHome = "I18N Activity Home"
 s.moreResourcesOfThisType = "More resources of this type."
-s.accessKeyN = 'Accesskey n skips to <a href="#internal-links" accesskey="n">in-page navigation</a>. <a href="#contentstart">Skip to the content start.</a>'
+s.accessKeyN = "Accesskey n skips to <a href="#internal-links" accesskey="n">in-page navigation</a>. <a href="#contentstart">Skip to the content start.</a>"
 s.examplesInAnotherScript = "This document contains examples in another language/script."
 s.relatedLinks = "Related links"
 s.techIndexText = "Techniques index"
