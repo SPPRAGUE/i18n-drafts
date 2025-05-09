@@ -166,7 +166,7 @@ s.codedInUtf8 = "Encoded in UTF-8!"
 // other — may be obsolete, or used in old format pages
 s.i18nActivityHome = "I18N Activity Home"
 s.moreResourcesOfThisType = "More resources of this type."
-s.accessKeyN = "Accesskey n skips to <a href="#internal-links" accesskey="n">in-page navigation</a>. <a href="#contentstart">Skip to the content start.</a>"
+s.accessKeyN = `Accesskey n skips to <a href="#internal-links" accesskey="n">in-page navigation</a>. <a href="#contentstart">Skip to the content start.</a>`
 s.examplesInAnotherScript = "This document contains examples in another language/script."
 s.relatedLinks = "Related links"
 s.techIndexText = "Techniques index"
