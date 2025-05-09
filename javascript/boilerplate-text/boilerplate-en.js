@@ -35,6 +35,7 @@ s.currLang = {
 'ja':'Japanese',
 'ko':'Korean',
 'nl':'Dutch',
+'pes':'Persian',
 'pl':'Polish',
 'pt':'Portuguese',
 'pt-br':'Brazilian Portuguese',
