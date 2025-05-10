@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf8">
+<title>Boilerplate converter</title>
+
+<!-- Used to update boilerplate-*.js files.  Currently requires manual change to the boilerplate js file being read in (see below) for each output. -->
+
+<script>
+f = {}
+f.firstPubDate = '2010-08-12' // date of the first publication of the document (after review)
+f.thisVersion = { date:'2016-02-97', time:'10:10'} // date and time of latest edits to this document/translation
+f.lastSubstUpdate = { date:'2010-08-12', time:'17:00'}  // date and time of latest substantive changes to this document
+f.searchString = "${ f.searchString }"
+f.directory = "${ f.directory }"
+f.filename = "${ f.filename }"
+f.clang = "${ f.clang }"
+
+dt = {}
+s = {}
+
+dt.enVersion = "${ dt.enVersion }"
+dt.thisVersionPlain = "${ dt.thisVersionPlain }"
+
+</script>
+
+
+
+
+<!-- CHANGE THE JS FILE POINTED TO HERE! -->
+<script src="boilerplate-pes.js"></script>
+<!-- ------- -->
+
+
+
+<script src="../doc-structure/article-dt.js"></script>
+<script>
+
+function runConverter () {
+
+out = ''
+out += `// translate the text between quotes
+// text following double slashes (such as this line) provides comments for the translator
+// words beginning with s. or f. are variables - do not disturb these ! (though you can move them)
+// where it would aid clarity, variables that occur in the text are described below
+
+var s = { }
+
+// DO NOT TRANSLATE`
+
+out += `
+s.suppStylesheets = '`+s.suppStylesheets+`'
+
+s.rtlAttribute = "`+s.rtlAttribute+`"
+s.ltrAttribute = "`+s.ltrAttribute+`"
+s.rlm = "`+s.rlm+`"
+
+// TRANSLATE THE FOLLOWING
+// but do not translate anything inside $\{...} – but do move those items where needed to fit the syntax of the translation
+
+
+// used when changing the language of the page
+// do not translate the abbreviation at the start of the line, just translate the language name
+`
+
+
+out += `
+s.currLang = {
+  'ar':'${ s.currLang.ar }',
+  'bg':'${ s.currLang.bg }',
+  'da':'${ s.currLang.da }',
+  'de':'${ s.currLang.de }',
+  'el':'${ s.currLang.el }',
+  'en':'${ s.currLang.en }',
+  'es':'${ s.currLang.es }',
+  'fr':'${ s.currLang.fr }',
+  'gl':'${ s.currLang.gl }',
+  'he':'${ s.currLang.he }',
+  'hi':'${ s.currLang.hi }',
+  'hu':'${ s.currLang.hu }',
+  'it':'${ s.currLang.it }',
+  'ja':'${ s.currLang.ja }',
+  'ko':'${ s.currLang.ko }',
+  'nl':'${ s.currLang.nl }',
+  'pes':'${ s.currLang.pes }',
+  'pl':'${ s.currLang.pl }',
+  'pt':'${ s.currLang.pt }',
+  'pt-br':'${ s.currLang['pt-br'] }',
+  'ro':'${ s.currLang.ro }',
+  'ru':'${ s.currLang.ru }',
+  'sv':'${ s.currLang.sv }',
+  'th':'${ s.currLang.th }',
+  'tr':'${ s.currLang.tr }',
+  'uk':'${ s.currLang.uk }',
+  'vi':'${ s.currLang.vi }',
+  'zh-hans':'${ s.currLang['zh-hans'] }',
+  'zh-hant':'${ s.currLang['zh-hant'] }'
+}
+`
+
+out += `
+// cookie message, appears when changing languages
+s.cookieMsg = "${ s.cookieMsg }" // this text is to be copied to another location
+
+// items in top right beige column
+s.worldMap = "${ s.worldMap }"  // title text for image, top right
+s.searchI18nSite = "${ s.searchI18nSite }" // placeholder text for search box, top right
+s.translationDisclaimer = \`${ s.translationDisclaimer }\`  // text appears only on translated pages
+`
+out = out.replace(/undefined.en/,'${ f.filename }.en')
+
+out += `
+s.articles = "${ s.articles }" // used in breadcrumbs, top right of page
+s.tests="${ s.tests }" // used at the end of breadcrumbs for test related pages
+s.home = "${ s.home }" // start of breadcrumbs
+s.onThisPage = "${ s.onThisPage }"  // TOC heading
+
+
+
+
+// messages that appear in the top right beige column before an article is published
+s.aboutThisArticle="${ s.aboutThisArticle }" // title in the right column near the top of the page
+s.status_draft="${ s.status_draft }"
+s.status_review="${ s.status_review }"
+s.status_published="${ s.status_published }"
+s.status_notreviewed="${ s.status_notreviewed }"
+s.status_obsolete="${ s.status_obsolete }"
+
+
+// top left of page
+s.gotoW3cHome = "${ s.gotoW3cHome }"  // title text for W3C logo
+s.gotoI18nHome = "${ s.gotoI18nHome }" // title text for i18n banner
+s.internationalizationTitle = "${ s.internationalizationTitle }"  // the word above the orange line
+s.worldwide = "${ s.worldwide }"  // the words below the orange line
+s.techniques = "${ s.techniques }"  // site links link text, top left
+s.taskBasedIndex = "${ s.taskBasedIndex }"  // title text for s.techniques
+s.resources = "${ s.resources }"  // site links link text, top left
+s.informationResources = "${ s.informationResources }"  // title text for s.resources
+s.ask = "${ s.ask }"  // site links link text, top left
+s.askI18nActivity = "${ s.askI18nActivity }"  // title text for s.ask
+s.news = "${ s.news }"  // site links link text, top left
+s.newsFiltersAndFeeds = "${ s.newsFiltersAndFeeds }"  // title text for s.news
+s.groups = "${ s.groups }" // site links link text, top left
+s.groupsThatMakeUp = "${ s.groupsThatMakeUp }" // title text for s.groups
+s.about = "${ s.about }" // site links link text, top left
+s.aboutI18nActivity = "${ s.aboutI18nActivity }" // title text for s.about
+
+
+// document status information, below main heading
+s.intendedAudience = "${ s.intendedAudience }"  // preface to audience description (being faded out)
+s.lastChanged = "${ s.lastChanged }"
+
+
+// bottom right comment and news feed box
+s.tellUsWhatYouThink = "${ s.tellUsWhatYouThink }"  // text content
+s.sendAComment = "${ s.sendAComment }" // link text
+
+
+// page footer
+// this block of strings should include any whitespace needed after the colon
+// or its equivalent, eg. "By: " in english, but "作者：" in chinese
+s.sentenceDelimiter = "${ s.sentenceDelimiter }"  // provides a sentence terminator to use between list of authors, modifiers, & translators
+s.author = "${ s.author }" // followed by name of author(s)
+s.previousAuthors = "${ s.previousAuthors }" // followed by name of previous author(s), before substantive changes were made by the current author
+s.modifiedBy = "${ s.modifiedBy }" // person's name appears after colon
+s.translatedBy = "${ s.translatedBy }" // person's name appears after colon
+s.acknowledgements = "${ s.acknowledgements }" // used at bottom of page to list people who provided feedback. The list comes after this text. 
+`
+out += `s.translatedFromEnglishVer = \`${ s.translatedFromEnglishVer }\``
+
+out += `
+s.translation_updated="${ s.translation_updated }" // date appears after (add colon+whitespace) 
+s.historyOfDocumentChanges = \`${ s.historyOfDocumentChanges }\`
+
+
+// banner on translated pages that are missing some translation
+s.untranslatedChanges = \`${ s.untranslatedChanges }\`
+s.unlinkedTranslation = \`${ s.unlinkedTranslation }\`
+s.githubRedirect = \`${ s.githubRedirect }\` // used for github-based versions of published articles
+
+
+s.new="${ s.new }"// placed alongside new articles at https://www.w3.org/International/articlelist 
+s.updated="${ s.updated }" // same as New
+
+
+// strings to promote consistency in article content
+s.question = "${ s.question }"  // heading
+s.questionAlt = "${ s.questionAlt }"  // title text for s.question
+s.questionLink = "${ s.questionLink }"  // 
+s.skipToAnswer = "${ s.skipToAnswer }"  // link text
+s.background = "${ s.background }" // heading
+s.backgroundAlt = "${ s.backgroundAlt }" // title text for s.background
+s.backgroundLink = "${ s.backgroundLink }"
+s.answer = "${ s.answer }" // heading
+s.answerAlt = "${ s.answerAlt }" // title text for s.answer
+s.answerLink = "${ s.answerLink }"
+s.byTheWay = "${ s.byTheWay }" // heading
+s.byTheWayAlt = "${ s.byTheWayAlt }" // title text for s.byTheWay
+s.byTheWayLink = "${ s.byTheWayLink }"
+s.furtherReading = "${ s.furtherReading }" // heading
+s.furtherReadingAlt = "${ s.furtherReadingAlt }" // title text for s.byTheWay
+s.furtherReadingLink = "${ s.furtherReadingLink }"
+s.quickanswer = "${ s.quickanswer }" // heading
+s.longeranswer = "${ s.longeranswer }" // heading that follows 'Quick answer'
+s.additionalinfo = "${ s.additionalinfo }" // heading that sometimes follows 'Details'
+
+
+// obsolete in most recent articles — used to be in bottom right box
+s.subscribeToRSS = "${ s.subscribeToRSS }"  
+s.newResourcesAlt = "${ s.newResourcesAlt }"
+s.newResources = "${ s.newResources }"
+s.homePageNewsAlt = "${ s.homePageNewsAlt }"
+s.homePageNews = "${ s.homePageNews }"
+s.followOurNews = "${ s.followOurNews }"
+
+// obsolete in most recent articles — used to be in footer
+s.validXHTML = "${ s.validXHTML }"
+s.validCSS = "${ s.validCSS }"
+s.codedInUtf8 = "${ s.codedInUtf8 }"
+
+
+
+// other — may be obsolete, or used in old format pages
+s.i18nActivityHome = "${ s.i18nActivityHome }"
+s.moreResourcesOfThisType = "${ s.moreResourcesOfThisType }"
+s.accessKeyN = \`${ s.accessKeyN }\`
+s.examplesInAnotherScript = "${ s.examplesInAnotherScript }"
+s.relatedLinks = "${ s.relatedLinks }"
+s.techIndexText = "${ s.techIndexText }"
+s.topicIndexText = "${ s.topicIndexText }"
+s.i18nActivityHomePage = "${ s.i18nActivityHomePage }"
+s.topicIndexForInformation = "${ s.topicIndexForInformation }"
+s.topics = "${ s.topics }"
+`
+
+
+
+
+
+
+document.getElementById('out').value = out
+document.getElementById('out').select()
+
+}
+</script>
+</head>
+
+
+<body>
+<p><button onclick="runConverter()">GO</button></p>
+<textarea id="out" style="width:90%;height:90vh;"></textarea>
+</body>
+</html>
