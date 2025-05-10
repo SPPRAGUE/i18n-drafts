@@ -22,8 +22,8 @@ s.rlm = ""
 s.currLang = {
 'ar':'Arabic',
 'bg':'Bulgarian',
-'de':'German',
 'da':'Danish',
+'de':'German',
 'el':'Greek',
 'en':'English',
 'es':'Spanish',
