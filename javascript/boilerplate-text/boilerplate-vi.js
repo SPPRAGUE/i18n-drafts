@@ -12,8 +12,13 @@ s.rtlAttribute = ""
 s.ltrAttribute = ""
 s.rlm = ""
 
-
 // TRANSLATE THE FOLLOWING
+// but do not translate anything inside ${...} – but do move those items where needed to fit the syntax of the translation
+
+
+// used when changing the language of the page
+// do not translate the abbreviation at the start of the line, just translate the language name
+
 s.currLang = {
   'ar':'Tiếng A-rập',
   'bg':'Tiếng Bun-ga-ri',
@@ -31,6 +36,7 @@ s.currLang = {
   'ja':'Tiếng Nhật',
   'ko':'Tiếng Hàn Quốc',
   'nl':'Tiếng Hà Lan',
+  'pes':'Tiếng Ba Tư',
   'pl':'Tiếng Ba Lan',
   'pt':'Tiếng Bồ Đào Nha',
   'pt-br':'Tiếng Bồ Đào Nha',
@@ -42,102 +48,171 @@ s.currLang = {
   'uk':'Tiếng U-crai-na',
   'vi':'Tiếng Anh',
   'zh-hans':'Tiếng Trung Quốc (Giản thế)',
-  'zh-hant':'Tiếng Trung Quốc (Phồn thế)',
+  'zh-hant':'Tiếng Trung Quốc (Phồn thế)'
 }
 
-s.i18nActivityHome = "Trang Chủ Hoạt Động I18N"
-s.moreResourcesOfThisType = "Thêm nguồn thông tin về dạng này."
-s.accessKeyN = 'Phím truy cập và bỏ qua khi điều hướng trang. <a href="#contentstart">Bỏ qua để đến phần bắt đầu nội dung.</a>'
-s.examplesInAnotherScript = "Tài liệu này bao gồm các ví dụ bằng các thứ tiếng/chữ viết khác."
-s.worldMap = "Bản đồ thế giới"
-s.searchI18nSite = "Tìm kiếm trên trang I18n" 
-s.translationDisclaimer = 'TTài liệu này là một bản dịch. Trong trường hợp xảy ra bất kỳ sự không nhất quán hoặc có lỗi thì <a href="'+f.filename+'.en">bản tiếng Anh gốc mới nhất</a> được coi là bản chính thức. <a href="#copyright">Bản quyền gốc</a> thuộc về W3C, như được chỉ ra dưới đây.'
-s.relatedLinks = "Các liên kết liên quan"
-s.articles = "Các bài báo" // used in breadcrumbs, top right of page 
-s.topicIndexText = "Chỉ mục theo chủ đề"
-s.techIndexText = "Chỉ mục theo kỹ thuật"
-s.gotoW3cHome = "Đi đến Trang Chủ W3C"
-s.gotoI18nHome = "Đi đến Trang Chủ Hoạt Động Quốc Tế Hóa"
-s.internationalizationTitle = "Internationalization"
-s.worldwide = "Making the World Wide Web worldwide!"
-s.i18nActivityHomePage = "Trang chủ Hoạt Động Quốc Tế Hóa."
-s.home = "Home"
-s.contactI18nActivity = "Thông tin về Hoạt Động Quốc Tế Hóa."
-s.contact = "Thông tin"
-s.aboutI18nActivity = "About W3C Internationalization."
-s.about = "About"
-s.askI18nActivity = "Ask for help or information."
-s.ask = "Ask"
-s.groupsThatMakeUp = "Các nhóm tạo nên Hoạt Động Quốc Tế Hóa."
-s.groups = "Các nhóm"
-s.topicIndexForInformation = "Chỉ mục theo chủ đề đối với thông tin trên trang web này."
-s.topics = "Các chủ đề"
-s.taskBasedIndex = "Chỉ mục theo nhiệm vụ đối với các kỹ thuật i18n."
-s.techniques = "Các kỹ thuật"
-s.informationResources = "Các nguồn thông tin về trang web Quốc Tế Hóa."
-s.resources = "Các nguồn thông tin"
-s.newsFiltersAndFeeds = "Thông tin về các bộ lọc tin thức và các nguồn tiếp tin RSS (RSS feed) về hoạt động Quốc Tế Hóa W3C."
-s.news = "Tin tức"
-s.onThisPage = "Trên trang này"
-s.questionAlt = "Câu hỏi"
-s.questionLink = "Câu hỏi"
-s.question = "Câu hỏi"
-s.backgroundAlt = "Thông tin cơ sở"
-s.backgroundLink = "Cơ sở"
-s.background = "Cơ sở"
-s.answer = "Trả lời" // heading
-s.answerAlt = "Trả lời"
-s.answerLink = "Trả lời"
-s.byTheWayAlt = "Thông tin hữu ích phụ"
-s.byTheWayLink = "Nhân thể"
-s.byTheWay = "Nhân thể"
-s.furtherReadingAlt = "Đọc thêm"
-s.furtherReadingLink = "Đọc thêm"
-s.furtherReading = "Đọc thêm"
-s.intendedAudience = "Khán thính giả đích:"
-s.skipToAnswer = "[Bỏ qua để đến câu trả lời]"
-s.tellUsWhatYouThink = "Hãy cho chúng tôi biết ý kiến của bạn (xin viết bằng tiếng Anh)."
-s.sendAComment = "Gửi lời nhận xét cho chúng tôi"
-s.subscribeToRSS = "Đăng ký đọc tin RSS."
-s.newResourcesAlt = "Thông báo cho bạn biết mỗi khi có nguồn tin mới được xuất bản lần đầu tiên."
-s.newResources = "Những nguồn tin mới"
-s.homePageNewsAlt = "Tất cả những mục tin tức được hiển thị trên trang chủ."
-s.homePageNews = "Các tin tức từ trang chủ"
-s.followOurNews = "Follow our news feed."
-s.sentenceDelimiter = "."
+// cookie message, appears when changing languages
+s.cookieMsg = "If you let the browser set a cookie, you will continue to see W3C Internationalization Activity pages (where available) in the language you chose. Do you want to set the cookie?" // this text is to be copied to another location
 
-s.validXHTML = "Đúng theo tiêu chuẩn XHTML 1.0!"
-s.validCSS = "CSS hợp lệ!"
-s.codedInUtf8 = "Được mã hóa theo UTF-8!"
+// items in top right beige column
+s.worldMap = "Bản đồ thế giới"  // title text for image, top right
+s.searchI18nSite = "Tìm kiếm trên trang I18n" // placeholder text for search box, top right
+s.translationDisclaimer = `TTài liệu này là một bản dịch. Trong trường hợp xảy ra bất kỳ sự không nhất quán hoặc có lỗi thì <a href="${ f.filename }.en">bản tiếng Anh gốc mới nhất</a> được coi là bản chính thức. <a href="#copyright">Bản quyền gốc</a> thuộc về W3C, như được chỉ ra dưới đây.`  // text appears only on translated pages
 
-// this block of strings should include any whitespace needed after the colon
-// or its equivalent, eg. "By: " in english, but "作者：" in chinese
-s.author = "Tác giả: " // followed by name of author(s)
-s.previousAuthors = "Previously by: " // followed by name of previous author(s), before substantive changes were made by the current author
-s.modifiedBy = "Được thay đổi bởi: " // person's name appears after colon
-s.translatedBy = "Người dịch: "
-s.acknowledgements = "Thanks also to the following people whose contribution or feedback was included: " // used at bottom of page to list people who provided feedback. The list comes after this text. 
+s.articles = "Các bài báo" // used in breadcrumbs, top right of page
+s.tests="Tests" // used at the end of breadcrumbs for test related pages
+s.home = "Home" // start of breadcrumbs
+s.onThisPage = "Trên trang này"  // TOC heading
 
-s.translatedFromEnglishVer = "Được dịch từ bản tiếng Anh vào ngày "+dt.enVersion+". Phiên bản dịch mới nhất được thay đổi vào "+dt.thisVersionPlain+" GMT"
 
-s.historyOfDocumentChanges = 'For the history of document changes, see the <a href="http://www.w3.org/blog/International/tag/'+f.searchString+'/">news feed</a> for substantive changes, and the <a href="https://github.com/w3c/i18n-drafts/commits/gh-pages/'+f.directory+f.filename+'.en.html">Github commit list</a> for all changes since Jan 2016.'
-s.untranslatedChanges = '<strong>Lưu ý:</strong> Đã thay đổi <a href="/International/$directory$filename.en.php">bản gốc tiếng Anh</a> vì tài liệu này đã được chuyển ngữ. The changes were incorporated into this page, so you may see some passages in English until the translation is updated.'
-s.unlinkedTranslation = '<strong>Warning:</strong> Substantive changes have been made to the English original since this document was translated. You are advised to read <a href="'+f.filename+'.en">the English version</a> until this translation has been updated.'
-s.new="Mới"// placed alongside new articles at http://www.w3.org/International/articlelist 
-s.updated="Đã cập nhật" // same as New
-s.translation_updated="Đã cập nhật bản dịch:" // date appears after colon 
 
+
+// messages that appear in the top right beige column before an article is published
 s.aboutThisArticle="About this article" // title in the right column near the top of the page
 s.status_draft="This article is a draft that has not yet gone through public review. If you have comments, please send them using the <a href='#survey'>link near the bottom of this page</a>."
 s.status_review="This article is currently out for public review. If you have comments, please send them using the <a href='#survey'>link near the bottom of this page</a>."
 s.status_published="This article has been reviewed by the W3C Internationalization Working Group and has gone through public review to make it as accurate as possible. If you have comments, please send them using the <a href='#survey'>link near the bottom of this page</a>."
 s.status_notreviewed="This article was published without public review. If you have comments, please send them using the <a href='#survey'>link near the bottom of this page</a>."
 s.status_obsolete="This article is now obsolete. It is no longer maintained and is likely to be inaccurate. For more up-to-date information, see the <a href='http://www.w3.org/International/'>Internationalization Activity home page</a>."
-s.tests="Tests" // used at the end of breadcrumbs for test related pages
+
+
+// top left of page
+s.gotoW3cHome = "Đi đến Trang Chủ W3C"  // title text for W3C logo
+s.gotoI18nHome = "Đi đến Trang Chủ Hoạt Động Quốc Tế Hóa" // title text for i18n banner
+s.internationalizationTitle = "Internationalization"  // the word above the orange line
+s.worldwide = "Making the World Wide Web worldwide!"  // the words below the orange line
+s.techniques = "Các kỹ thuật"  // site links link text, top left
+s.taskBasedIndex = "Chỉ mục theo nhiệm vụ đối với các kỹ thuật i18n."  // title text for s.techniques
+s.resources = "Các nguồn thông tin"  // site links link text, top left
+s.informationResources = "Các nguồn thông tin về trang web Quốc Tế Hóa."  // title text for s.resources
+s.ask = "Ask"  // site links link text, top left
+s.askI18nActivity = "Ask for help or information."  // title text for s.ask
+s.news = "Tin tức"  // site links link text, top left
+s.newsFiltersAndFeeds = "Thông tin về các bộ lọc tin thức và các nguồn tiếp tin RSS (RSS feed) về hoạt động Quốc Tế Hóa W3C."  // title text for s.news
+s.groups = "Các nhóm" // site links link text, top left
+s.groupsThatMakeUp = "Các nhóm tạo nên Hoạt Động Quốc Tế Hóa." // title text for s.groups
+s.about = "About" // site links link text, top left
+s.aboutI18nActivity = "About W3C Internationalization." // title text for s.about
+
+
+// document status information, below main heading
+s.intendedAudience = "Khán thính giả đích:"  // preface to audience description (being faded out)
+s.lastChanged = "Last changed "
+
+
+// bottom right comment and news feed box
+s.tellUsWhatYouThink = "Hãy cho chúng tôi biết ý kiến của bạn (xin viết bằng tiếng Anh)."  // text content
+s.sendAComment = "Gửi lời nhận xét cho chúng tôi" // link text
+
+
+// page footer
+// this block of strings should include any whitespace needed after the colon
+// or its equivalent, eg. "By: " in english, but "作者：" in chinese
+s.sentenceDelimiter = "."  // provides a sentence terminator to use between list of authors, modifiers, & translators
+s.author = "Tác giả: " // followed by name of author(s)
+s.previousAuthors = "Previously by: " // followed by name of previous author(s), before substantive changes were made by the current author
+s.modifiedBy = "Được thay đổi bởi: " // person's name appears after colon
+s.translatedBy = "Người dịch: " // person's name appears after colon
+s.acknowledgements = "Thanks also to the following people whose contribution or feedback was included: " // used at bottom of page to list people who provided feedback. The list comes after this text. 
+s.translatedFromEnglishVer = `Được dịch từ bản tiếng Anh vào ngày ${ dt.enVersion }. Phiên bản dịch mới nhất được thay đổi vào ${ dt.thisVersionPlain } GMT`
+s.translation_updated="Đã cập nhật bản dịch:" // date appears after (add colon+whitespace) 
+s.historyOfDocumentChanges = `For the history of document changes, see the <a href="http://www.w3.org/blog/International/tag/${ f.searchString }/">news feed</a> for substantive changes, and the <a href="https://github.com/w3c/i18n-drafts/commits/gh-pages/${ f.directory }${ f.filename }.en.html">Github commit list</a> for all changes since Jan 2016.`
+
+
+// banner on translated pages that are missing some translation
+s.untranslatedChanges = `<strong>Lưu ý:</strong> Đã thay đổi <a href="/International/$directory$filename.en.php">bản gốc tiếng Anh</a> vì tài liệu này đã được chuyển ngữ. The changes were incorporated into this page, so you may see some passages in English until the translation is updated.`
+s.unlinkedTranslation = `<strong>Warning:</strong> Substantive changes have been made to the English original since this document was translated. You are advised to read <a href="${ f.filename }.en">the English version</a> until this translation has been updated.`
+s.githubRedirect = `<strong>NOTE!</strong> &nbsp; This is only an editor's draft of this article. All links and bookmarks should point to the <a href='https://www.w3.org/International/${ f.directory }${ f.filename }.${ f.clang }'>version on the W3C site</a>.` // used for github-based versions of published articles
+
+
+s.new="Mới"// placed alongside new articles at https://www.w3.org/International/articlelist 
+s.updated="Đã cập nhật" // same as New
+
+
+// strings to promote consistency in article content
+s.question = "Câu hỏi"  // heading
+s.questionAlt = "Câu hỏi"  // title text for s.question
+s.questionLink = "Câu hỏi"  // 
+s.skipToAnswer = "[Bỏ qua để đến câu trả lời]"  // link text
+s.background = "Cơ sở" // heading
+s.backgroundAlt = "Thông tin cơ sở" // title text for s.background
+s.backgroundLink = "Cơ sở"
+s.answer = "Trả lời" // heading
+s.answerAlt = "Trả lời" // title text for s.answer
+s.answerLink = "Trả lời"
+s.byTheWay = "Nhân thể" // heading
+s.byTheWayAlt = "Thông tin hữu ích phụ" // title text for s.byTheWay
+s.byTheWayLink = "Nhân thể"
+s.furtherReading = "Đọc thêm" // heading
+s.furtherReadingAlt = "Đọc thêm" // title text for s.byTheWay
+s.furtherReadingLink = "Đọc thêm"
 s.quickanswer = "Quick answer" // heading
 s.longeranswer = "Details" // heading that follows 'Quick answer'
 s.additionalinfo = "Additional information" // heading that sometimes follows 'Details'
-s.cookieMsg = "If you let the browser set a cookie, you will continue to see W3C Internationalization Activity pages (where available) in the language you chose. Do you want to set the cookie?" // this text is to be copied to another location
-s.githubRedirect = "<strong>NOTE!</strong> &nbsp; This is only an editor\'s draft of this article. All links and bookmarks should point to the <a href='https://www.w3.org/International/"+f.directory+f.filename+"."+f.clang+"'>version on the W3C site</a>." // used for github-based versions of published articles
 
-s.lastChanged = "Last changed "
+
+// obsolete in most recent articles — used to be in bottom right box
+s.subscribeToRSS = "Đăng ký đọc tin RSS."  
+s.newResourcesAlt = "Thông báo cho bạn biết mỗi khi có nguồn tin mới được xuất bản lần đầu tiên."
+s.newResources = "Những nguồn tin mới"
+s.homePageNewsAlt = "Tất cả những mục tin tức được hiển thị trên trang chủ."
+s.homePageNews = "Các tin tức từ trang chủ"
+s.followOurNews = "Follow our news feed."
+
+// obsolete in most recent articles — used to be in footer
+s.validXHTML = "Đúng theo tiêu chuẩn XHTML 1.0!"
+s.validCSS = "CSS hợp lệ!"
+s.codedInUtf8 = "Được mã hóa theo UTF-8!"
+
+
+
+// other — may be obsolete, or used in old format pages
+s.i18nActivityHome = "Trang Chủ Hoạt Động I18N"
+s.moreResourcesOfThisType = "Thêm nguồn thông tin về dạng này."
+s.accessKeyN = `Phím truy cập và bỏ qua khi điều hướng trang. <a href="#contentstart">Bỏ qua để đến phần bắt đầu nội dung.</a>`
+s.examplesInAnotherScript = "Tài liệu này bao gồm các ví dụ bằng các thứ tiếng/chữ viết khác."
+s.relatedLinks = "Các liên kết liên quan"
+s.techIndexText = "Chỉ mục theo kỹ thuật"
+s.topicIndexText = "Chỉ mục theo chủ đề"
+s.i18nActivityHomePage = "Trang chủ Hoạt Động Quốc Tế Hóa."
+s.topicIndexForInformation = "Chỉ mục theo chủ đề đối với thông tin trên trang web này."
+s.topics = "Các chủ đề"
+
+
+
+/*
+
+MISSING TRANSLATIONS
+
+check all top left links !
+
+cookieMsg
+tests
+home
+aboutThisArticle
+status_review
+status_published
+status_notreviewed
+status_obsolete
+internationalizationTitle
+worldwide
+
+ask 
+askI18nActivity
+about
+aboutI18nActivity
+lastChanged
+previousAuthors
+
+unlinkedTranslation
+githubRedirect
+historyOfDocumentChanges
+quickanswer
+longeranswer
+additionalinfo
+followOurNews
+
+
+
+
+*/
