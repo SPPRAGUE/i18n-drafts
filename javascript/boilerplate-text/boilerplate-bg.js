@@ -12,13 +12,13 @@ s.rtlAttribute = ""
 s.ltrAttribute = ""
 s.rlm = ""
 
-
 // TRANSLATE THE FOLLOWING
 // but do not translate anything inside ${...} – but do move those items where needed to fit the syntax of the translation
 
 
 // used when changing the language of the page
 // do not translate the abbreviation at the start of the line, just translate the language name
+
 s.currLang = {
   'ar':'Арабски',
   'bg':'Български',
@@ -48,20 +48,23 @@ s.currLang = {
   'uk':'Украински',
   'vi':'Виетнамски',
   'zh-hans':'Китайски (опростен)',
-  'zh-hant':'Китайски (традиционен)',
+  'zh-hant':'Китайски (традиционен)'
 }
+
 // cookie message, appears when changing languages
 s.cookieMsg = "Ако разрешите браузъра да запише бисквитка, ще продължите да виждате W3C Internationalization Activity страниците (където са налични) на избрания от вас език. Искате ли да запишете бисквиткат?" // this text is to be copied to another location
-
 
 // items in top right beige column
 s.worldMap = "Карта на света"  // title text for image, top right
 s.searchI18nSite = "Търсене в сайта I18n" // placeholder text for search box, top right
 s.translationDisclaimer = `Този превод на документа е осигурен от доброволец. В случай на несъответствие или грешки, <a href="'+f.filename+'.en">последният Английски оригинал</a> следва да бъде считан за достоверен.<a href="#copyright">Оригиналното авторско право</a> принадлежи на W3C, както е означено по-долу.`  // text appears only on translated pages
+
 s.articles = "Статии" // used in breadcrumbs, top right of page
 s.tests="Тестове" // used at the end of breadcrumbs for test related pages
 s.home = "Начало" // start of breadcrumbs
 s.onThisPage = "на тази страница"  // TOC heading
+
+
 
 
 // messages that appear in the top right beige column before an article is published
@@ -114,7 +117,6 @@ s.acknowledgements = "Благодарности на следните хора 
 s.translatedFromEnglishVer = `Превод от Английско съдържание от дата ${ dt.enVersion }. Последна ревизия на преведената версия ${ dt.thisVersionPlain } GMT`
 s.translation_updated="Преводът е актуализиран на: " // date appears after (add colon+whitespace) 
 s.historyOfDocumentChanges = `За история на промените в документа, виж <a href="http://www.w3.org/blog/International/tag/${ f.searchString }/">новинарски фиид</a> за съществени промени, и <a href="https://github.com/w3c/i18n-drafts/commits/gh-pages/${ f.directory }${ f.filename }.en.html">списък с промени в Github</a> за всички промени след Януари 2016.`
-//s.supercededTranslation = "<strong>Avertissement :</strong> Ceci est une version dépassée de ce document! Il est recommandé de lire <a href=""+g.betterfilename+".en">la dernière version</a> et si vous le pouvez, de modifier le marque-page ou le lien qui vous a redirigé ici."
 
 
 // banner on translated pages that are missing some translation
@@ -167,7 +169,7 @@ s.codedInUtf8 = "Енкодинк UTF-8!"
 // other — may be obsolete, or used in old format pages
 s.i18nActivityHome = "I18N Начална страница"
 s.moreResourcesOfThisType = "Още ресурси от този тип."
-s.accessKeyN = 'Код за достъп n прескача към<a href="#internal-links" accesskey="n">навигацията във страницата</a>. <a href="#contentstart">Отиди в началото на съдържанието.</a>'
+s.accessKeyN = `Код за достъп n прескача към<a href="#internal-links" accesskey="n">навигацията във страницата</a>. <a href="#contentstart">Отиди в началото на съдържанието.</a>`
 s.examplesInAnotherScript = "Този документ съдържа и примери написани на дург език/скрипт."
 s.relatedLinks = "Линкове по темата"
 s.techIndexText = "Techniques index"
