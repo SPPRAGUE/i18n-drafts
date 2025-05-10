@@ -24,6 +24,7 @@ g.nativeText = {
 'ja':'日本語',
 'ko':'한국어',
 'nl':'Nederlands',
+'pes':'فارسی',
 'pl':'Polski',
 'pt':'Português',
 'pt-br':'Português-BR',
