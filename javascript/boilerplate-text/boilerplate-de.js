@@ -12,13 +12,13 @@ s.rtlAttribute = ""
 s.ltrAttribute = ""
 s.rlm = ""
 
-
 // TRANSLATE THE FOLLOWING
 // but do not translate anything inside ${...} – but do move those items where needed to fit the syntax of the translation
 
 
 // used when changing the language of the page
 // do not translate the abbreviation at the start of the line, just translate the language name
+
 s.currLang = {
   'ar':'Arabisch',
   'bg':'Bulgarisch',
@@ -48,20 +48,23 @@ s.currLang = {
   'uk':'Ukrainisch',
   'vi':'Vietnamesisch',
   'zh-hans':'Vereinfachtes Chinesisch',
-  'zh-hant':'Traditionelles Chinesisch',
+  'zh-hant':'Traditionelles Chinesisch'
 }
+
 // cookie message, appears when changing languages
 s.cookieMsg = "Wenn Sie der Verwendung eines Cookies zustimmen, werden Ihnen die Seiten der W3C-Internationalisierungstätigkeit (sofern verfügbar) in Ihrer gewählten Sprache angezeigt. Möchten Sie den Cookie setzen?" // this text is to be copied to another location
-
 
 // items in top right beige column
 s.worldMap = "Weltkarte"  // title text for image, top right
 s.searchI18nSite = "I18n-Suche" // placeholder text for search box, top right
 s.translationDisclaimer = `Dieses Dokument ist eine ehrenamtlich angefertigte Übersetzung. Im Falle von Abweichungen oder Fehlern sollte das <a href="${ f.filename }.en">aktuelle englische Original</a> als maßgeblich angenommen werden. Das W3C besitzt das <a href="#copyright">Copyright am Original</a>, wie unten beschrieben.`  // text appears only on translated pages
+
 s.articles = "Artikel" // used in breadcrumbs, top right of page
 s.tests="Tests" // used at the end of breadcrumbs for test related pages
 s.home = "Startseite" // start of breadcrumbs
 s.onThisPage = "Auf dieser Seite"  // TOC heading
+
+
 
 
 // messages that appear in the top right beige column before an article is published
@@ -114,7 +117,6 @@ s.acknowledgements = "Vielen Dank für die Beiträge und Kommentare zu diesem Ar
 s.translatedFromEnglishVer = `Übersetzung der englischen Version vom ${ dt.enVersion }. Letzte Änderung der übersetzten Version am ${ dt.thisVersionPlain } UTC`
 s.translation_updated="Übersetzung aktualisiert am " // date appears after (add colon+whitespace) 
 s.historyOfDocumentChanges = `Zur Änderungshistorie dieser Seite siehe <a href="http://www.w3.org/blog/International/tag/${ f.searchString }/">Newsfeed</a> für wesentliche Änderungen und <a href="https://github.com/w3c/i18n-drafts/commits/gh-pages/${ f.directory }${ f.filename }.en.html">Github-Commit-Liste</a> für alle Änderungen am englischen Original ab Januar 2016.`
-//s.supercededTranslation = "<strong>Avertissement :</strong> Ceci est une version dépassée de ce document! Il est recommandé de lire <a href=""+g.betterfilename+".en">la dernière version</a> et si vous le pouvez, de modifier le marque-page ou le lien qui vous a redirigé ici."
 
 
 // banner on translated pages that are missing some translation
@@ -150,7 +152,7 @@ s.additionalinfo = "Weitere Informationen" // heading that sometimes follows 'De
 
 
 // obsolete in most recent articles — used to be in bottom right box
-s.subscribeToRSS = "Abonnieren Sie unseren RSS-Feed."
+s.subscribeToRSS = "Abonnieren Sie unseren RSS-Feed."  
 s.newResourcesAlt = "Sie werden benachrichtigt, wenn ein neues Dokument zum ersten Mal veröffentlicht wird."
 s.newResources = "Neue Ressourcen"
 s.homePageNewsAlt = "Alle Nachrichten, die auf der Startseite gezeigt werden."
@@ -167,11 +169,11 @@ s.codedInUtf8 = "Kodiert in UTF-8!"
 // other — may be obsolete, or used in old format pages
 s.i18nActivityHome = "Startseite der I18n-Tätigkeit"
 s.moreResourcesOfThisType = "Weitere Ressourcen diesen Typs."
-s.accessKeyN = 'Accesskey n springt zur Seitennavigation. <a href="#contentstart">Springe zum Inhalt.</a>'
+s.accessKeyN = `Accesskey n springt zur Seitennavigation. <a href="#contentstart">Springe zum Inhalt.</a>`
 s.examplesInAnotherScript = "Dieses Dokument enthält Beispiele in einer anderen Sprache/Schrift."
 s.relatedLinks = "Verwandte Links"
-s.topicIndexText = "Themenverzeichnis"
 s.techIndexText = "Technikenverzeichnis"
+s.topicIndexText = "Themenverzeichnis"
 s.i18nActivityHomePage = "Startseite der Internationalisierungstätigkeit."
 s.topicIndexForInformation = "Suche auf dieser Seite."
 s.topics = "Suche"
