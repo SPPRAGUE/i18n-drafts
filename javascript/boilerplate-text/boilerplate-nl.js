@@ -70,9 +70,9 @@ s.onThisPage = "Op deze pagina"  // TOC heading
 // messages that appear in the top right beige column before an article is published
 s.aboutThisArticle="Over dit artikel" // title in the right column near the top of the page
 s.status_draft="Dit artikel is een ontwerp en heeft nog geen openbare beoordeling ondergaan. Als je opmerkingen hebt, kun je ze doorgeven met de <a href='#survey'>link onderaan deze pagina</a>."
-s.status_review="Dit artikel is momenteel onderwerp van openbare beoordeling. Als je opmerkingen hebt, kun je ze opsturen met de <a href='#survey'>link onderaan deze pagina</a>."
-s.status_published="Dit artikel is door W3C's Internationalisatie-werkgroep beoordeeld en is onderwerp geweest van openbare beoordeling om het zo nauwkeurig mogelijk te maken. Als je opmerkingen hebt, kun je ze opsturen met de <a href='#survey'>link onderaan deze pagina</a>."
-s.status_notreviewed="Dit artikel is zonder openbare beoordelingen gepubliceerd. Als je opmerkingen hebt, kun je ze opsturen met de <a href='#survey'>link onderaan deze pagina</a>."
+s.status_review="Dit artikel is momenteel onderwerp van openbare beoordeling. Als je opmerkingen hebt, kun je ze doorgeven met de <a href='#survey'>link onderaan deze pagina</a>."
+s.status_published="Dit artikel is door W3C's Internationalisatie-werkgroep beoordeeld en is onderwerp geweest van openbare beoordeling om het zo nauwkeurig mogelijk te maken. Als je opmerkingen hebt, kun je ze doorgeven met de <a href='#survey'>link onderaan deze pagina</a>."
+s.status_notreviewed="Dit artikel is zonder openbare beoordelingen gepubliceerd. Als je opmerkingen hebt, kun je ze doorgeven met de <a href='#survey'>link onderaan deze pagina</a>."
 s.status_obsolete="Dit artikel is nu verouderd. Het wordt niet meer onderhouden and is waarschijnlijk onnauwkeurig. Kijk voor actuelere informatie op de <a href='http://www.w3.org/International/'>homepage van de Internationalisatie-activiteit</a>."
 
 
@@ -97,7 +97,7 @@ s.aboutI18nActivity = "Over W3C's Internationalisatie-activiteit" // title text 
 
 // document status information, below main heading
 s.intendedAudience = "Doelpubliek:"  // preface to audience description (being faded out)
-s.lastChanged = "ongedefinieerd"
+s.lastChanged = "Laatste wijziging "
 
 
 // bottom right comment and news feed box
@@ -122,7 +122,7 @@ s.historyOfDocumentChanges = `Voor de wijzigingen van het document in het verled
 // banner on translated pages that are missing some translation
 s.untranslatedChanges = `<strong>Opmerking:</strong> Er zijn veranderingen aangebracht in <a href="${ f.filename }.en">het Engelse origineel</a> nadat dit document werd vertaald. De veranderingen zijn opgenomen in deze pagina, dus je kunt passages in het Engels tegenkomen totdat de vertaling is bijgewerkt.`
 s.unlinkedTranslation = `<strong>Waarschuwing:</strong> Er zijn inhoudelijke veranderingen gemaakt in het Engelse origineel nadat deze pagina werd vertaald. Je wordt geadviseerd <a href="${ f.filename }">een versie in een andere taal</a> te lezen totdat de vertaling is bijgewerkt.`
-s.githubRedirect = `<strong>Let op!</strong> &nbsp; Dit is alleen maar een ontwerp door de redacteur van dit artikel. Alle links en bladwijzers zouden naar de <a href='https://www.w3.org/International/${ f.directory }${ f.filename }.${ f.clang }'>versie op de W3C-site</a> moeten wijzen, i.p.v. naar deze pagina.` // used for github-based versions of published articles
+s.githubRedirect = `<strong>Let op!</strong> &nbsp; Dit is alleen maar een ontwerp door de redacteur van dit artikel. Alle links en bladwijzers moeten naar de <a href='https://www.w3.org/International/${ f.directory }${ f.filename }.${ f.clang }'>versie op de W3C-site</a> wijzen, i.p.v. naar deze pagina.` // used for github-based versions of published articles
 
 
 s.new="Nieuw"// placed alongside new articles at https://www.w3.org/International/articlelist 
