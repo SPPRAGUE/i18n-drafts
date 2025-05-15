@@ -232,6 +232,10 @@ figcaption::before { content: "Fig. " counter(figure) ". "; }
 
 figcaption:lang(zh-hans)::before { content: "图" counter(figure) ":\00A0 "; }
 
+
+
+
+
 /* ************** set margins **************** */
 
 p, h2, h3, h4, dl, figure { margin-inline-start: 7.5%; margin-inline-end: 32%; }
@@ -268,6 +272,8 @@ figure p, figure pre { margin-inline-start: 0; margin-inline-end: 0; }
 .inlinedemolink { font-size: 80%; margin-inline-start: 1em; margin-start: 1em;  }
 figcaption { font-style: italic; }
 figcaption:lang(zh) { font-style: normal; }
+figcaption:lang(pes) { font-style: oblique -14deg; }
+
 
 dt, dd { margin-block-end: 0; }
 dd .example { margin-inline-start: 0; margin-inline-end: 0; }
@@ -552,6 +558,9 @@ header a {
 #subtitle:lang(ja), #subtitle:lang(ko), #subtitle:lang(zh), #subtitle:lang(hi), #subtitle:lang(ar) {
     font-style: normal;
     }
+#subtitle:lang(pes) {
+    font-style: oblique -14deg;
+    }
 #subtitle:lang(hi), #subtitle:lang(ar) {
     line-height: 2;
     }
@@ -634,6 +643,7 @@ h4 {
     color: #222;
     font-size: 90%;
     }
+h4:lang(pes) { font-style: oblique -14deg; }
 h4 a:link {
     color: #777;
 	}
@@ -673,6 +683,7 @@ h2 code, h3 code, h4 code {
 	color: #777;
 	font-size: 90%;
 	}
+.nutshellIntro:lang(pes) { font-style: oblique -14deg; }
 #nutshell p, #nutshell .example { 
 	margin-inline-start: 0;
 	margin-inline-end: 0;
@@ -964,6 +975,7 @@ small {
 .example figcaption {
 	font-style: italic;
 	}
+.example figcaption:lang(pes) { font-style: oblique -14deg; }
 .example-head {
 	font-style: italic;
 	margin-block-end: 10px;
@@ -1056,6 +1068,7 @@ q	 { quotes: '"' '"' "'" "'"; }
 .qterm {
 	font-style: italic;
 	}
+.qterm:lang(pes) { font-style: oblique -14deg; }
 .qterm	 { quotes: "'" "'"; } 
 :lang(sv) .qterm { quotes: '\201d' '\201d' '\2019' '\2019'; }
 :lang(de) .qterm { quotes: "\0027" "\0027"; }
@@ -1105,6 +1118,10 @@ code.code2 {
 	display: block;
 	margin-inline-start: 40px;
 	}
+
+em:lang(pes) {
+    font-style: oblique -14deg;
+    }
 
 
 /* ************** specials ********************* */
@@ -1460,6 +1477,9 @@ table th {
 .unlinked {  background-color: yellow; border: 1px solid teal; padding: 8px; color: #c30; font-size: 120%; border-radius: 5px; line-height: 1.5; }
 
 .foreign { font-style: italic; }
+.foreign:lang(pes) {
+    font-style: oblique -14deg;
+    }
 
 
 /* quick check form in side bar */
@@ -1482,6 +1502,9 @@ cite {
 cite:lang(zh) {
 	font-style: normal;
 	}
+cite:lang(pes) {
+    font-style: oblique -14deg;
+    }
 
 .updated { text-align:end; font-size: 90%; margin-block-start: 0; margin-block-end:0; }
 
@@ -1770,6 +1793,9 @@ code {
 	display: inline;
 	font-style: italic;
 	}
+.uri:lang(pes) {
+    font-style: oblique -14deg;
+    }
 #full-links p { 
 	text-align: start; 
 	}
