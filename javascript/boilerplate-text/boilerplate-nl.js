@@ -52,52 +52,52 @@ s.currLang = {
 }
 
 // cookie message, appears when changing languages
-s.cookieMsg = "If you let the browser set a cookie, you will continue to see W3C Internationalization Activity pages (where available) in the language you chose. Do you want to set the cookie?" // this text is to be copied to another location
+s.cookieMsg = "Als je de browser een cookie laat zetten, krijg je in het vervolg de pagina's van W3C's Internationalisatie-activiteit (voorzover beschikbaar) in de gekozen taal. Wil je een cookie zetten?" // this text is to be copied to another location
 
 // items in top right beige column
 s.worldMap = "Wereldkaart"  // title text for image, top right
 s.searchI18nSite = "Zoeken op de I18n site:" // placeholder text for search box, top right
-s.translationDisclaimer = `Dit document is een vertaling. In geval van afwijkingen of fouten, dient het <a href="${ f.filename }.en">meest recente origineel in het Engels</a> dient als referentie te worden beschouwd. <a href="#copyright">Het origineel copyright</a> is eigendom van W3C, zoals hieronder getoond.`  // text appears only on translated pages
+s.translationDisclaimer = `Dit document is een vertaling. In geval van afwijkingen of fouten, dient het <a href="${ f.filename }.en">meest recente origineel in het Engels</a> als referentie te worden beschouwd. <a href="#copyright">Het auteursrecht</a> is eigendom van W3C, zoals hieronder getoond.`  // text appears only on translated pages
 
-s.articles = "Articles" // used in breadcrumbs, top right of page
-s.tests="Tests" // used at the end of breadcrumbs for test related pages
-s.home = "Thuispagina" // start of breadcrumbs
+s.articles = "Artikelen" // used in breadcrumbs, top right of page
+s.tests="Testen" // used at the end of breadcrumbs for test related pages
+s.home = "Homepage" // start of breadcrumbs
 s.onThisPage = "Op deze pagina"  // TOC heading
 
 
 
 
 // messages that appear in the top right beige column before an article is published
-s.aboutThisArticle="About this article" // title in the right column near the top of the page
-s.status_draft="This article is a draft that has not yet gone through public review. If you have comments, please send them using the <a href='#survey'>link near the bottom of this page</a>."
-s.status_review="This article is currently out for public review. If you have comments, please send them using the <a href='#survey'>link near the bottom of this page</a>."
-s.status_published="This article has been reviewed by the W3C Internationalization Working Group and has gone through public review to make it as accurate as possible. If you have comments, please send them using the <a href='#survey'>link near the bottom of this page</a>."
-s.status_notreviewed="This article was published without public review. If you have comments, please send them using the <a href='#survey'>link near the bottom of this page</a>."
-s.status_obsolete="This article is now obsolete. It is no longer maintained and is likely to be inaccurate. For more up-to-date information, see the <a href='http://www.w3.org/International/'>Internationalization Activity home page</a>."
+s.aboutThisArticle="Over dit artikel" // title in the right column near the top of the page
+s.status_draft="Dit artikel is een ontwerp en heeft nog geen openbare beoordeling ondergaan. Als je opmerkingen hebt, kun je ze doorgeven met de <a href='#survey'>link onderaan deze pagina</a>."
+s.status_review="Dit artikel is momenteel onderwerp van openbare beoordeling. Als je opmerkingen hebt, kun je ze doorgeven met de <a href='#survey'>link onderaan deze pagina</a>."
+s.status_published="Dit artikel is door W3C's Internationalisatie-werkgroep beoordeeld en is onderwerp geweest van openbare beoordeling om het zo nauwkeurig mogelijk te maken. Als je opmerkingen hebt, kun je ze doorgeven met de <a href='#survey'>link onderaan deze pagina</a>."
+s.status_notreviewed="Dit artikel is zonder openbare beoordelingen gepubliceerd. Als je opmerkingen hebt, kun je ze doorgeven met de <a href='#survey'>link onderaan deze pagina</a>."
+s.status_obsolete="Dit artikel is nu verouderd. Het wordt niet meer onderhouden and is waarschijnlijk onnauwkeurig. Kijk voor actuelere informatie op de <a href='http://www.w3.org/International/'>homepage van de Internationalisatie-activiteit</a>."
 
 
 // top left of page
-s.gotoW3cHome = "Ga naar de Thuispagina van W3C"  // title text for W3C logo
-s.gotoI18nHome = "Go naar de Thuispagina van Internationalization Activity" // title text for i18n banner
-s.internationalizationTitle = "Internationalization"  // the word above the orange line
-s.worldwide = "Making the World Wide Web worldwide!"  // the words below the orange line
+s.gotoW3cHome = "Ga naar de homepage van W3C"  // title text for W3C logo
+s.gotoI18nHome = "Ga naar de homepage van de Internationalisatie-activiteit" // title text for i18n banner
+s.internationalizationTitle = "Internationalisatie"  // the word above the orange line
+s.worldwide = "Wij maken het World Wide Web wereldwijd!"  // the words below the orange line
 s.techniques = "Leren"  // site links link text, top left
 s.taskBasedIndex = "Leer technieken en vereisten voor internationalisatie."  // title text for s.techniques
-s.resources = "Vind"  // site links link text, top left
+s.resources = "Vinden"  // site links link text, top left
 s.informationResources = "Vind informatie op deze site."  // title text for s.resources
-s.ask = "Ask"  // site links link text, top left
-s.askI18nActivity = "Ask for help or information."  // title text for s.ask
-s.news = "Volg"  // site links link text, top left
+s.ask = "Vragen"  // site links link text, top left
+s.askI18nActivity = "Vraag om hulp of om informatie."  // title text for s.ask
+s.news = "Volgen"  // site links link text, top left
 s.newsFiltersAndFeeds = "Volg het werk van W3C's Internationalisatie."  // title text for s.news
 s.groups = "Deelnemen" // site links link text, top left
-s.groupsThatMakeUp = "Deelnemen aan W3C's Internationalisatiewerk." // title text for s.groups
-s.about = "About" // site links link text, top left
-s.aboutI18nActivity = "About W3C Internationalization." // title text for s.about
+s.groupsThatMakeUp = "Neem deel aan W3C's Internationalisatiewerk." // title text for s.groups
+s.about = "Over" // site links link text, top left
+s.aboutI18nActivity = "Over W3C's Internationalisatie-activiteit" // title text for s.about
 
 
 // document status information, below main heading
 s.intendedAudience = "Doelpubliek:"  // preface to audience description (being faded out)
-s.lastChanged = "undefined"
+s.lastChanged = "Laatste wijziging "
 
 
 // bottom right comment and news feed box
@@ -109,24 +109,24 @@ s.sendAComment = "Stuur ons een opmerking" // link text
 // this block of strings should include any whitespace needed after the colon
 // or its equivalent, eg. "By: " in english, but "作者：" in chinese
 s.sentenceDelimiter = "."  // provides a sentence terminator to use between list of authors, modifiers, & translators
-s.author = "By: " // followed by name of author(s)
-s.previousAuthors = "Previously by: " // followed by name of previous author(s), before substantive changes were made by the current author
+s.author = "Door: " // followed by name of author(s)
+s.previousAuthors = "Voorheen door: " // followed by name of previous author(s), before substantive changes were made by the current author
 s.modifiedBy = "Gewijzigd door: " // person's name appears after colon
 s.translatedBy = "Vertaler: " // person's name appears after colon
-s.acknowledgements = "Thanks also to the following people whose contribution or feedback was included: " // used at bottom of page to list people who provided feedback. The list comes after this text. 
+s.acknowledgements = "Met dank ook aan de volgende personen van wie bijdragen zijn gebruikt: " // used at bottom of page to list people who provided feedback. The list comes after this text.
 s.translatedFromEnglishVer = `Vertaald vanuit de Engelse inhoud met datum ${ dt.enVersion }. Vertaalde versie laatst gewijzigd op  ${ dt.thisVersionPlain } GMT`
-s.translation_updated="Translation updated:" // date appears after (add colon+whitespace) 
-s.historyOfDocumentChanges = `For the history of document changes, see the <a href="http://www.w3.org/blog/International/tag/${ f.searchString }/">news feed</a> for substantive changes, and the <a href="https://github.com/w3c/i18n-drafts/commits/gh-pages/${ f.directory }${ f.filename }.en.html">Github commit list</a> for all changes since Jan 2016.`
+s.translation_updated="Vertaling bijgewerkt:" // date appears after (add colon+whitespace)
+s.historyOfDocumentChanges = `Voor de wijzigingen van het document in het verleden, zie de <a href="http://www.w3.org/blog/International/tag/${ f.searchString }/">nieuwsfeed</a> voor inhoudelijke veranderingen en de <a href="https://github.com/w3c/i18n-drafts/commits/gh-pages/${ f.directory }${ f.filename }.en.html">commits op Github</a> voor alle veranderingen sinds januari 2016.`
 
 
 // banner on translated pages that are missing some translation
-s.untranslatedChanges = `<strong>Opmerking:</strong> Er zijn veranderingen aangebracht in <a href="${ f.filename }.en">het Engelse origineel</a> sinds dit document werd vertaald. The changes were incorporated into this page, so you may see some passages in English until the translation is updated.`
-s.unlinkedTranslation = `<strong>Warning:</strong> Substantive changes have been made to the English original since this document was translated. You are advised to read <a href="${ f.filename }">a version in another language</a> until this translation has been updated.`
-s.githubRedirect = `<strong>NOTE!</strong> &nbsp; This is only an editor's draft of this article. All links and bookmarks should point to the <a href='https://www.w3.org/International/${ f.directory }${ f.filename }.${ f.clang }'>version on the W3C site</a>, rather than to this page.` // used for github-based versions of published articles
+s.untranslatedChanges = `<strong>Opmerking:</strong> Er zijn veranderingen aangebracht in <a href="${ f.filename }.en">het Engelse origineel</a> nadat dit document werd vertaald. De veranderingen zijn opgenomen in deze pagina, dus je kunt passages in het Engels tegenkomen totdat de vertaling is bijgewerkt.`
+s.unlinkedTranslation = `<strong>Waarschuwing:</strong> Er zijn inhoudelijke veranderingen gemaakt in het Engelse origineel nadat deze pagina werd vertaald. Je wordt geadviseerd <a href="${ f.filename }">een versie in een andere taal</a> te lezen totdat de vertaling is bijgewerkt.`
+s.githubRedirect = `<strong>Let op!</strong> &nbsp; Dit is alleen maar een ontwerp door de redacteur van dit artikel. Alle links en bladwijzers moeten naar de <a href='https://www.w3.org/International/${ f.directory }${ f.filename }.${ f.clang }'>versie op de W3C-site</a> wijzen, i.p.v. naar deze pagina.` // used for github-based versions of published articles
 
 
-s.new="New"// placed alongside new articles at https://www.w3.org/International/articlelist 
-s.updated="Updated" // same as New
+s.new="Nieuw"// placed alongside new articles at https://www.w3.org/International/articlelist 
+s.updated="Bijgewerkt" // same as New
 
 
 // strings to promote consistency in article content
@@ -146,18 +146,18 @@ s.byTheWayLink = "Trouwens"
 s.furtherReading = "Aanbevolen lectuur" // heading
 s.furtherReadingAlt = "Aanbevolen lectuur" // title text for s.byTheWay
 s.furtherReadingLink = "Aanbevolen lectuur"
-s.quickanswer = "Quick answer" // heading
+s.quickanswer = "Kort antwoord" // heading
 s.longeranswer = "Details" // heading that follows 'Quick answer'
-s.additionalinfo = "Additional information" // heading that sometimes follows 'Details'
+s.additionalinfo = "Aanvullende informatie" // heading that sometimes follows 'Details'
 
 
 // obsolete in most recent articles — used to be in bottom right box
-s.subscribeToRSS = "Abonneer u op een RSS-feed."  
+s.subscribeToRSS = "Abonneer u op een nieuwsfeed."
 s.newResourcesAlt = "Brengt u op de hoogte telkens wanneer een nieuwe bron voor de eerste keer wordt gepubliceerd."
 s.newResources = "Nieuwe bronnen"
-s.homePageNewsAlt = "Alle nieuwe items worden getoond op de thuispagina."
-s.homePageNews = "Thuispaginanieuws"
-s.followOurNews = "Follow our news feed."
+s.homePageNewsAlt = "Alle nieuwe items worden getoond op de homepage."
+s.homePageNews = "Nieuws op de homepage"
+s.followOurNews = "Onze nieuwsfeed volgen."
 
 // obsolete in most recent articles — used to be in footer
 s.validXHTML = "Geldige XHTML 1.0!"
@@ -167,16 +167,16 @@ s.codedInUtf8 = "Gecodeerd in UTF-8!"
 
 
 // other — may be obsolete, or used in old format pages
-s.i18nActivityHome = "I18N Activity Home"
-s.moreResourcesOfThisType = "More resources of this type."
+s.i18nActivityHome = "Homepage I18N-activiteit"
+s.moreResourcesOfThisType = "Meer hulpbronnen van dit type."
 s.accessKeyN = `Met de sneltoets n gaat u rechtstreeks naar <a href="#internal-links" accesskey="n">navigatie binnen de pagina</a>. <a href="#contentstart">Naar begin van de inhoud gaan.</a>`
 s.examplesInAnotherScript = "Dit document bevat voorbeelden in een andere taal/script."
 s.relatedLinks = "Gerelateerde links"
 s.techIndexText = "Techniekindex"
 s.topicIndexText = "Onderwerpsindex"
-s.i18nActivityHomePage = "De thuispagina van Internationalization Activity."
+s.i18nActivityHomePage = "Homepage van de Internationalisatie-activiteit."
 s.topicIndexForInformation = "Doorzoek deze site."
-s.topics = "Doorzoek"
+s.topics = "Zoeken"
 
 
 
