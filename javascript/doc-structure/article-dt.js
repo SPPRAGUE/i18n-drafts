@@ -36,7 +36,7 @@ var cn = {
 	it:"Se consenti al browser di impostare un cookie, continuerai a visualizzare le pagine W3C Internationalization Activity (ove disponibili) nella lingua selezionata. Vuoi impostare il cookie?",
 	ja:"ブラウザーにクッキーを設定させると、W3C Internationalization Activityのページを（もしあるなら）選択した言語で続けて閲覧できるでしょう。クッキーを設定しますか？",
 	ko:"If you let the browser set a cookie, you will continue to see W3C Internationalization Activity pages (where available) in the language you chose. Do you want to set the cookie?",
-	nl:"If you let the browser set a cookie, you will continue to see W3C Internationalization Activity pages (where available) in the language you chose. Do you want to set the cookie?",
+	nl:"Als je de browser een cookie laat zetten, krijg je in het vervolg de pagina's van W3C's Internationalisatie-activiteit (voorzover beschikbaar) in de gekozen taal. Wil je een cookie zetten?",
 	pes:"اگر اجازه دهید مرورگر یک کوکی تنظیم کند، همچنان برگه‌های فعالیت بین‌المللی‌سازی W3C (در صورت موجود بودن) را به زبانی که انتخاب کرده‌اید مشاهده خواهید کرد. آیا می‌خواهید کوکی تنظیم شود؟",
 	pl:"Jeśli pozwolisz przeglądarce ustawić plik cookie będziesz kontynuować przeglądanie (tam gdzie to możliwe) stron Internaconalizacji W3C w języku, który wybierzesz. Czy chcesz ustawić plik cookie?",
 	pt:"If you let the browser set a cookie, you will continue to see W3C Internationalization Activity pages (where available) in the language you chose. Do you want to set the cookie?",
