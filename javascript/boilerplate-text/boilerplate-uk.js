@@ -52,7 +52,7 @@ s.currLang = {
 }
 
 // cookie message, appears when changing languages
-s.cookieMsg = "If you let the browser set a cookie, you will continue to see W3C Internationalization Activity pages (where available) in the language you chose. Do you want to set the cookie?" // this text is to be copied to another location
+s.cookieMsg = "Якщо ви дозволите браузер встановити куки, ви будете продовжувати бачити сторінки W3C Інтернаціоналізація активність (за наявності) на мові, який ви обрали. Ви хочете, щоб встановити печиво?" // this text is to be copied to another location
 
 // items in top right beige column
 s.worldMap = "Карта світу"  // title text for image, top right
@@ -187,7 +187,6 @@ MISSING TRANSLATIONS
 check all top left links !
 
 
-cookieMsg
 tests
 status_obsolete
 worldwide
