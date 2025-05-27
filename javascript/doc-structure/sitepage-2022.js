@@ -68,7 +68,7 @@ cn['pt-br'] = "Se você deixar o navegador definir um cookie, você vai continua
 cn.ru = "Если вы разрешите браузеру установить cookie, вы будете видеть страницы W3C Internationalization Activity на выбранном вами языке (там, где это доступно). Установить cookie?"
 cn.sv = "Om du tillåter webbläsaren att spara en kaka (cookie), så kommer du i fortsättningen att se sidor från W3C Internationalization Activity i det språk du valt (när sådana översättningar finns). Vill du spara kakan?"
 cn.uk = "Якщо ви дозволите браузер встановити куки, ви будете продовжувати бачити сторінки W3C Інтернаціоналізація активність (за наявності) на мові, який ви обрали. Ви хочете, щоб встановити печиво?"
-cn['zh-hans'] = "您可以让浏览器设置cookie，以继续使用您选择的语言浏览 W3C 国际化活动页面（如果有该语言的翻译的话）。请问您想设置cookie吗？"
+cn['zh-hans'] = "您可以让浏览器设置cookie，以继续使用您选择的语言浏览 W3C 国际化标准计划页面（如有该语言的翻译）。您想设置cookie吗？"
 
 function stickyConneg (filename, cLang, targetLang) {
 	var response = false
