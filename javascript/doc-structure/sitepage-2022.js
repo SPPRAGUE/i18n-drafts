@@ -1,3 +1,15 @@
+/**
+ * W3C Internationalization Site Page Structure Script
+ * 
+ * This script manages the structure, navigation, and localization features
+ * for W3C Internationalization Activity pages. It handles:
+ * - Language detection and switching
+ * - Cookie-based language preferences
+ * - Site navigation and breadcrumbs
+ * - Page metadata and timestamps
+ * - Search functionality
+ */
+
 var g = { }
 
 var base = ''
@@ -7,6 +19,11 @@ if (! window.location.href.match('www.w3.org') && ! window.location.href.match('
 
 // LANGUAGE RELATED STUFF
 
+/**
+ * Native language names mapping
+ * Maps language tags to their native language names for display
+ * Used in language switcher dropdowns and navigation
+ */
 g.nativeText = {
 'ar':'عربي',
 'bg':'Български',
@@ -110,11 +127,15 @@ if (f.status == "obsolete") { g.about += "<p style='color:red;'>"+s.status_obsol
 
 var fontlink = ''
 
-
+/**
+ * Version/translation links
+ * Creates language switcher links for available translations
+ */
 var versionList = ''
 if (trans.versions && !(trans.versions[0] == f.clang && trans.versions.length == 1) ) {
 	versionList = '<p class="noprint"> '
 	for (lang=0; lang<trans.versions.length; lang++) {
+		// Skip current language in the list
 		if (f.clang != trans.versions[lang]) {
 			versionList += '<bdi title="'+s.currLang[trans.versions[lang]]+'"><a href="#" onclick="stickyConneg(\''+f.filename+'\',\''+f.clang+'\',\''+trans.versions[lang]+'\'); return false;" lang="'+trans.versions[lang]+
 			'" translate="no" dir="auto">'+g.nativeText[trans.versions[lang]]+'</a></bdi>'+s.rlm+'&nbsp; '
@@ -124,6 +145,10 @@ if (trans.versions && !(trans.versions[0] == f.clang && trans.versions.length ==
 	versionList += '</p>';
 	}
 
+/**
+ * Translation disclaimer
+ * Shows disclaimer and translator credits for translated pages
+ */
 if (g.isTranslation) g.disclaimer = '<div id="disclaimer"><p>'+s.translationDisclaimer+'</p><p>'+s.translatedBy+f.translators+'</p></div>'
 else g.disclaimer = ''
 
@@ -157,10 +182,13 @@ else mainNavigation += '<nav class="noprint" id="level2toc">'+
 '        </div>'
 
 
+// ========================================
+// TRANSLATION STATUS UPDATES
+// ========================================
 
-
-// UPDATES
-
+/**
+ * Check if current page is an out-of-date translation
+ */
 var outOfDateTranslation = false
 if (trans.outofdatetranslations.length > 0) {
 	for (var lang in trans.outofdatetranslations) {
@@ -170,6 +198,10 @@ if (trans.outofdatetranslations.length > 0) {
 			}
 		}
 	}
+
+/**
+ * Check if current page is an unlinked translation
+ */
 var unlinkedTranslation = false
 if (trans.unlinkedtranslations.length > 0) {
 	for (var lang in trans.unlinkedtranslations) {
@@ -179,7 +211,8 @@ if (trans.unlinkedtranslations.length > 0) {
 			}
 		}
 	}
-var updatedTranslation = false
+
+	var updatedTranslation = false
 if (trans.updatedtranslations.length > 0) {
 	for (var lang in trans.updatedtranslations) {
 		if (f.clang == trans.updatedtranslations[lang]) {
@@ -200,12 +233,18 @@ else if (g.isTranslation && updatedTranslation) {g.updated ="<p class='updated'>
 
 // SURVEY
 
+/**
+ * Build feedback survey section
+ * Creates links for GitHub issues and RSS feeds
+ */
+// Extract current page URL without query parameters for feedback
 var body = window.location.href
 var qm = body.search(/\?/)
 if (qm > 0) body = body.substr(0,qm)
 body = encodeURIComponent('[source] ('+body+') ['+f.clang+']')
 var title = 'Feedback on '+f.directory+f.filename
 
+// Survey section with GitHub feedback link and RSS subscription
 g.survey = 	'<p>'+s.tellUsWhatYouThink+'</p>'+
 			'<p><a class="interaction" target="_blank" href="https://github.com/w3c/i18n-drafts/issues/new?title='+title+'&body='+body+'%0A%0A">'+s.sendAComment+'</a></p>'+
 			'<p style="margin-top:1em">'+s.followOurNews+'</p>'+
