@@ -1,4 +1,4 @@
-# Language and Locale Negotiation on the Web
+# Negotiating the User's Language (Locale) for a Website or Application
 
 One challenge faced by websites and services on the Web is how to decide on
 the most appropriate language and [locale](https://www.w3.org/TR/i18n-glossary#locale) to use when presenting
