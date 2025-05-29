@@ -85,14 +85,14 @@ s.techniques = "Aprender"  // site links link text, top left
 s.taskBasedIndex = "Aprender técnicas y requisitos para la internacionalización."  // title text for s.techniques
 s.resources = "Encontrar"  // site links link text, top left
 s.informationResources = "Encontrar información en este sitio."  // title text for s.resources
-s.ask = "Ask"  // site links link text, top left
-s.askI18nActivity = "Ask for help or information."  // title text for s.ask
+s.ask = "Preguntar"  // site links link text, top left
+s.askI18nActivity = "Pedir ayuda o información."  // title text for s.ask
 s.news = "Seguir"  // site links link text, top left
 s.newsFiltersAndFeeds = "Seguir al grupo de Internacionalización del W3C."  // title text for s.news
 s.groups = "Participar" // site links link text, top left
 s.groupsThatMakeUp = "Participar en el trabajo de Internacionalización del W3C." // title text for s.groups
-s.about = "About" // site links link text, top left
-s.aboutI18nActivity = "About W3C Internationalization." // title text for s.about
+s.about = "Sobre nosotros" // site links link text, top left
+s.aboutI18nActivity = "Sobre W3C Internationalization." // title text for s.about
 
 
 // document status information, below main heading
