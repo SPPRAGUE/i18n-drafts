@@ -52,7 +52,8 @@ s.currLang = {
 }
 
 // cookie message, appears when changing languages
-s.cookieMsg = "यदि आप ब्राउज़र के द्वारा कुकी सेट करते हैं, तो आप अपने द्वारा चुनी गई भाषा में W3C अंतर्राष्ट्रीयकरण गतिविधि पृष्ठ (जहाँ उपलब्ध हो) देखना जारी रखेंगे। क्या आप कुकी सेट करना चाहते हैं?" // this text is to be copied to another location
+// this text needs to be copied to javascript/doc-structure/article-dt.js
+s.cookieMsg = "यदि आप ब्राउज़र के द्वारा कुकी सेट करते हैं, तो आप अपने द्वारा चुनी गई भाषा में W3C अंतर्राष्ट्रीयकरण गतिविधि पृष्ठ (जहाँ उपलब्ध हो) देखना जारी रखेंगे। क्या आप कुकी सेट करना चाहते हैं?"
 
 // items in top right beige column
 s.worldMap = "दुनिया के नक्शे"  // title text for image, top right

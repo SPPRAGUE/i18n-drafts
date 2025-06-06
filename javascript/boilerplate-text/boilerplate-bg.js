@@ -52,7 +52,8 @@ s.currLang = {
 }
 
 // cookie message, appears when changing languages
-s.cookieMsg = "Ако разрешите браузъра да запише бисквитка, ще продължите да виждате W3C Internationalization Activity страниците (където са налични) на избрания от вас език. Искате ли да запишете бисквиткат?" // this text is to be copied to another location
+// this text needs to be copied to javascript/doc-structure/article-dt.js
+s.cookieMsg = "Ако разрешите браузъра да запише бисквитка, ще продължите да виждате W3C Internationalization Activity страниците (където са налични) на избрания от вас език. Искате ли да запишете бисквиткат?"
 
 // items in top right beige column
 s.worldMap = "Карта на света"  // title text for image, top right

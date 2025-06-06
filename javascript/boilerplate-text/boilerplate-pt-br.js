@@ -52,7 +52,8 @@ s.currLang = {
 }
 
 // cookie message, appears when changing languages
-s.cookieMsg = "Se você deixar que o navegador instale um cookie, continuará a ver as páginas de Atividade de Internacionalização da W3C (sempre que disponíveis) no idioma que escolher. Deseja instalar o cookie?" // this text is to be copied to another location
+// this text needs to be copied to javascript/doc-structure/article-dt.js
+s.cookieMsg = "Se você deixar que o navegador instale um cookie, continuará a ver as páginas de Atividade de Internacionalização da W3C (sempre que disponíveis) no idioma que escolher. Deseja instalar o cookie?"
 
 // items in top right beige column
 s.worldMap = "Mapa Mundi"  // title text for image, top right

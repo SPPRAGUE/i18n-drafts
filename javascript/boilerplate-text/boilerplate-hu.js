@@ -52,7 +52,8 @@ s.currLang = {
 }
 
 // cookie message, appears when changing languages
-s.cookieMsg = "Amennyiben hozzájárul egy süti elfogadásához, a W3C Nemzetköziesítés Fejlesztési Tevékenység lapjait az ön által választott nyelven is el tudja érni (amennyiben rendelkezésre állnak). Hozzájárul a süti használatához?" // this text is to be copied to another location
+// this text needs to be copied to javascript/doc-structure/article-dt.js
+s.cookieMsg = "Amennyiben hozzájárul egy süti elfogadásához, a W3C Nemzetköziesítés Fejlesztési Tevékenység lapjait az ön által választott nyelven is el tudja érni (amennyiben rendelkezésre állnak). Hozzájárul a süti használatához?"
 
 // items in top right beige column
 s.worldMap = "Világtérkép"  // title text for image, top right

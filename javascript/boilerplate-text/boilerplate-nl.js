@@ -52,7 +52,8 @@ s.currLang = {
 }
 
 // cookie message, appears when changing languages
-s.cookieMsg = "Als je de browser een cookie laat zetten, krijg je in het vervolg de pagina's van W3C's Internationalisatie-activiteit (voorzover beschikbaar) in de gekozen taal. Wil je een cookie zetten?" // this text is to be copied to another location
+// this text needs to be copied to javascript/doc-structure/article-dt.js
+s.cookieMsg = "Als je de browser een cookie laat zetten, krijg je in het vervolg de pagina's van W3C's Internationalisatie-activiteit (voorzover beschikbaar) in de gekozen taal. Wil je een cookie zetten?"
 
 // items in top right beige column
 s.worldMap = "Wereldkaart"  // title text for image, top right

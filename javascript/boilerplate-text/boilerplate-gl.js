@@ -52,7 +52,8 @@ s.currLang = {
 }
 
 // cookie message, appears when changing languages
-s.cookieMsg = "Se deixas que o navegador configure unha cookie, continuará a ver páxinas da Actividade de Internacionalización da W3C (onde está dispoñible) no idioma que escolliches. Queres configurar a cookie?" // this text is to be copied to another location
+// this text needs to be copied to javascript/doc-structure/article-dt.js
+s.cookieMsg = "Se deixas que o navegador configure unha cookie, continuará a ver páxinas da Actividade de Internacionalización da W3C (onde está dispoñible) no idioma que escolliches. Queres configurar a cookie?"
 
 // items in top right beige column
 s.worldMap = "Mapa mundial"  // title text for image, top right

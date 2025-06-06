@@ -52,7 +52,8 @@ s.currLang = {
 }
 
 // cookie message, appears when changing languages
-s.cookieMsg = "您可以让浏览器设置cookie，以继续使用您选择的语言浏览W3C国际化标准计划（如果有该语言的翻译的话）。请问您想设置cookie吗？" // this text is to be copied to another location
+// this text needs to be copied to javascript/doc-structure/article-dt.js
+s.cookieMsg = "您可以让浏览器设置cookie，以继续使用您选择的语言浏览W3C国际化标准计划（如果有该语言的翻译的话）。请问您想设置cookie吗？"
 
 // items in top right beige column
 s.worldMap = "世界地图"  // title text for image, top right
