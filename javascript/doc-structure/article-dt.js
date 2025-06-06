@@ -49,5 +49,5 @@ var cn = {
 	uk:"Якщо ви дозволите браузер встановити куки, ви будете продовжувати бачити сторінки W3C Інтернаціоналізація активність (за наявності) на мові, який ви обрали. Ви хочете, щоб встановити печиво?",
 	vi:"If you let the browser set a cookie, you will continue to see W3C Internationalization Activity pages (where available) in the language you chose. Do you want to set the cookie?",
 	'zh-hans':"您可以让浏览器设置cookie，以继续使用您选择的语言浏览 W3C 国际化活动页面（如果有该语言的翻译的话）。请问您想设置cookie吗？",
-	'zh-hant':"If you let the browser set a cookie, you will continue to see W3C Internationalization Activity pages (where available) in the language you chose. Do you want to set the cookie?"
+	'zh-hant':"若您允許瀏覽器設定 Cookie，日後在造訪時（若該語言版本可用），W3C 國際化活動相關頁面將會持續以您所選擇的語言顯示。請問您是否要設定這個 Cookie？"
 	}
