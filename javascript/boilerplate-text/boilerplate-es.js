@@ -185,15 +185,5 @@ s.topics = "Buscar"
 
 MISSING TRANSLATIONS
 
-check all top left links !
-
-s.tests
-s.ask
-s.askI18nActivity
-s.about
-s.aboutI18nActivity
-
-
-
-
+none
 */

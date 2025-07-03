@@ -185,40 +185,7 @@ s.topics = "Zoeken"
 
 MISSING TRANSLATIONS
 
-check all top left links !
-
-cookieMsg
-articles
-tests
-aboutThisArticle
-status_draft
-status_review
-status_published
-status_notreviewed
-status_obsolete
-worldwide
-ask
-askI18nActivity
-about
-aboutI18nActivity
-lastChanged
-author
-previousAuthors
-acknowledgements
-translation_updated
-historyOfDocumentChanges
-untranslatedChanges
-unlinkedTranslation
-githubRedirect
-new
-updated
-quickanswer
-longeranswer
-additionalinfo
-followOurNews
-i18nActivityHome
-moreResourcesOfThisType
-
+none
 
 
 
