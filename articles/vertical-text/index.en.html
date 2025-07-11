@@ -144,9 +144,12 @@ figure pre {
 </div>
 
 <aside class="implnote">
-<p class="impl"><img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"/> <img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"/> <img src="../../icons/ok.png" alt="OK" style="margin-left: 0.5em;"/></p>
+<p class="impl">
+<img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"/>
+<img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"/>
+<img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"/>
+<img src="../../icons/ok.png" alt="OK" style="margin-left: 0.5em;"/></p>
 
-<p class="impl"><span class="issue"><img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"/> Webkit browsers don't correctly display the Mongolian text. Glyphs are rotated anti-clockwise away from the correct orientation, and don't join.</span></p>
 
 <p><a target="_blank" href="https://www.w3.org/International/tests/repo/results/writing-mode-vertical">See test results for major browsers</a>.</p>
 </aside>
@@ -407,8 +410,13 @@ figure pre {
 
 
 
+
+
 <section id="other-upright">
 <h3>Embedding other languages upright</h3>
+
+<p>Text in scripts that don't naturally have a vertical setting usually runs down the page, with characters rotated 90 degrees clockwise. This subsection is about the rare use cases where you might want those characters to stand upright.</p>
+
 <p>Mixtures of vertical Chinese, Japanese, Korean and Mongolian text should just work as expected, but for other non-Latin scripts and Latin text with accents you will need to use the <code class="kw" translate="no">text-orientation</code> property to make the text stand upright.  </p>
 <p>If the Latin text contains accents or diacritics as separate characters alongside their base character, you should not see the combining characters on separate lines.</p>
 <p>However, there are some scripts that present additional issues, although it should be said that these non-Latin scripts don't seem to be set upright often. </p>
@@ -466,9 +474,11 @@ figure pre {
 </div>
 
 <aside class="implnote">
-<p class="impl"><img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Gecko" title="Gecko"/> <img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Blink" title="Blink"/> <img src="../../icons/ok.png" alt="OK" style="margin-left: 0.5em;"/></p>
-
-<p><span class="issue"><img src="../../icons/safari_16x16.png" width="16" height="16" alt="WebKit" title="WebKit"/></span>  For Webkit browsers you need to use the prefixed property name, ie. <code class="kw" translate="no">-webkit-text-orientation: sideways</code>.</p>
+<p class="impl">
+<img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Gecko" title="Gecko"/>
+<img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Blink" title="Blink"/>
+<img src="../../icons/safari_16x16.png" width="16" height="16" alt="WebKit" title="WebKit"/>
+<img src="../../icons/ok.png" alt="OK" style="margin-left: 0.5em;"/></p>
 </aside>
 </div>
 
