@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="zh-hans">
 <head>
 <meta charset="utf-8">
-<title>Sortowanie rozwijanej listy</title>
-<meta name="description" content="W części formularza znajduje się rozwijana lista wyrazów. Dlaczego wyrazy te nie są odpowiednio posortowane po przetłumaczeniu listy na inny język??">
-<script type="text/javascript">
+<title>对选项菜单进行排序</title>
+<meta name="description" content="为什么在翻译下拉框中的项目时它们没有正确排序？">
+<script>
 var f = { }
 
 // AUTHORS should fill in these assignments:
@@ -20,52 +20,49 @@ f.status = 'published'  // should be one of draft, review, published, notreviewe
 f.path = '../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
-f.thisVersion = { date:'2016-02-02', time:'14:27'} // date and time of latest edits to this document/translation
+f.thisVersion = { date:'2025-07-11', time:'16:57'} // date and time of latest edits to this document/translation
 f.contributors = '' // people providing useful contributions or feedback during review or at other times
 // also make sure that the lang attribute on the html tag is correct!
 f.sources = '' // describes sources of information
 
 // TRANSLATORS should fill in these assignments:
-f.translators = 'xxxNAME, ORG' // translator(s) and their affiliation - a elements allowed, but use double quotes for attributes
+f.translators = '薛富侨' // translator(s) and their affiliation - a elements allowed, but use double quotes for attributes
 
 f.breadcrumb = 'forms'
 
 f.additionalLinks = ''
 </script>
-<script type="text/javascript" src="qa-select-sorting-data/translations.js"> </script>
-<script type="text/javascript" src="../javascript/doc-structure/article-dt.js"> </script>
-<script src="../javascript/boilerplate-text/boilerplate-pl.js"> </script>
+<script src="qa-select-sorting-data/translations.js"> </script>
+<script src="../javascript/doc-structure/article-dt.js"> </script>
+<script src="../javascript/boilerplate-text/boilerplate-zh-hans.js"> </script>
 <!--TRANSLATORS must change -en in the line just above to the subtag for their language! -->
 <script src="../javascript/doc-structure/article-2022.js"> </script>
 <script src="../javascript/articletoc-2022.js"></script>
 <link rel="stylesheet" href="../style/article-2022.css">
 <link rel="copyright" href="#copyright">
 <script src="../javascript/prism.js"></script>
-<link rel="stylesheet" href="../style/prism.css">
-</head>
+<link rel="stylesheet" href="../style/prism.css"></head>
 
 <body>
 <header>
   <nav id="mainNavigation"></nav><script>document.getElementById('mainNavigation').innerHTML = mainNavigation</script>
   
-  <h1>Sortowanie rozwijanej listy</h1>
+  <h1>对选项菜单进行排序</h1>
 </header>
 
 
 <div id="audience">
-    <div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script>
-    </div>
-    
- <section id="question">
-<h2>Pytania</h2>
-    <p class="question">W części formularza znajduje się rozwijana lista wyrazów. Dlaczego wyrazy te nie są odpowiednio posortowane po przetłumaczeniu listy na inny język?</p>
-  </section>
-  
+<div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script>
+</div>
+
+
+<p>你可能在表单中有一个下拉框。本文回答了这个问题：为什么在翻译列表中的项目时它们没有正确排序？</p>
+ 
  
 <section id="answer">
-<h2>Odpowiedź</h2>
-  <p>Mimo, że wiele języków programowania ma narzędzia, które sortują rozwijaną listę wyrażeń  przed wyświetleniem, funkcja HTML &lt;select&gt; nie ma możliwości sortowania. Funkcja ta wyświetla &lt;options&gt; w podanej kolejności. Dlatego należy samemu posortować przetłumaczone opcje przed ich prezentacją.  Przeważnie robi się to ręcznie, albo za pomocą zaprojektowanych przez programistów procesów (jak na przykład XSLT transform).</p>
-  <p>Powiedzmy, na przykład, że mamy rozwijaną listę zwierzątek w porządku alfabetycznym:</p>
+<h2>答案</h2>
+  <p>尽管许多编程语言都有类似下拉框的功能，并且可以在显示项目列表之前对其进行排序，但HTML的<code class="kw" translate="no">select</code>元素没有这样的功能。它按接收到的顺序列出<code class="kw" translate="no">option</code>元素。因此，我们必须在将翻译的选项呈现给客户端之前对其进行预排序。这可以手动完成，也可以通过使用一些开发者设计的过程（如使用XSLT转换）来完成。</p>
+  <p>假设我们有一个宠物类型的下拉列表。在列表中，我们有以下按字母顺序排列的项目：</p>
   <div class="example">
     <pre><code class="language-html">&lt;form .....&gt;
     &lt;select size="1" name="pet"&gt;
@@ -77,7 +74,7 @@ f.additionalLinks = ''
 ...
 &lt;/form&gt;</code></pre>
   </div>
-  <p>Przetłumaczona na język holenderski lista wygląda tak:</p>
+  <p>翻译成荷兰语时，列表变成：</p>
   <div class="example">
     <pre><code class="language-html">&lt;form .....&gt;
     &lt;select size="1" name="pet"&gt;
@@ -89,7 +86,7 @@ f.additionalLinks = ''
 ...
 &lt;/form&gt;</code></pre>
   </div>
-  <p>Jednakże, aby lista była w porządku alfabetycznym w języku holenderskim musimy posortować listę w następujący sposób:</p>
+  <p>但是为了按正确的荷兰语字母顺序排列，我们需要重新排列列表：</p>
   <div class="example">
     <pre><code class="language-html">&lt;form .....&gt;
     &lt;select size="1" name="pet"&gt;
@@ -101,27 +98,31 @@ f.additionalLinks = ''
 ...
 &lt;/form&gt;</code></pre>
   </div>
-  <p>Należy tak zrobić dla każdego wyświetlanego języka.</p>
+  <p>我们必须为每种要显示的语言进行这项工作。</p>
 </section>
 
 
 <section id="bytheway">
-<h2>Dodatkowe informacje</h2>
-  <p>Zauważ, że parametry wartości w powyższych przykładach nie zostały przetłumaczone. Takie oddzielenie wyświetlanej treści od danych  pozwala programiście na zachowanie danych. Oznacza to, że programista nie musi zmieniać treści otrzymanych od użytkownika za każdym razem gdy dodawany jest nowy język. </p>
+<h2>顺便说一下</h2>
+  <p>请注意，在上面的示例中，我们没有翻译value参数。这种将要显示给用户的数据与后端要处理的数据分离的做法，让开发者保持后端处理的一致性。他们不必在每次添加新语言支持时都更改他们期望从用户那里接收的内容。</p>
 </section>
 
 
 <section id="endlinks">
-<h2>Warto przeczytać</h2>
+<h2>进一步阅读</h2>
 <aside class="section" id="survey"> </aside><script>document.getElementById('survey').innerHTML = g.survey</script>
-  <ul id="full-links">
+ 
+<ul id="full-links">
     <li>
-      <p>Related links, <cite>Authoring HTML &amp; CSS</cite></p><ul><li><a href="/International/techniques/authoring-html#cultural">Cultural issues</a></li></ul>
+      <p><cite>编写网页</cite></p>
+      <ul>
+	  <li><a href="/International/techniques/authoring-html#cultural">文化问题</a></li>
+	  </ul>
     </li>
   </ul>
 </section>
 
-<footer id="thefooter"></footer><script type="text/javascript">document.getElementById('thefooter').innerHTML = g.bottomOfPage</script>
-<script type="text/javascript">completePage()</script>
+<footer id="thefooter"></footer><script>document.getElementById('thefooter').innerHTML = g.bottomOfPage</script>
+<script>completePage()</script>
 </body>
 </html>
