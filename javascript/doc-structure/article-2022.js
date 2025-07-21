@@ -238,7 +238,7 @@ if (f.modifiers && f.modifiers != '') modCredit = s.modifiedBy+f.modifiers+s.sen
 var translatorCredit = ''
 if (g.isTranslation) translatorCredit = s.translatedBy+f.translators+s.sentenceDelimiter
 
-var credits = "<p>"+s.author+f.authors+s.sentenceDelimiter+' '+previousCredit+modCredit+translatorCredit+"</p>"
+var credits = "<p>"+s.author+f.authors+s.sentenceDelimiter+' '+previousCredit+modCredit+' '+translatorCredit+"</p>"
 // Remove the space for Chinese
 if (document.documentElement.lang === "zh-hans" || document.documentElement.lang === "zh-hant") credits = "<p>"+s.author+f.authors+s.sentenceDelimiter+' '+previousCredit+modCredit+translatorCredit+"</p>"
 
