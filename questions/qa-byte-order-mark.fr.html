@@ -103,14 +103,14 @@ XHTML/HTML coders (using editors or scripting), script developers (PHP, JSP, etc
 <section id="bomwhat">
 <h3> Qu’est-ce qu’un indicateur d’ordre des octets ?</h3>
 
-<div class="sidenoteGroup">
+
 <p>A <dfn>Byte Order Mark</dfn>, sometimes abbreviated "BOM", is a special Unicode character intended to appear at the very beginning of a text file. Its original purpose was to indicate the <q><a href="https://en.wikipedia.org/wiki/Endianness">endianness</a></q> of text that used the UTF-16 or UTF-32 character encodings of Unicode. The Byte Order Mark is U+FEFF ZERO WIDTH NON-BREAKING SPACE: the character name refers to a separate, deprecated, use of the character.</p>
 <p>Some systems use the BOM code point at the start of a file to indicate that text files are using the UTF-8 character encoding, even though UTF-8 does not need a marker to indicate endianness.</p>
 <p>While often invisible and intended to aid in correctly interpreting text, the presence of the BOM can sometimes cause unexpected display issues or problems with software if not handled correctly.</p>
 <div class="insideinfonote">
 <p class="info">Le nom INDICATEUR D’ORDRE DES OCTETS est un alias ; à l’origine, ce caractère s’appelait ESPACE INSÉCABLE SANS CHASSE (abrégé en ZWNBSP d’après le terme anglais « <em>zero width no-break space</em> »). Depuis l’introduction du caractère U+2060 GLUON DE MOTS, le caractère U+FEFF n’est plus utilisé dans son sens d’espace insécable sans chasse. Puisqu’il dispose d’un alias formel, le nom ESPACE INSÉCABLE SANS CHASSE n’est plus utile. Nous utiliserons donc son alias dans cet article.</p>
 </div>
-</div>
+
 
 <p>Avant l’introduction d’UTF-8 au début de l’année 1993, on transférait généralement le texte Unicode à l’aide d’un encodage appelé UCS-2 (l’ancêtre d’UTF-16). Dans cet encodage, les caractères étaient représentés par des mots (ou « unités de stockage ») de 16 bits. On pouvait stocker ces mots dans un flux d’octets de deux manières : en commençant par l’octet le plus significatif (ordre <span class="qterm">petit-boutiste</span>) ou par le moins significatif (ordre <span class="qterm">gros-boutiste</span>). Pour préciser dans quel ordre ils étaient stockés, on plaçait le caractère U+FEFF (l’indicateur d’ordre des octets) au début du flux. Il s’agissait d’un nombre magique qui ne faisait pas partie du texte représenté par le flux.</p>
 
