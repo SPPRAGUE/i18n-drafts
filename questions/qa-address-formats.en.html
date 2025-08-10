@@ -21,7 +21,7 @@ f.path = '../' // what you need to prepend to a URL to get to the /International
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
 f.thisVersion = { date:'2025-08-06', time:'17:46'} // date and time of latest edits to this document/translation
-f.contributors = 'Jedi Lin, Richard Ishida'; // people providing useful contributions or feedback during review or at other times
+f.contributors = 'Annemarie Apple, Jedi Lin, Richard Ishida'; // people providing useful contributions or feedback during review or at other times
 // also make sure that the lang attribute on the html tag is correct!
 
 // TRANSLATORS should fill in these assignments:
@@ -195,6 +195,12 @@ Postal Code
 <li>In uppercase or lowercase for alphanumeric systems</li>
 <li>With extra spaces at beginning or end</li>
 </ul>
+  <p><strong>Changes and grace periods.</strong> Postal authorities sometimes split, merge, or reassign postal codes. There is usually a grace period during which old and new codes coexist. You should:</p>
+  <ul>
+  <li>Accept both old and new codes during transition windows.</li>
+  <li>Store the user-entered code in addition to any normalized value, and include a timestamp for traceability.</li>
+  <li>Use accompanying fields to disambiguate when a code has been reassigned.</li>
+  </ul>
 </section>
 </section>
 
