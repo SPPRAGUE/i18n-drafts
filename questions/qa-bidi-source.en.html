@@ -147,14 +147,15 @@ f.additionalLinks = ''
 
 <p>It is not a particularly good idea for authors to edit in LTR mode after applying a directional override to the whole of the source code. For this, an editor that knows nothing about the Unicode Bidirectional Algorithm would be necessary, because it avoids the reordering of the text. This makes it easier to understand the mixture of markup and content, but the author has to read all the RTL content backwards. In a cursive script such as Arabic this is particularly problematic, because the normal joining shapes are altered as well as the direction.</p> 
 
+<div class="figWrap">
 <figure id="fig_joining_forms">
-<div style="font-size: 2rem; line-height: 1;">
+<div lang="ar" style="font-size: 2rem; line-height: 1;">
 <p style="text-align: center;"><bdo dir="rtl">يحق لكل فرد أن يغادر</bdo></p>
 <p style="text-align: center;"><bdo dir="ltr">يحق لكل فرد أن يغادر</bdo></p>
 </div>
 <figcaption>The same Arabic text in a RTL context (top) and LTR context (bottom).</figcaption>
 </figure>
-
+</div>
 
 <p>It can also help to set the overall direction of the editor to LTR and start the content on a new line, however this doesn't always help with inline markup, and again sentence-final markup appears in the wrong place in the paragraph text. Also, you should try to avoid including white space before the closing markup, as this can <a href="https://www.w3.org/International/questions/qa-bidi-space">lead to other problems</a>.</p>
 

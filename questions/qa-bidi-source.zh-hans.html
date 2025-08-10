@@ -145,13 +145,15 @@ f.additionalLinks = ''
 
 <p>对于编辑者来说，在对整个源代码应用方向覆盖后在LTR模式下编辑并不是一个很好的想法。为此，我们需要一个对Unicode双向文本算法一无所知的编辑器，因为这样避免了文本的重排。这让理解标记语言和内容的混合变得更加容易，不过编辑者必须倒着阅读所有RTL内容。在阿拉伯字母等连写文字中，这尤其成问题，因为正常的连字形状以及方向都会改变。</p>
 
+<div class="figWrap">
 <figure id="fig_joining_forms">
-<div style="font-size: 2rem; line-height: 1;">
+<div lang="ar" style="font-size: 2rem; line-height: 1;">
 <p style="text-align: center;"><bdo dir="rtl">يحق لكل فرد أن يغادر</bdo></p>
 <p style="text-align: center;"><bdo dir="ltr">يحق لكل فرد أن يغادر</bdo></p>
 </div>
 <figcaption>相同的阿拉伯语文本在RTL上下文（上）和LTR上下文（下）</figcaption>
 </figure>
+</div>
 
 <p>将编辑器的整体方向设置为LTR，并在新的一行开始内容也有帮助，但这并不总是对行内的标记有帮助，句末标记还会出现在错误的位置。此外，你应该尽量避免在结束标签之前包含空白字符，因为这可能<a href="https://www.w3.org/International/questions/qa-bidi-space">导致其他问题</a>。</p>
 
