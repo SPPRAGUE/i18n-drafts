@@ -657,6 +657,8 @@ h4 a:visited {
 
 h1 code, h2 code, h3 code, h4 code {
 	font-size: 88%;
+	background-color: transparent;
+	padding: 0;
 	}
 
 #nutshell {
@@ -1119,7 +1121,8 @@ code.code2 {
 	display: block;
 	margin-inline-start: 40px;
 	}
-.sideinfonote code {
+.sideinfonote code,
+#mainNavigationAside code {
 	background-color: transparent;
 	}
 
