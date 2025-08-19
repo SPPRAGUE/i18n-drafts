@@ -1122,7 +1122,8 @@ code.code2 {
 	margin-inline-start: 40px;
 	}
 .sideinfonote code,
-#mainNavigationAside code {
+#mainNavigationAside code,
+.tipdl code {
 	background-color: transparent;
 	}
 
