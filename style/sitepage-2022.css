@@ -1152,10 +1152,8 @@ p.background-link + h2 {
 	font-weight: bold;
 	}
 
-.hide {
-	}
 img {
-	border:0;
+	border: 0;
 	}
 #icon {
 	float: right;
