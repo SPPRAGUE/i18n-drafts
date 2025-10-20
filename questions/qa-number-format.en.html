@@ -20,7 +20,7 @@ f.status = 'published';  // should be one of draft, review, published, or notrev
 f.path = '../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
-f.thisVersion = { date:'2025-10-16', time:'20:13' } // date and time of latest edits to this document/translation
+f.thisVersion = { date:'2025-10-20', time:'10:43' } // date and time of latest edits to this document/translation
 f.contributors = 'Addison Phillips, Richard Ishida'; // people providing useful contributions or feedback during review or at other times
 // also make sure that the lang attribute on the html tag is correct!
 
@@ -218,12 +218,11 @@ console.log(`French Kilobytes: ${kbFrFormatter.format(storage)}`); // Output: Fr
 const pageLocale = document.documentElement.lang || 'en-US'; // Fallback to 'en-US'
 const formatter = new Intl.NumberFormat(pageLocale, { style: 'currency', currency: 'USD' });
 console.log(`${formatter.format(627.92)}`);
-```
+</code></pre></figure>
 
-Occasionally, you may want to override the page locale with a specific locale, such as when creating internationalization tutorials or displaying content in multiple languages:
+<p>Occasionally, you may want to override the page locale with a specific locale, such as when creating internationalization tutorials or displaying content in multiple languages:</p>
 
-```javascript
-// Force a specific locale regardless of page language
+<figure class="example"><pre><code class="language-javascript">// Force a specific locale regardless of page language
 const tutorialFormatter = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
 console.log(`German example: ${tutorialFormatter.format(199.99)}`); // Output: 199,99 €
 </code></pre></figure>
