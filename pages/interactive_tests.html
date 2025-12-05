@@ -20,7 +20,7 @@ f.status = 'notreviewed';  // should be one of draft, review, published, notrevi
 f.path = '../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
-f.thisVersion = { date:'2021-06-03', time:'12:18'} // date and time of latest edits to this document/translation
+f.thisVersion = { date:'2025-12-05', time:'09:41' } // date and time of latest edits to this document/translation
 f.contributors = ''; // people providing useful contributions or feedback during review or at other times
 // make sure to translate the information in the meta description element
 // also make sure that the lang attribute on the html tag is correct!
@@ -102,10 +102,9 @@ figure img {
 
 
 <section id="test_rigs">
-<h3>Test rigs</h3>
+<h3>Test rig</h3>
 
-<p>The test rigs allow you to set up new tests yourself and produce a URL to capture the test so that it can be shared or stored.</p>
-<p>This is the place to go to if you want to find an existing test, or check whether a test already exists.</p>
+<p>The test rig allows you to set up new tests yourself and produce a URL to capture the test so that it can be shared or stored.</p>
 
 <figure id="fig_test_rigs">
 <img src="interactive_tests-data/test_rigs.png" alt="" style="width: 100%;">
@@ -115,7 +114,7 @@ figure img {
 
 <p>A test rig page will allow you to set language, font and font-size, and the dimensions of the test bounding box. You can then add some text or markup and see what it looks like. Below the test bounding box you'll usually find fields to allow you to apply various CSS property values.</p>
 <p>At the bottom of the page is a button that creates a URL for you. That URL captures all the settings on a page, and can be copied wherever you like, so that others can view the test you set up.</p>
-<p>W3C staff create these test rigs. A <a href="https://w3c.github.io/i18n-tests/exploratory/vanilla/">Vanilla canvas</a> is also provided, and can be useful for setting up many kinds of tests if you don't need to apply the CSS properties.</p>
+<p>W3C staff create these test rigs. A <a href="https://www.w3.org/International/i18n-tests/exploratory/index.html">Vanilla canvas</a> is also provided, and can be useful for setting up many kinds of tests if you don't need to apply the CSS properties.</p>
 </section>
 
 
@@ -147,10 +146,8 @@ figure img {
 
 <p>It's very easy to create an exploratory test.</p>
 <p>First, check whether the test already exists, using the links described above on the test index page. If you don't find what you want, you can start with an empty test rig, or modify an existing test.</p>
-<p>To create a completely new test page start with either the <a href="https://w3c.github.io/i18n-tests/exploratory/vanilla/">vanilla test rig</a>, or <a href="https://www.w3.org/International/i18n-tests/#test_rigs">another test rig</a> which has appropriate CSS property settings.</p>
-<p>Add whatever text or markup you need to the controls on the test rig page. When you click on <samp>Go</samp> the text is displayed in one or more boxes below with orange borders.
-
-Controls on the page allow you to set various parameters, including the dimensions of the test box, CSS properties, etc.</p>
+<p>To create a completely new test page start with the <a href="https://www.w3.org/International/i18n-tests/exploratory/index.html">test rig</a>.</p>
+<p>Add whatever text or markup you need to the controls on the test rig page. The text is displayed in one or more boxes below with orange borders.</p>
 <p>Add a brief assertion for the test. This describes what the test is checking. This assertion will also be used for the title of the GitHub issue describing the results of the test, and so will show up in the GitHub issues lists and the results summary pages.</p>
 <p>Add a set of instructions that explain how to know whether the test has passed, and anything that needs to be prepared in advance, etc. The instructions should normally contain a sentence that begins with &quot;The test passes if ...&quot;.</p>
 <p>To point people to the test, in an email or in a GitHub issue, click on the button <samp>Take a snapshot</samp> at the bottom of the page. This will produce a URL which you can copy to wherever you like. Anyone who follows the URL will see the page exactly as it was when you snapped it.</p>
