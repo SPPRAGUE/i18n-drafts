@@ -125,7 +125,7 @@ var mainNavigation = '<aside id="mainNavigationAside">'+
 '	</aside>'+
 
 '	<nav id="siteicons">'+
-'   <a href="https://www.w3.org/" title="'+s.gotoW3cHome+'"><img src="https://www.w3.org/Icons/w3c_home" alt="'+s.gotoW3cHome+'" width="72" height="48"></a>'+
+'   <a href="https://www.w3.org/" title="'+s.gotoW3cHome+'"><img alt="W3C" src="https://www.w3.org/assets/logos/w3c-2025/svg/margins/w3c-letters-bg-white.svg" style="border:0; height:58px; width:72px; vertical-align:middle;">'+
 '   <div id="banner" style="margin-inline-start:10px;"><a href="/International" title="'+s.gotoI18nHome+'">'+
 '   <p id="sitename">'+s.internationalizationTitle+'</p>'+
 '   <p id="subtitle">'+s.worldwide+'</p></a></div>'+
