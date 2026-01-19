@@ -162,18 +162,12 @@ body.obsolete h2, body.obsolete h3 {
 	}
 
 .logo {
-    height: 3.25rem;
-    width: 4.875rem;
     float: left;
     }
 .logo:dir(rtl) {
-    height: 3.25rem;
-    width: 4.875rem;
     float: right;
     }
 :root[dir=rtl] .logo {
-    height: 3.25rem;
-    width: 4.875rem;
     float: right;
     }
 
@@ -559,14 +553,15 @@ header a {
 	color: white;
 	}
 #sitename {
-    font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
     border-bottom: 2px solid brown;
     color: #4c5c9c;
     margin: 0;
     }
 #subtitle {
     margin:0;
-    font-size:12px;
+    font-size:13px;
     font-style:italic;
     color: #4c5c9c;
     }
