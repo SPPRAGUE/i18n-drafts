@@ -8,26 +8,26 @@
 var f = { }
 
 // AUTHORS should fill in these assignments:
-f.directory = ''+'/'; // the path to this file, not including /International or the file name
-f.filename = 'technique-index'; // the file name WITHOUT extensions
+f.directory = 'pages'+'/'; // the path to this file, not including /International or the file name
+f.filename = 'review-request'; // the file name WITHOUT extensions
 f.authors = 'Richard Ishida, W3C'; // author(s) and affiliations
 f.previousauthors = ''; // as above
 f.modifiers = ''; // people making substantive changes, and their affiliation
-f.searchString = 'technique-index'; // blog search string - usually the filename without extensions
+f.searchString = 'review-request'; // blog search string - usually the filename without extensions
 f.firstPubDate = '2009-03-12'; // date of the first publication of the document (after review)
 f.lastSubstUpdate = { date:'2013-02-06', time:'18:04'}  // date and time of latest substantive changes to this document
 f.status = 'notreviewed';  // should be one of draft, review, published, notreviewed or obsolete
-f.path = './' // what you need to prepend to a URL to get to the /International directory 
+f.path = '../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
-f.thisVersion = { date:'2025-12-17', time:'12:52' } // date and time of latest edits to this document/translation
+f.thisVersion = { date:'2026-01-26', time:'15:31' } // date and time of latest edits to this document/translation
 f.contributors = ''; // people providing useful contributions or feedback during review or at other times
 // also make sure that the lang attribute on the html tag is correct!
 
 // TRANSLATORS should fill in these assignments:
 f.translators = 'xxxNAME, ORG'; // translator(s) and their affiliation - a elements allowed, but use double quotes for attributes
 
-f.breadcrumb = 'characters';
+f.breadcrumb = '';
 
 f.additionalLinks = ''
 </script>
@@ -39,53 +39,13 @@ f.additionalLinks = ''
 <script src="../javascript/articletoc-2022.js"></script>
 
 <link rel="stylesheet" href="../style/sitepage-2022.css">
-<style media="all">
-#topicArea li { font-weight: normal; font-size: 110%;  margin: 0; padding: 0; margin-bottom: 5px; }
-
-ul { margin-left: 0; padding: 0;  list-style-type: none; }
-
-.tag { list-style-type: none; margin: 0; margin-bottom:3px; padding: 0; color: teal; cursor: pointer; }
-#output { margin-bottom: 3em; }
-
-#lists td { vertical-align: top;  }
-
-.detail li { margin-bottom: 1em; }
-.detail { margin-left: 0.5em; }
-
-
-
-.selector h1 {
-	font-family: Arial, helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 240%;
-	color: #005a9c;
-	background-color: #fff;
-	padding: 0.1em;
-	margin-top: 0;
-	margin-bottom: 0;
-	padding-top: 2em;
-	padding-bottom: 1em;
-	border: none;
-	text-align: center;
-	}
-	
-.selector li a {
-	border-radius: 10px;
-	padding: 5px 20px; 
-	border: 1px solid #CCC;
-	}
-.selector li {
-	font-size: 170%;
-	text-align: center;
-	margin-bottom: 20px;
-	}
-.selector li a:hover {
-	background-color: #005a9c;
-	color: white;
-	}
+<style>
+.selector ul { margin-left: 0; padding: 0; list-style-type: none; }
+.selector li { font-size: 170%; text-align: center; margin-bottom: 20px; }
+.selector li a { border-radius: 10px; padding: 5px 20px; border: 1px solid #CCC; }
+.selector li a:hover { background-color: #005a9c; color: white; }
 </style>
 <link rel="copyright" href="#copyright"/>
-<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>
@@ -96,15 +56,17 @@ ul { margin-left: 0; padding: 0;  list-style-type: none; }
 <div class="content">  
 <h1>Request a review</h1>
 
-
 <section>
 		<p>This page describes how to contact the W3C Internationalization Working Group to get a review of your specification or document.</p>
-     </section>
-<h2><a href="#how">How to ask for a review</a></h2>
+</section>
+
+<section id="how">
+<h2>How to ask for a review</h2>
 
 <p>Please <a href="https://github.com/w3c/i18n-request/issues/new/choose" style="font-size: 140%;">raise a GitHub issue</a>. Requesting a review that way creates a request that can be efficiently pushed through the pipeline in our <a href="https://github.com/orgs/w3c/projects/91">review radar</a>.</p>
 <p>If you want to limit the visibility of your request for some reason, you could  send an email to member-i18n-core.</p>
 <p>Please do not send  a request directly to the Chair or Staff Contact.</p>
+</section>
 
 
 
