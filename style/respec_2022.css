@@ -3,14 +3,14 @@
 /* FONTS */
 @font-face {
     font-family: 'ExtendedLatinWF';
-    src: url('fonts/gentium-regular-webfont.woff2') format('woff2');
+    src: url('https://www.w3.org/International/i18n-drafts/style/fonts/gentium-regular-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'ExtendedLatinWF';
-    src: url('fonts/gentium-italic-webfont.woff2') format('woff2');
+    src: url('https://www.w3.org/International/i18n-drafts/style/fonts/gentium-italic-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
