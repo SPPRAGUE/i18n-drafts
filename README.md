@@ -5,7 +5,19 @@ Note that this is only a temporary location for articles, etc., while they are b
 
 To view a page as HTML, go to https://w3c.github.io/i18n-drafts/ and add the appropriate path to the file you want to view. You'll need to provide the filename plus language extension as a minimum, eg. https://w3c.github.io/i18n-drafts/articles/vertical-text.en
 
-If you want to translate one or more of these resources, see the [Translation intructions](https://www.w3.org/International/i18n-drafts/pages/translation) page.
+### File Naming
+
+Content files follow the pattern: `{filename}.{language}.html`
+
+Examples:
+- `qa-link-lang.en.html` (English)
+- `qa-link-lang.de.html` (German translation)
+
+Each content file has a companion `{filename}-data/` directory containing `translations.js` and supporting files.
+
+### Translations
+
+If you want to translate one or more of these resources, see the [Translation instructions](https://www.w3.org/International/i18n-drafts/pages/translation) page.
 
 ### Contributing
 
