@@ -170,6 +170,12 @@ body.obsolete h2, body.obsolete h3 {
 :root[dir=rtl] .logo {
     float: right;
     }
+.logo img {
+	border: 0;
+	height: 58px;
+	width: 72px;
+	vertical-align: middle;
+	}
 
 .banner {
     margin-inline-start: 1rem;

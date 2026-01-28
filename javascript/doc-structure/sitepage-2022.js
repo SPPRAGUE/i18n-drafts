@@ -165,7 +165,7 @@ else g.disclaimer = ''
 
 
 var mainNavigation = '<div id="search">'+g.siteSearch+'</div>'+
-`<span class="logo"><a href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/assets/logos/w3c-2025/svg/margins/w3c-letters-bg-white.svg" style="border:0; height:58px; width:72px; vertical-align:middle;"></a></span>` +
+`<span class="logo"><a href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/assets/logos/w3c-2025/svg/margins/w3c-letters-bg-white.svg"></a></span>` +
 '<!--div  style="float:left;"><a href="https://www.w3.org/"><img src="https://www.w3.org/Icons/w3c_home" alt="W3C" height="48" width="72" /></a></div-->'+
 '<div id="banner"><a href="'+base+'/International"><p id="sitename" style="display: inline-block;">Internationalization (i18n)</p>'+
 '	<p id="subtitle">'+s.worldwide+'</p></a></div>'+
