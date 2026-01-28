@@ -1887,6 +1887,10 @@ h2:hover > a.selflink, h3 > a.selflink, h4 > a.selflink, h5 > a.selflink, h6 > a
     float: left;
   }
 
+  .logo img {
+	height: 47px;
+  }
+
   #sitename {
     font-size: 18px;
   }
