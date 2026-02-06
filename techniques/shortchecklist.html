@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Spec review checklist</title>
 <meta name="description" content="Lists open issues in i18n Activity github repositories.">
 <script>
@@ -54,6 +55,28 @@ f.additionalLinks = ''
 }
 #copyBtn:hover {
     background: #003d6b;
+}
+#copy {
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 0 0 1em 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Consistent with ../javascript/doc-structure/sitepage-2022.js */
+@media (max-width: 767px) {
+    #copy {
+        margin: 0 8px 1em 8px;
+        width: calc(100% - 16px);
+    }
+
+    table {
+        width: 80%;
+    }
 }
 </style>
 <script>
