@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" >
+<title>Text decoration</title>
+<meta name="description" content="How to use CSS styling to support ruby text for Asian languages." >
+<script>
+var f = { }
+
+// AUTHORS should fill in these assignments:
+f.directory = 'articles/styling'+'/'; // the path to this file, not including /International or the file name
+f.filename = 'text-decoration'; // the file name WITHOUT extensions
+f.authors = 'Richard Ishida, W3C'; // author(s) and affiliations
+f.previousauthors = ''; // as above
+f.modifiers = ''; // people making substantive changes, and their affiliation
+f.searchString = 'article-text-decoration'; // blog search string - usually the filename without extensions
+f.firstPubDate = '2026-02-10'; // date of the first publication of the document (after review)
+f.lastSubstUpdate = { date:'2026-02-10', time:'17:23'}  // date and time of latest substantive changes to this document
+f.status = 'published';  // should be one of draft, review, published, notreviewed or obsolete
+f.path = '../../' // what you need to prepend to a URL to get to the /International directory 
+
+// AUTHORS AND TRANSLATORS should fill in these assignments:
+f.thisVersion = { date:'2026-02-10', time:'17:23'} // date and time of latest edits to this document/translation
+f.contributors = ''; // people providing useful contributions or feedback during review or at other times
+// make sure to translate the information in the meta description element
+// also make sure that the lang attribute on the html tag is correct!
+
+// TRANSLATORS should fill in these assignments:
+f.translators = 'xxxNAME, ORG'; // translator(s) and their affiliation - a elements allowed, but use double quotes for attributes
+
+f.breadcrumb = 'markup';
+
+f.additionalLinks = ''
+</script>
+<script src="text_decoration_data/translations.js"> </script>
+<script src="../../javascript/doc-structure/article-dt.js"></script>
+<script src="../../javascript/boilerplate-text/boilerplate-en.js"> </script>
+<!--TRANSLATORS must change -en in the line just above to the subtag for their language! -->
+<script src="../../javascript/doc-structure/article-2022.js"> </script>
+<script src="../../javascript/articletoc-2022.js"></script>
+<link rel="stylesheet" href="../../style/article-2022.css" >
+<link rel="copyright" href="#copyright">
+<script src="../../javascript/prism.js"></script>
+<link rel="stylesheet" href="../../style/prism.css">
+<link rel="stylesheet" href="styling-data/local.css">
+
+<style>
+
+.codeExample { margin:0 0 0 7.5%; width: 60%; }
+.codeExample figure { margin:0; }
+.sidebarNote { margin: .5em 1em 0 2em; }
+.sidebarNote aside { margin: 0; float: none; width: 24%; }
+.multipleFigs { display: flex; flex-direction: row; flex-wrap: wrap; }
+.multipleFigs>div { flex:1; text-align:center; }
+</style>
+<!-- styling for alignment examples:
+ruby { font-size: 55px; font-family: "ms mincho", stsong, 'lisong pro'; color: #333; }
+-->
+<script>
+function highlightCode () {
+	var examples = document.querySelectorAll('figure.example')
+	for (var i=0;i<examples.length;i++) {
+		var re = /&lt;([^&]+)&gt;/
+		var content = examples[i].innerHTML
+		out = content.replace(/&lt;([^&]+)&gt;/g,'<span class="el">&lt;$1&gt;</span>')
+		examples[i].innerHTML = out
+		}
+	}
+</script>
+</head>
+
+<body>
+<header>
+<nav id="mainNavigation"></nav><script>document.getElementById('mainNavigation').innerHTML = mainNavigation</script>
+
+<h1>Text Decoration Styling</h1>
+</header>
+
+
+<section>
+<div id="audience">
+<div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script>
+</div>
+
+<p>This article explores various ways in which text decoration may need to be managed for non-Latin scripts, and some of the CSS properties that can be useful.</p>
+
+<p>We won't simply reproduce the spec itself here, but rather provide guidance about how content authors can achieve key techniques.</p>
+</section>
+
+
+
+
+
+<section id="configs">
+<h2>Working with long descenders</h2>
+
+<p>The underline for Latin script text generally falls just below the alphabetic baseline.  However, for some writing systems, such as Arabic, it is better to move the underline downwards so that it doesn't cut through diacritics or descenders.</p>
+
+<p>For this section we will use Arabic script examples, but the same points apply to other writing systems that need additional clearance below the baseline, such as most Brahmi-derived scripts, Tibetan, etc. The following image shows typical metrics for Arabic font glyphs compared to Latin. Note the extra vertical space required.</p>
+
+
+<div class="figWrap">
+<figure id="fig_arabic_font_metrics">
+<img src="text_decoration_data/arabic_font_metrics.png" alt="An illustration of how far above and below Arabic glyphs extend, beyond the Latin ones." style="max-height:12rem;">
+<figcaption>Comparison of Latin and Arabic script extenders.</figcaption>
+</figure>
+</div>
+
+<p>CSS offers two possible approaches for addressing this problem.</p>
+
+
+
+
+
+
+<section id="builtIn">
+<h3>Using built-in font metrics</h3>
+
+<p>The CSS specification suggests that, by default, browsers should place an underline at or near the alphabetic baseline, but should also take into account that some scripts will need the underline to be lower. </p>
+
+<p>If a font has  a built-in metric to indicate the preferred underline position then, in theory, <a href="https://drafts.csswg.org/css-text-decor-4/#text-underline-position-property"><code class="kw" translate="no">text-underline-position:from-font</code></a> allows you to use that.  However,  support isn’t interoperable at the time of writing, and many fonts don't include that metric anyway.</p>
+
+<div id="fig-from_font" class="sidenoteGroup">
+<figure class="example" lang="en">
+<pre><code class="language-css">text-decoration: underline;
+text-underline-position: from-font;</code></pre>
+</figure>
+
+<div id="out-from_font" class="browser_output">
+<p class="browser_output_title">Output in your browser (only the bottom two lines use text-underline-position):</p>
+<div style="text-decoration: underline; font-size:3rem; line-height: 2; text-decoration-color: tan;">
+<div id="test-from_font-control">
+<p lang="ar" dir="rtl">أَمَازِيغ يَوْم فيِ كُلّ هٰذِهِ إِنْسَان</p>
+</div>
+<div id="test-from_font_nodiac" style="text-underline-position: from-font;" >
+<p lang="ar" dir="rtl">أمازيغ يوم في كل هٰذه إنسان</p>
+</div>
+<div id="test-from_font" style="text-underline-position: from-font;" >
+<p lang="ar" dir="rtl">أَمَازِيغ يَوْم فيِ كُلّ هٰذِهِ إِنْسَان</p>
+</div>
+</div>
+<p>Choose a font: <input oninput="document.getElementById('test-from_font').style.fontFamily = this.value; document.getElementById('test-from_font_nodiac').style.fontFamily = this.value; document.getElementById('test-from_font-control').style.fontFamily = this.value;"></p>
+</div>
+
+<p><strong>This needs to be used in conjunction with a suitable font.</strong> If the font has built-in metrics to indicate the preferred position of the underline then that will be used. Otherwise the value falls back to <code class="kw" translate="no">auto</code>, which relies on the browser to do the right thing, and will generally fail.</p>
+
+<aside class="implnote">
+<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> For Arabic script text, underlines appear a little way below the baseline by default, regardless of the font used.   <code class="kw" translate="no">from-font</code> doesn't have any effect on the placement.</p>
+
+<p class="impl"><img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> For Arabic script text, underlines appear to be lowered slightly by default, but they don't clear the descenders or diacritics.  Using <code class="kw" translate="no">from-font</code> has no effect.</p>
+
+<p class="impl"><img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> Gives the same results as Chrome. Note that Safari applies only system fonts or webfonts, so fonts such as Amiri, and Scheherazade New, which have underline metrics, won't display unless you use a webfont.</p>
+
+<!--img src="../../icons/edge_16x16.png" width="16" height="16" alt="Edge" title="Edge"> only works if you use the value <code class="kw" translate="no">left</code>.<br-->
+<p><a target="_blank" href="https://w3c.github.io/i18n-tests/results/css-ruby#ruby_align_start">See test results for major browsers</a>.</p>
+</aside>
+</div>
+</section>
+
+
+
+
+
+
+<section id="under">
+<h3>Positioning below the em box</h3>
+
+<p>You can use <a href="https://www.w3.org/TR/css-text-decor-4/#text-underline-position-property"><code class="kw" translate="no">text-underline-position: under</code></a> to push the underline below the font's em box descent metric.  This is a handy value when dealing with languages such as Chinese and Japanese, where character glyphs extend slightly below the alphabetic baseline and have no diacritics below them. It is also useful to clear things such as parentheses and subscripts, and is sometimes referred to as the ‘accounting’ underline. However, some fonts have descenders or diacritics that extend below the font’s em box — for those, see the next section.</p>
+
+<div id="fig-under" class="sidenoteGroup">
+<figure class="example" lang="en">
+<pre><code class="language-css">text-decoration: underline;
+text-underline-position: under;</code></pre>
+</figure>
+
+<div id="out-under" class="browser_output">
+<p class="browser_output_title">Output in your browser (only the bottom line of each pair uses text-underline-position):</p>
+<div style="text-decoration: underline; font-size:2rem; line-height: 2; text-decoration-color: tan;">
+<div id="test-under-ascii-control">
+<p lang="en">The pipes carry water (H₂O)</p>
+</div>
+<div id="test-under-ascii">
+<p lang="en" style="text-underline-position: under;">The pipes carry water (H₂O)</p>
+</div>
+<div id="test-under-control">
+<p lang="ja">パイプは水（H₂O）を運びます</p>
+</div>
+<div id="test-under">
+<p lang="ja" style="text-underline-position: under;">パイプは水（H₂O）を運びます</p>
+</div>
+</div>
+<p>Choose a font: <input oninput="document.getElementById('test-under-ascii-control').style.fontFamily = this.value; document.getElementById('test-under-ascii').style.fontFamily = this.value; document.getElementById('test-under').style.fontFamily = this.value; document.getElementById('test-under-control').style.fontFamily = this.value;"></p>
+</div>
+
+<p><strong>This needs to be used in conjunction with a suitable font.</strong> If the font has built-in metrics to indicate the preferred position of the underline then that will be used. Otherwise the value falls back to <code class="kw" translate="no">auto</code>, which relies on the browser to do the right thing, and will generally fail.</p>
+
+<aside class="implnote">
+<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> <img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> <img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> All three major browser engines support the use of <code class="kw" translate="no">text-underline-offset</code>.</p>
+
+<p><a target="_blank" href="https://w3c.github.io/i18n-tests/results/css-ruby#ruby_align_start">See test results for major browsers</a>.</p>
+</aside>
+</div>
+</section>
+
+
+
+
+
+<section id="underline_offset">
+<h3>Specifying the distance explicitly</h3>
+
+<p>To be sure that an underline clears the glyphs, regardless of whether or not the font contains a metric for that, use <a href="https://drafts.csswg.org/css-text-decor-4/#text-underline-position-property"><code class="kw" translate="no">text-underline-offset</code></a>.</p>
+
+
+<div id="fig-underline_offset" class="sidenoteGroup">
+<figure class="example" lang="en">
+<pre><code class="language-css">text-decoration: underline;
+text-underline-offset: &lt;distance&gt;;</code></pre>
+</figure>
+
+<div id="out-underline_offset" class="browser_output">
+<p class="browser_output_title">Output in your browser (only the bottom line uses text-underline-offset):</p>
+<div style="font-size:3rem; line-height: 2;">
+<div id="test-underline_offset-control">
+<p lang="ar" dir="rtl" style="text-decoration: underline; text-decoration-color: tan;">أَمَازِيغ يَوْم فيِ كُلّ هٰذِهِ إِنْسَان</p>
+</div>
+<div style="margin-block-end: 2em;">
+<p id="test-underline_offset" lang="ar" dir="rtl" style="text-decoration: underline; text-decoration-color: tan; text-underline-offset: 50%;">أَمَازِيغ يَوْم فيِ كُلّ هٰذِهِ إِنْسَان</p>
+</div>
+</div>
+<p>Choose a font: 
+<input 
+    oninput="document.getElementById('test-underline_offset').style.fontFamily = this.value; document.getElementById('test-underline_offset-control').style.fontFamily = this.value;"
+    > 
+    Change the offset: <input id="offsetSlider" type="range" min="20" max="100" step="1" value="50" oninput="document.getElementById('test-underline_offset').style.textUnderlineOffset = this.value+'%';
+         document.getElementById('offsetSliderValue').value=this.value+'%';"
+         style="width:8rem; height:1rem;">
+<input value="50%" id="offsetSliderValue" style="width:3em;">
+</p>
+</div>
+
+
+<aside class="implnote">
+<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> <img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> <img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> All three major browser engines support the use of <code class="kw" translate="no">text-underline-offset</code>.</p>
+
+<p><a target="_blank" href="https://w3c.github.io/i18n-tests/results/css-ruby#ruby_align_start">See test results for major browsers</a>.</p>
+</aside>
+</div>
+
+<p>The value can be expressed as a fixed distance, for example using px, but generally speaking this is suboptimal because if the font size is changed that distance remains the same. It would be necessary to change the underline offset each time a change is made to the font size. A better approach is to specify the distance in ems or as a percentage of 1em.</p>
+
+<p><strong>The actual value needed will depend on the font used.</strong> It also depends on whether or not the text contains diacritics below the descenders. A simple font with moderate descenders, such as Arial, may be fine with a setting of 50%, but a font such as Amiri may need to be set at 70%, and a nastaliq font, such as Noto Nastaliq Urdu used for Kashmiri (which retains all diacritics), may require a setting of 90%.</p>
+
+<p>It follows, then, that the font family and the underline offset for the text need to both be set at the same time. However, it's not necessary to change the value when the font size varies.</p>
+
+<p>If the value is set to <code class="kw" translate="no">auto</code> the browser takes control of the positioning. Note that if <code class="kw" translate="no">text-underline-position</code> is also set to <code class="kw" translate="no">from-font</code>, then that overrides any <code class="kw" translate="no">text-underline-offset:auto</code> setting.</p>
+</section>
+</section>
+
+
+
+
+
+
+
+<section id="browsers">
+<h2>Browser support</h2>
+<p>The article describes behavior for the following browser versions. We will try to update the article as behavior changes.</p>
+<table border="0" summary="Table lists browsers and engines whose behavior is represented in the article.">
+<tbody>
+<tr>
+<th scope="col">Browser engine</th>
+<th scope="col">Browser tested</th>
+<th scope="col">Browsers using that engine</th>
+</tr>
+<tr>
+<td><img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> Gecko</td>
+<td>Firefox v103</td>
+<td>Firefox, Conkeror, etc.</td>
+</tr>
+<tr>
+<td><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> Blink</td>
+<td>Chrome v103</td>
+<td>Chrome, Edge, Brave, Opera, Vivaldi, etc.</td>
+</tr>
+<tr>
+<td><img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> WebKit</td>
+<td>Safari v15.5</td>
+<td>Safari, iOS-based browsers, Yandex, UC Browser, etc.</td>
+</tr>
+</tbody>
+</table>
+<!--p>&nbsp;</p>
+<ul>
+<li><dfn>Gecko</dfn> (Firefox, Conkeror, etc.)</li>
+<li><dfn>Blink</dfn> (Chrome, Opera, Vivaldi, etc.)</li>
+<li><dfn>Webkit</dfn> (Safari, iOS-based browsers, Yandex, UC Browser, etc.)</li>
+<li><dfn>Edge</dfn> (Microsoft Edge)</li>
+<li><dfn>Trident</dfn> (Internet Explorer)</li>
+</ul-->
+</section>
+
+
+
+
+
+<!--section id="todo">
+<h2 class="notoc">To do</h2>
+<ul style="color:red;">
+<li>Link it to overhang (which gives more room by overlapping adjacent bases)</li>
+<li>Figure out what to do about ruby-merge – present as managing compound nouns, ie. managing the space within adjacent ruby pairs?</li>
+<li>section on styling base text, including removal, replacement with boxes (for educational text), etc.</li>
+<li>clarify <a  href="https://drafts.csswg.org/css-ruby-1/#white-space">space handling</a> - do this in ruby markup article too</li>
+<li>setting line height</li>
+<li>making line head and end flush</li>
+</ul>
+</section-->
+
+<section id="endlinks">
+<h2>Further reading</h2>
+<aside class="section" id="survey"> </aside><script>document.getElementById('survey').innerHTML = g.survey</script>
+
+<ul id="full-links">
+<li>
+<p><a href="index">What is ruby?</a></p>
+</li>
+<li>
+<p>Related links, <cite>Authoring web pages</cite></p>
+<ul>
+<li><a href="https://www.w3.org/International/techniques/authoring-html#ruby">Using ruby markup</a></li>
+<li><a href="https://www.w3.org/International/techniques/authoring-html#rubystyle">Styling ruby text</a></li>
+</ul>
+</li>
+</ul>
+</section>
+
+<footer id="thefooter"></footer><script>document.getElementById('thefooter').innerHTML = g.bottomOfPage</script>
+<script>completePage(); //highlightCode();
+</script>
+</body>
+</html>
