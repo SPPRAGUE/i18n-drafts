@@ -44,18 +44,26 @@ f.additionalLinks = ''
 <link rel="stylesheet" href="../../style/prism.css">
 <link rel="stylesheet" href="styling-data/local.css">
 
-<style>
 
+
+
+<style>
 .codeExample { margin:0 0 0 7.5%; width: 60%; }
 .codeExample figure { margin:0; }
 .sidebarNote { margin: .5em 1em 0 2em; }
 .sidebarNote aside { margin: 0; float: none; width: 24%; }
 .multipleFigs { display: flex; flex-direction: row; flex-wrap: wrap; }
 .multipleFigs>div { flex:1; text-align:center; }
+
+.options { font-size: 90%; }
 </style>
 <!-- styling for alignment examples:
 ruby { font-size: 55px; font-family: "ms mincho", stsong, 'lisong pro'; color: #333; }
 -->
+
+
+
+
 <script>
 function highlightCode () {
 	var examples = document.querySelectorAll('figure.example')
@@ -66,8 +74,22 @@ function highlightCode () {
 		examples[i].innerHTML = out
 		}
 	}
+
+function setUnderline (classname, value) {
+    document.querySelectorAll(classname)
+        .forEach(el => el.style.textUnderlinePosition = value)
+    }
+
+function setFont (classname, value) {
+    document.querySelectorAll(classname)
+        .forEach(el => el.style.fontFamily = value)
+    }
+
 </script>
 </head>
+
+
+
 
 <body>
 <header>
@@ -82,7 +104,7 @@ function highlightCode () {
 <div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script>
 </div>
 
-<p>This article explores various ways in which text decoration may need to be managed for non-Latin scripts, and some of the CSS properties that can be useful.</p>
+<p>This article explores various ways in which text decoration  needs to be managed for non-Latin scripts, and  CSS properties that can be useful.</p>
 
 <p>We won't simply reproduce the spec itself here, but rather provide guidance about how content authors can achieve key techniques.</p>
 </section>
@@ -162,47 +184,6 @@ text-underline-position: from-font;</code></pre>
 
 
 
-<section id="under">
-<h3>Positioning below the em box</h3>
-
-<p>You can use <a href="https://www.w3.org/TR/css-text-decor-4/#text-underline-position-property"><code class="kw" translate="no">text-underline-position: under</code></a> to push the underline below the font's em box descent metric.  This is a handy value when dealing with languages such as Chinese and Japanese, where character glyphs extend slightly below the alphabetic baseline and have no diacritics below them. It is also useful to clear things such as parentheses and subscripts, and is sometimes referred to as the ‘accounting’ underline. However, some fonts have descenders or diacritics that extend below the font’s em box — for those, see the next section.</p>
-
-<div id="fig-under" class="sidenoteGroup">
-<figure class="example" lang="en">
-<pre><code class="language-css">text-decoration: underline;
-text-underline-position: under;</code></pre>
-</figure>
-
-<div id="out-under" class="browser_output">
-<p class="browser_output_title">Output in your browser (only the bottom line of each pair uses text-underline-position):</p>
-<div style="text-decoration: underline; font-size:2rem; line-height: 2; text-decoration-color: tan;">
-<div id="test-under-ascii-control">
-<p lang="en">The pipes carry water (H₂O)</p>
-</div>
-<div id="test-under-ascii">
-<p lang="en" style="text-underline-position: under;">The pipes carry water (H₂O)</p>
-</div>
-<div id="test-under-control">
-<p lang="ja">パイプは水（H₂O）を運びます</p>
-</div>
-<div id="test-under">
-<p lang="ja" style="text-underline-position: under;">パイプは水（H₂O）を運びます</p>
-</div>
-</div>
-<p>Choose a font: <input oninput="document.getElementById('test-under-ascii-control').style.fontFamily = this.value; document.getElementById('test-under-ascii').style.fontFamily = this.value; document.getElementById('test-under').style.fontFamily = this.value; document.getElementById('test-under-control').style.fontFamily = this.value;"></p>
-</div>
-
-<p><strong>This needs to be used in conjunction with a suitable font.</strong> If the font has built-in metrics to indicate the preferred position of the underline then that will be used. Otherwise the value falls back to <code class="kw" translate="no">auto</code>, which relies on the browser to do the right thing, and will generally fail.</p>
-
-<aside class="implnote">
-<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> <img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> <img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> All three major browser engines support the use of <code class="kw" translate="no">text-underline-offset</code>.</p>
-
-<p><a target="_blank" href="https://w3c.github.io/i18n-tests/results/css-ruby#ruby_align_start">See test results for major browsers</a>.</p>
-</aside>
-</div>
-</section>
-
-
 
 
 
@@ -256,6 +237,125 @@ text-underline-offset: &lt;distance&gt;;</code></pre>
 <p>If the value is set to <code class="kw" translate="no">auto</code> the browser takes control of the positioning. Note that if <code class="kw" translate="no">text-underline-position</code> is also set to <code class="kw" translate="no">from-font</code>, then that overrides any <code class="kw" translate="no">text-underline-offset:auto</code> setting.</p>
 </section>
 </section>
+
+
+
+
+
+
+
+
+
+<section id="under">
+<h2>Underlines for CJK and subscripts</h2>
+
+<p>You can use <a href="https://www.w3.org/TR/css-text-decor-4/#text-underline-position-property"><code class="kw" translate="no">text-underline-position: under</code></a> to push the underline below the font's em box descent metric.  This is a handy value when dealing with languages such as Chinese and Japanese, where character glyphs extend slightly below the alphabetic baseline (and have no diacritics below them).</p>
+
+<p>It is also useful to clear things such as parentheses and subscripts, and is sometimes referred to as the ‘accounting’ underline. However, some fonts have descenders or diacritics that extend below the font’s em box — for those, see the previous section.</p>
+
+<div id="fig-under" class="sidenoteGroup">
+<figure class="example" lang="en">
+<pre><code class="language-css">text-decoration: underline;
+text-underline-position: under;</code></pre>
+</figure>
+
+
+<div id="out-under" class="browser_output">
+<p class="browser_output_title">Output in your browser (only the bottom line of each pair uses text-underline-position):</p>
+
+<div style="text-decoration: underline; font-size:2rem; line-height: 2; text-decoration-color: tan;">
+
+<div class="test-under">
+<p lang="en">The pipes carry water (H₂O)</p>
+</div>
+
+<div class="test-under">
+<p lang="en" style="text-underline-position: under;">The pipes carry water (H₂O)</p>
+</div>
+
+<div class="test-under">
+<p lang="ja">パイプは水（H₂O）を運びます</p>
+</div>
+
+<div class="test-under">
+<p lang="ja" style="text-underline-position: under;">パイプは水（H₂O）を運びます</p>
+</div>
+</div>
+
+<p>Choose a font: <input oninput="setFont('.test-under',this.value)"></p>
+</div>
+
+<aside class="implnote">
+<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> <img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> <img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> All three major browser engines support the use of <code class="kw" translate="no">text-underline-offset</code>.</p>
+
+<p><a target="_blank" href="https://w3c.github.io/i18n-tests/results/css-ruby#ruby_align_start">See test results for major browsers</a>.</p>
+
+<figure id="under_example" style="width:100%; margin-inline:0;">
+<p><img src="text_decoration_data/under.jpg" alt="" style="height:10rem;"></p>
+<figcaption>How text-underline-position:under can change the position of the underline.</figcaption>
+</figure>
+</aside>
+</div>
+
+<p>Because the <code class="kw" translate="no">text-underline-position</code> property inherits and is not reset by the <code class="kw" translate="no">text-decoration</code> shorthand property, it can be useful to set its value at a global level, so that all underlines in the page adopt the preferred settings.</p>
+
+
+
+
+
+
+
+<section id="vertical_underlines">
+<h3>Vertical text</h3>
+
+<p>Underlines for vertically set text can appear to the left or to the right of the line. For Chinese, the default position is to the left of the line; for Japanese, it is to the right. In fact, the latest versions of Gecko, Blink, and WebKit browsers automatically put the line on the expected side by default, as long as the language is declared.</p>
+
+<p>For Mongolian text, using the traditional script, the underline should be on the right, like for Japanese. At the time of writing, this is the default rendering for Gecko and WebKit browsers, but not for Chrome (which puts the line on the left).</p>
+
+<p>To control this explicitly (which is currently necessary for Mongolian), you can use one of two additional values of <code class="kw" translate="no">text-underline-position</code>. The values <code class="kw" translate="no">right</code> and <code class="kw" translate="no">left</code> indicate where the underline will occur relative to the line of text.</p>
+
+
+<div id="fig-underV" class="sidenoteGroup">
+<figure class="example" lang="en">
+<pre><code class="language-css">text-decoration: underline;
+text-underline-position: left | right;</code></pre>
+</figure>
+
+<div id="out-underV" class="browser_output">
+<p class="browser_output_title">Output in your browser (only the bottom line of each pair uses text-underline-position):</p>
+
+<div style="font-size:2rem; line-height: 2; writing-mode:vertical-rl; width:100%;">
+<div id="test-underlineV">
+<p lang="ja" class="verticalText" style="text-decoration: underline; text-decoration-color: tan;">パイプは水を運びます</p>
+<p lang="mn" class="verticalText" style="text-decoration: underline; text-decoration-color: tan;">ᠠᠦ᠋ᠲ᠋ᠣᠪᠦ᠋ᠰ</p>
+<p lang="zh" class="verticalText" style="text-decoration: underline; text-decoration-color: tan;">管道输送水</p>
+</div>
+</div>
+
+<p class="options">Choose a font: <input oninput="setFont('.verticalText', this.value)">
+&nbsp;
+Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.verticalText', 'under left')">Left</label>
+<label><input type="radio" name="vunder" onClick="setUnderline('.verticalText', 'under right')"> Right</label>
+</p>
+</div>
+
+<aside class="implnote">
+<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> <img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> <img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> All three major browser engines support the use of <code class="kw" translate="no">text-underline-offset</code>.</p>
+
+<p><a target="_blank" href="https://w3c.github.io/i18n-tests/results/css-ruby#ruby_align_start">See test results for major browsers</a>.</p>
+
+<figure id="underV_example" style="width:100%; margin-inline:0;">
+<p><img src="text_decoration_data/vertical.jpg" alt="" style="height:14rem;"></p>
+<figcaption>Default underline positions for (right to left) Japanese, Mongolian, and Chinese.</figcaption>
+</figure>
+</aside>
+</div>
+
+<p>The browser's default positioning of the vertical lines may need to be nearer or further away from the line of text. If you want to change this, use <code class="kw" translate="no">text-underline-offset</code>, and we saw in the previous section. It is noticeable that the default position of the line on the right for Gecko, Blink, and WebKit browsers tends to be closer to the text than when it is on the left.</p>
+</section>
+</section>
+
+
 
 
 
