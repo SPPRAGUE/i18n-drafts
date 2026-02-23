@@ -108,9 +108,9 @@ function setFont (classname, value) {
 <div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script>
 </div>
 
-<p>This article explores various ways in which text decoration  needs to be managed for non-Latin scripts, and  CSS properties that can be useful.</p>
+<p>This article explores various ways in which CSS can be used to manage text decoration  for non-Latin scripts.</p>
 
-<p>We won't simply reproduce the spec itself here, but rather provide guidance about how content authors can achieve key techniques.</p>
+<p>Rather than simply reproducing the spec itself here, we provide task-oriented guidance to help content authors  achieve key techniques.</p>
 </section>
 
 
@@ -120,7 +120,7 @@ function setFont (classname, value) {
 <section id="configs">
 <h2>Working with long descenders</h2>
 
-<p>The underline for Latin script text generally falls just below the alphabetic baseline.  However, for some writing systems,  it is better to move the underline downwards so that it doesn't cut through diacritics or descenders.</p>
+<p>The underline for Latin script text generally falls just below the alphabetic baseline.  However, for some other writing systems,  it is better to move the underline downwards so that it doesn't cut through diacritics or descenders.</p>
 
 <p>Writing systems that extend below the baseline much further than Latin script text include Arabic, most Brahmi-derived scripts, particularly Balinese and Javanese, Tibetan, etc. The following image shows typical metrics for Arabic font glyphs compared to Latin. Note the extra vertical space required.</p>
 
@@ -132,9 +132,19 @@ function setFont (classname, value) {
 </figure>
 </div>
 
+<p>The CSS specification suggests that, by default, browsers should place an underline at or near the alphabetic baseline, but should also take into account that some scripts will need the underline to be lower. Browsers are encouraged to take these scripts into account for default settings and <code class="kw" translate="no">auto</code> values, but typically some additional help will be needed.</p>
+
 <p>CSS offers three possible strategies for positioning the underline lower than just below the alphabetic baseline. The choice of which to use will often depend on the font used.</p>
 
-<p>The CSS specification suggests that, by default, browsers should place an underline at or near the alphabetic baseline, but should also take into account that some scripts will need the underline to be lower. Browsers are encouraged to take these scripts into account for default settings and <code class="kw" translate="no">auto</code> values, but typically some additional help will be needed.</p>
+<p>If you allow the browser to use the default position or an auto value, the line will typically be drawn immediately below the alphabetic baseline, cutting through descenders, subjoined consonants/vowels and diacritics. Gecko browsers will however apply the position given by font metrics, if such is available for a font.</p>
+
+<p>Using text-underline-position:from-font typically lowers the underline, but only for the few fonts that contain the metric. Typically, the underline still cuts through Arabic descenders.</p>
+
+<p>Text-underline-position:under usually pushes the underline down further, and clears most descenders (though not always the diacritics below the descender), and subjoined glyphs.</p>
+
+<p>Text-underline-offset gives you control over the position of the underline, allowing for clearance of text such as in nastaliq fonts, as well as clearance of any diacritics below descenders.</p>
+
+<p>All of these approaches place the underline differently, according to the font used. You therefore need to set the underline position along with a font-family. When you don't know which font will be used, text-underline-position:under may provide the best general approach.</p>
 
 
 
@@ -197,7 +207,7 @@ text-underline-position: from-font;</code></pre>
 
 
 <aside class="implnote">
-<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> For Arabic script text, underlines appear a little way below the baseline by default, regardless of the font used.   <code class="kw" translate="no">from-font</code> doesn't have any effect on the placement.</p>
+<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> The   <code class="kw" translate="no">from-font</code> position is used by Gecko browsers for the default or auto position, where that metric is available.</p>
 
 <p class="impl"><img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> For Arabic script text, underlines appear to be lowered slightly by default, but they don't clear the descenders or diacritics.  Using <code class="kw" translate="no">from-font</code> has no effect.</p>
 
