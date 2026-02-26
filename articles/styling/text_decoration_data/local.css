@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Scheherazade New WF';
+    src: url('../../../style/fonts/scheherazadenew-regular-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+	}
+
+
+
+.codeExample { margin:0 0 0 7.5%; width: 60%; }
+.codeExample figure { margin:0; }
+.sidebarNote { margin: .5em 1em 0 2em; }
+.sidebarNote aside { margin: 0; float: none; width: 24%; }
+.multipleFigs { display: flex; flex-direction: row; flex-wrap: wrap; }
+.multipleFigs>div { flex:1; text-align:center; }
+
+.options { font-size: 90%; }
+
+details.moreTests { margin-inline-start: 10%; margin-inline-end: 35%; font-size: 80%; margin-block: 2rem; }
+summary { font-style: italic; cursor: pointer; }
+details p { margin-inline: 0; }
