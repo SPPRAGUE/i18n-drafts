@@ -19,3 +19,5 @@
 details.moreTests { margin-inline-start: 10%; margin-inline-end: 35%; font-size: 80%; margin-block: 2rem; }
 summary { font-style: italic; cursor: pointer; }
 details p { margin-inline: 0; }
+
+details figure { margin-inline:7.5%; }
