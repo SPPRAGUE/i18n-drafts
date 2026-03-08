@@ -16,7 +16,7 @@ f.modifiers = ''; // people making substantive changes, and their affiliation
 f.searchString = 'article-underlines'; // blog search string - usually the filename without extensions
 f.firstPubDate = '2026-03-06'; // date of the first publication of the document (after review)
 f.lastSubstUpdate = { date:'2026-03-06', time:'10:10'}  // date and time of latest substantive changes to this document
-f.status = 'draft';  // should be one of draft, review, published, notreviewed or obsolete
+f.status = 'review';  // should be one of draft, review, published, notreviewed or obsolete
 f.path = '../../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
@@ -28,7 +28,7 @@ f.contributors = ''; // people providing useful contributions or feedback during
 // TRANSLATORS should fill in these assignments:
 f.translators = 'xxxNAME, ORG'; // translator(s) and their affiliation - a elements allowed, but use double quotes for attributes
 
-f.breadcrumb = 'markup';
+f.breadcrumb = 'styling';
 
 f.additionalLinks = ''
 </script>
@@ -427,7 +427,7 @@ text-underline-position: under;</code></pre>
 <h3>Specifying the distance explicitly (<code class="kw" translate="no">text-underline-offset</code>)</h3>
 
 <div class="sidenoteGroup">
-<p><a href="https://drafts.csswg.org/css-text-decor-4/#text-underline-position-property"><code class="kw" translate="no">text-underline-offset</code></a> provides a more reliable positioning of the underline relative to the text than the other approaches. For example, if you want to be sure that an underline always clears the glyphs,  this generally provides much more predictable results than the previous approaches. Although you may need to set a different offset for each type of script, the test results indicate that the results don't vary much or at all on a font to font basis.</p>
+<p><a href="https://drafts.csswg.org/css-text-decor-4/#text-underline-position-property"><code class="kw" translate="no">text-underline-offset</code></a> provides a more reliable positioning of the underline relative to the text than the other approaches. For example, if you want to be sure that an underline always clears the glyphs,  this generally provides much more predictable results than the previous approaches. Although you may need to set a different offset for each type of script, the test results indicate that the results don't vary as much, if at all, on a font to font basis.</p>
 
 
 <aside class="implnote">
@@ -474,10 +474,12 @@ text-underline-offset: &lt;distance&gt;;</code></pre>
 
 <p>The value can be expressed as a fixed distance, for example using <code class="kw" translate="no">px</code>, but generally speaking this is suboptimal because if the font size is changed that distance remains the same. It would be necessary to change the underline offset each time a change is made to the font size. A better approach is to specify the distance in ems or as a percentage of 1em.</p>
 
-<p><strong>The actual value needed will depend on the script characteristics.</strong>  The tests run below showed the following values to be effective: for unvowelled Arabic, 45%; for vowelled Arabic orthographies, 75%; for Javanese, 100%; for Khmer, 90%, and for Tibetan, 60%.</p>
+<p>The actual value needed will commonly depend on the <strong>script</strong> characteristics.  The tests run below showed the following values to be effective on the whole: for unvowelled Arabic, 45%; for vowelled Arabic orthographies, 75%; for Javanese, 100%; for Khmer, 90%, and for Tibetan, 60%. However, some font variation also occurs; for example, unvowelled text in the Scheherazade New and Amiri fonts required a setting of 60%, rather than 45%.</p>
 
-<p>It follows, then, that the font family and the underline offset for the text need to both be set at the same time. However, it's not necessary to change the value when the font size varies, and, unlike the other alternatives just discussed, one setting is likely to be useful for most or all fonts used for that script.</p>
+<p>It follows, then, that the font family and the underline offset for the text need to both be set at the same time. However, it's not necessary to change the value when the font size varies, and, unlike the other alternatives just discussed, one setting is more likely to be useful for most or all fonts used for that script.</p>
+
 <p>Values for <code class="kw" translate="no">text-underline-offset</code> can be negative, allowing you to move the underline higher as well as lower.</p>
+
 <p>Be aware that the offset is calculated in addition to any <code class="kw" translate="no">text-underline-position</code> setting. Unless you have a reason not to, it's best to ensure that <code class="kw" translate="no">text-underline-position</code> is not set when <code class="kw" translate="no">text-underline-offset</code> is applied.</p>
 
 <p>If the value is set to <code class="kw" translate="no">auto</code> the browser takes control of the positioning. Note that if <code class="kw" translate="no">text-underline-position</code> is also set to <code class="kw" translate="no">from-font</code>, then that overrides any <code class="kw" translate="no">text-underline-offset:auto</code> setting.</p>
@@ -719,7 +721,7 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 
 
 
-<details open class="moreTests">
+<details class="moreTests">
 <summary>More tests...</summary>
 
 <p>The following links allow you to test this property and value against a range of fonts. The links open a web page in a separate browser window.</p>
@@ -820,9 +822,9 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 
 
 <figure class="example" lang="en">
-<pre><code class="language-css">text-decoration: underline;
-text-underline-position: under left;
-text-underline-style: solid | wavy;</code></pre>
+<pre><code class="language-css">u { text-decoration:underline; text-underline-position:under; }
+u.pnoun { text-decoration-style: solid; }
+u.book { text-decoration-style: wavy; }</code></pre>
 </figure>
 
 <div id="out-style" class="browser_output">
@@ -877,8 +879,7 @@ text-underline-style: solid | wavy;</code></pre>
 
 
 <figure class="example" lang="en">
-<pre><code class="language-css">
-text-decoration-skip-inset: none | auto;</code></pre>
+<pre><code class="language-css">text-decoration-skip-inset: none | auto;</code></pre>
 </figure>
 
 <p>The bad news is that it is not yet supported  by  the major browser engines.  On the other hand, Gecko automatically puts the gap between <code class="kw" translate="no">u</code> elements even without the styling. But not Blink, nor WebKit.</p>
@@ -896,8 +897,7 @@ text-decoration-skip-inset: none | auto;</code></pre>
 <figure class="example" lang="en">
 <pre><code class="language-css">u { text-decoration:underline; text-underline-position:under; }
 u.pnoun { text-decoration-style: solid;  text-decoration-skip-inset: auto; }
-u.book { text-decoration-style: wavy; text-decoration-skip-inset: auto; }
-</code></pre>
+u.book { text-decoration-style: wavy; text-decoration-skip-inset: auto; }</code></pre>
 </figure>
 
 <div id="out-skipInset" class="browser_output">
