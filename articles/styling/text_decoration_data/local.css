@@ -21,3 +21,6 @@ summary { font-style: italic; cursor: pointer; }
 details p { margin-inline: 0; }
 
 details figure { margin-inline:7.5%; }
+
+
+.language-css code { padding: 0; }
