@@ -14,7 +14,7 @@
 .multipleFigs { display: flex; flex-direction: row; flex-wrap: wrap; }
 .multipleFigs>div { flex:1; text-align:center; }
 
-.browser_output p.options { font-size: 70%; margin-block-start: 1rem; }
+.browser_output p.options { font-size: 70%; margin-block-start: 2rem; }
 
 details.moreTests { margin-inline-start: 10%; margin-inline-end: 35%; font-size: 80%; margin-block: 2rem; }
 summary { font-style: italic; cursor: pointer; }

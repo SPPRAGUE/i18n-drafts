@@ -166,25 +166,34 @@ text-decoration-skip-inset: none|auto;</code></pre>
 
 <p>Key points to note are that only a few fonts are likely to make the metric available, and that the position may not always clear the bottom of the glyph descenders or any associated diacritics.</p>
 
-<div id="fig-from_font" class="sidenoteGroup">
+<p>It is possible to set <code class="kw" translate="no">text-underline-position</code> just once for the whole document; then any <code class="kw" translate="no">text-decoration</code> property or <code class="kw" translate="no">u</code> element that is used will automatically apply it. The CSS specification suggests the following.</p>
+
+
+
 <figure class="example" lang="en">
-<pre><code class="language-css">text-decoration: underline;
-text-underline-position: from-font;</code></pre>
+<pre><code class="language-css">:root { text-underline-position: from-font; }</code></pre>
 </figure>
 
-<div id="out-from_font" class="browser_output">
+<style>
+#demo-from_font .test_lines { font-size: 2.4rem; line-height: 2; font-family: 'Scheherazade New WF'; }
+#demo-from_font u { text-decoration: underline 2px tan; }
+</style>
+
+<div id="demo-from_font" class="browser_output">
 <p class="browser_output_title">Output in your browser (only the bottom two lines use text-underline-position):</p>
-<div style="font-size:2.4rem; line-height: 2; font-family: 'Scheherazade New WF';">
+
+<div class="test_lines">
 <div id="test-from_font-control">
-<p lang="ar" dir="rtl" style="text-decoration: underline 2px tan;">أمازيغ يوم في كل لري إنسان</p>
+<p lang="ar" dir="rtl"><u>أمازيغ يوم في كل لري إنسان</u></p>
 </div>
-<div id="test-from_font_nodiac" style="text-decoration: underline 2px tan; text-underline-position: from-font;" >
-<p lang="ar" dir="rtl">أمازيغ يوم في كل لري إنسان</p>
+<div id="test-from_font_nodiac" style="text-underline-position: from-font;" >
+<p lang="ar" dir="rtl"><u>أمازيغ يوم في كل لري إنسان</u></p>
 </div>
-<div id="test-from_font" style="text-decoration: underline 2px tan; text-underline-position: from-font;" >
-<p lang="ar" dir="rtl">داسې مٛعّٜرٜ تࣺيرࣹ لࣸرِيࣺ تُفْلِ گرٟسؠ باے</p>
+<div id="test-from_font" style="text-underline-position: from-font;" >
+<p lang="ar" dir="rtl"><u>داسې مٛعّٜرٜ تࣺيرࣹ لࣸرِيࣺ تُفْلِ گرٟسؠ باے</u></p>
 </div>
 </div>
+
 <p class="options">Choose a font: <input oninput="document.getElementById('test-from_font').style.fontFamily = this.value; document.getElementById('test-from_font_nodiac').style.fontFamily = this.value; document.getElementById('test-from_font-control').style.fontFamily = this.value;" placeholder="Scheherazade New WF"></p>
 </div>
 
@@ -251,7 +260,6 @@ text-underline-position: from-font;</code></pre>
 </figure>
 
 </details>
-</div>
 </section>
 
 
@@ -286,37 +294,39 @@ text-underline-position: from-font;</code></pre>
 
 <p>So, you should still test the results for a given font, and on multiple browsers.</p>
 
+<p>As mentioned in the previous section, it is possible to set <code class="kw" translate="no">text-underline-position</code> just once for the whole document; then any <code class="kw" translate="no">text-decoration</code> property that is used will automatically apply it. The CSS specification suggests the following.</p>
+
 
 
 <figure class="example" lang="en">
-<pre><code class="language-css">text-decoration: underline;
-text-underline-position: under;</code></pre>
+<pre><code class="language-css">:root { text-underline-position: under; }</code></pre>
 </figure>
 
-<div id="out-under" class="browser_output">
+<style>
+#demo-under .test_lines { font-size: 2.4rem; line-height: 2; font-family: 'Scheherazade New WF'; }
+#demo-under u { text-decoration: underline 2px tan; }
+</style>
+
+<div id="demo-under" class="browser_output">
 <p class="browser_output_title">Output in your browser (only the bottom two lines use text-underline-position):</p>
-<div style="font-size:2.4rem; line-height: 2; font-family: 'Scheherazade New WF';">
+
+<div class="test_lines">
 <div id="test-under-control">
-<p lang="ar" dir="rtl" style="text-decoration: underline 2px tan;">أَمَازِيغ يَوْم فيِ كُلّ هٰذِهِ إِنْسَان</p>
+<p lang="ar" dir="rtl"><u>أَمَازِيغ يَوْم فيِ كُلّ هٰذِهِ إِنْسَان</u></p>
 </div>
-<div id="test-under_nodiac" style="text-decoration: underline 2px tan; text-underline-position: under;" >
-<p lang="ar" dir="rtl">أمازيغ يوم في كل هٰذه إنسان</p>
+<div id="test-under_nodiac" style="text-underline-position: under;" >
+<p lang="ar" dir="rtl"><u>أمازيغ يوم في كل هٰذه إنسان</u></p>
 </div>
-<div id="test-under" style="text-decoration: underline 2px tan; text-underline-position: under;" >
-<p lang="ar" dir="rtl">داسې مٛعّٜرٜ تࣺيرࣹ لࣸرِيࣺ تُفْلِ گرٟسؠ باے</p>
+<div id="test-under" style="text-underline-position: under;" >
+<p lang="ar" dir="rtl"><u>داسې مٛعّٜرٜ تࣺيرࣹ لࣸرِيࣺ تُفْلِ گرٟسؠ باے</u></p>
 </div>
 </div>
+
 <p class="options">Choose a font: <input oninput="document.getElementById('test-under').style.fontFamily = this.value; document.getElementById('test-under_nodiac').style.fontFamily = this.value; document.getElementById('test-under-control').style.fontFamily = this.value;" placeholder="Scheherazade New WF">
 </p>
 </div>
 
 
-
-<p>It is possible to set <code class="kw" translate="no">text-underline-position</code> just once for the whole document; then any <code class="kw" translate="no">text-decoration</code> property that is used will automatically apply it. The CSS specification suggests the following.</p>
-
-<figure class="example" lang="en">
-<pre><code class="language-css">:root { text-underline-position: under; }</code></pre>
-</figure>
 
 <details class="moreTests">
 <summary>More tests...</summary>
@@ -444,21 +454,29 @@ text-underline-position: under;</code></pre>
 
 
 
+
+
 <figure class="example" lang="en">
-<pre><code class="language-css">text-decoration: underline;
-text-underline-offset: &lt;distance&gt;;</code></pre>
+<pre><code class="language-css">:root { text-underline-offset: &lt;distance&gt;; }</code></pre>
 </figure>
 
-<div id="out-underline_offset" class="browser_output">
+<style>
+#demo-offset .test_lines { font-size: 2.4rem; line-height: 2; font-family: 'Scheherazade New WF'; }
+#demo-offset u { text-decoration: underline 2px tan; }
+</style>
+
+<div id="demo-offset" class="browser_output">
 <p class="browser_output_title">Output in your browser (only the bottom line uses text-underline-offset):</p>
-<div style="font-size:2.4rem; line-height: 2; font-family: 'Scheherazade New WF';">
-<div id="test-underline_offset-control">
-<p lang="ar" dir="rtl" style="text-decoration: underline 2px tan;">داسې مٛعّٜرٜ تࣺيرࣹ لࣸرِيࣺ تُفْلِ گرٟسؠ باے</p>
+
+<div class="test_lines">
+<div id="test-offset-control">
+<p lang="ar" dir="rtl"><u>داسې مٛعّٜرٜ تࣺيرࣹ لࣸرِيࣺ تُفْلِ گرٟسؠ باے</u></p>
 </div>
-<div style="margin-block-end: 2em;">
-<p id="test-underline_offset" lang="ar" dir="rtl" style="text-decoration: underline 2px tan; text-underline-offset: 75%;">داسې مٛعّٜرٜ تࣺيرࣹ لࣸرِيࣺ تُفْلِ گرٟسؠ باے</p>
+<div>
+<p id="test-offset" lang="ar" dir="rtl" style="text-underline-offset: 75%;"><u>داسې مٛعّٜرٜ تࣺيرࣹ لࣸرِيࣺ تُفْلِ گرٟسؠ باے</u></p>
 </div>
 </div>
+
 <p class="options">Choose a font: 
 <input placeholder="Scheherazade New"
     oninput="document.getElementById('test-underline_offset').style.fontFamily = this.value; document.getElementById('test-underline_offset-control').style.fontFamily = this.value;"
@@ -619,36 +637,42 @@ text-underline-offset: &lt;distance&gt;;</code></pre>
 
 <p>It is also useful to clear things such as parentheses and subscripts, and is sometimes referred to as the ‘accounting’ underline. However, some fonts have descenders or diacritics that extend below the font’s em box — for those, see the previous section.</p>
 
+
+
+
+
 <figure class="example" lang="en">
-<pre><code class="language-css">text-decoration: underline;
-text-underline-position: under;</code></pre>
+<pre><code class="language-css">:root { text-underline-position: under; }</code></pre>
 </figure>
 
+<style>
+#demo-under_horiz .test_lines { font-size: 2rem; line-height: 2;  }
+#demo-under_horiz u { text-decoration: underline 2px tan; }
+</style>
 
-<div id="out-under_horiz" class="browser_output">
+<div id="demo-under_horiz" class="browser_output">
 <p class="browser_output_title">Output in your browser (only the bottom line of each pair uses text-underline-position):</p>
 
-<div style="text-decoration: underline; font-size:2rem; line-height: 2; text-decoration-color: tan;">
-
+<div class="test_lines">
 <div class="test-under">
-<p lang="en">The pipes carry water (H₂O)</p>
+<p lang="en"><u>The pipes carry water (H₂O)</u></p>
 </div>
-
 <div class="test-under">
-<p lang="en" style="text-underline-position: under;">The pipes carry water (H₂O)</p>
+<p lang="en" style="text-underline-position: under;"><u>The pipes carry water (H₂O)</u></p>
 </div>
-
 <div class="test-under">
-<p lang="ja">パイプは水（H₂O）を運びます</p>
+<p lang="ja"><u>パイプは水（H₂O）を運びます</u></p>
 </div>
-
 <div class="test-under">
-<p lang="ja" style="text-underline-position: under;">パイプは水（H₂O）を運びます</p>
+<p lang="ja" style="text-underline-position: under;"><u>パイプは水（H₂O）を運びます</u></p>
 </div>
 </div>
 
 <p class="options">Choose a font: <input oninput="setFont('.test-under',this.value)"></p>
 </div>
+
+
+
 
 <p>Because the <code class="kw" translate="no">text-underline-position</code> property inherits and is not reset by the <code class="kw" translate="no">text-decoration</code> shorthand property, it can be useful to set its value at a global level, so that all underlines in the page adopt the preferred settings.</p>
 </section>
@@ -681,20 +705,36 @@ text-underline-position: under;</code></pre>
 
 <p>To control this explicitly (which is currently necessary for Mongolian), you can use one of two additional values of <code class="kw" translate="no">text-underline-position</code>. The values <code class="kw" translate="no">right</code> and <code class="kw" translate="no">left</code> indicate where the underline will occur relative to the line of text.</p>
 
+<p>As mentioned earlier, the <code class="kw" translate="no">text-underline-position</code> value can be assigned once for the document as a whole.  For the CJK languages it is possible to also declare it once in a way that works for both horizontal and vertical text.   The CSS specification suggests something like the following.</p>
+
+
+
+
 
 <figure class="example" lang="en">
-<pre><code class="language-css">text-decoration: underline;
-text-underline-position: left | right;</code></pre>
+<pre><code class="language-css">:root:lang(ja), [lang|=ja], 
+:root:lang(ko), [lang|=ko],
+:root:lang(mn), [lang|=mn] { 
+    text-underline-position: under right; }
+:root:lang(zh), [lang|=zh] { 
+    text-underline-position: under left; }
+</code></pre>
 </figure>
 
-<div id="out-under_vert" class="browser_output">
+<style>
+#demo-under_vert .test_lines { writing-mode:vertical-rl; width:100%; font-size: 2rem; line-height: 2; }
+#demo-under_vert u { text-decoration: underline 2px tan; }
+</style>
+
+
+<div id="demo-under_vert" class="browser_output">
 <p class="browser_output_title">Output in your browser:</p>
 
-<div style="font-size:2rem; line-height: 2; writing-mode:vertical-rl; width:100%;">
+<div class="test_lines">
 <div id="test-underlineV">
-<p lang="ja" class="verticalText" style="text-decoration: underline; text-decoration-color: tan;">パイプは水を運びます</p>
-<p lang="mn" class="verticalText" style="text-decoration: underline; text-decoration-color: tan;">ᠵᠠᠷᠢᠮ ᠳᠠᠭᠠᠨ ᠭᠠᠳᠠᠨ᠎ᠠ</p>
-<p lang="zh" class="verticalText" style="text-decoration: underline; text-decoration-color: tan;">管道输送水</p>
+<p lang="ja" class="verticalText" style="text-underline-position: under right;"><u>パイプは水を運びます</u></p>
+<p lang="mn" class="verticalText" style="text-underline-position: under right;"><u>ᠵᠠᠷᠢᠮ ᠳᠠᠭᠠᠨ ᠭᠠᠳᠠᠨ᠎ᠠ</u></p>
+<p lang="zh" class="verticalText" style="text-underline-position: under left;"><u>管道输送水</u></p>
 </div>
 </div>
 
@@ -710,12 +750,7 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 
 <p>The tests (below) show that Blink browsers do not automatically position Mongolian underlines on the correct side, so Mongolian underlines need to be styled in order to be interoperable. Chinese and Japanese underlines are, by default, positioned on the correct side by all major browsers.</p>
 
-<p>As mentioned earlier, the <code class="kw" translate="no">text-underline-position</code> value can be assigned once for the document as a whole.  For the CJK languages it is possible to also declare it once in a way that works for both horizontal and vertical text.   The CSS specification suggests something like the following.</p>
 
-<figure class="example" lang="en">
-<pre><code class="language-css">:root:lang(ja), [lang|=ja], :root:lang(ko), [lang|=ko] { text-underline-position: under right; }
-:root:lang(zh), [lang|=zh] { text-underline-position: under left; }</code></pre>
-</figure>
 
 
 
