@@ -96,10 +96,10 @@ function setFont (classname, value) {
 <p>Apart from <code class="kw" translate="no">text-decoration</code>, the CSS properties we will use are:</p>
 
 <figure class="example" lang="en">
-<pre><code class="language-css">text-underline-position: auto|[ from-font|under]||[ left|right ]
-text-underline-offset: auto|&lt;length&gt;|&lt;percentage&gt;
-text-underline-style: solid|double|dotted|dashed|wavy;
-text-decoration-skip-inset: none|auto;</code></pre>
+<pre><code class="language-css">text-underline-position:auto|[ from-font|under]||[ left|right ]
+text-underline-offset:auto|&lt;length&gt;|&lt;percentage&gt;
+text-underline-style:solid|double|dotted|dashed|wavy;
+text-decoration-skip-inset:none|auto;</code></pre>
 </figure>
 </section>
 
@@ -171,7 +171,7 @@ text-decoration-skip-inset: none|auto;</code></pre>
 
 
 <figure class="example" lang="en">
-<pre><code class="language-css">:root { text-underline-position: from-font; }</code></pre>
+<pre><code class="language-css">:root { text-underline-position:from-font; }</code></pre>
 </figure>
 
 <style>
@@ -299,7 +299,7 @@ text-decoration-skip-inset: none|auto;</code></pre>
 
 
 <figure class="example" lang="en">
-<pre><code class="language-css">:root { text-underline-position: under; }</code></pre>
+<pre><code class="language-css">:root { text-underline-position:under; }</code></pre>
 </figure>
 
 <style>
@@ -457,7 +457,7 @@ text-decoration-skip-inset: none|auto;</code></pre>
 
 
 <figure class="example" lang="en">
-<pre><code class="language-css">:root { text-underline-offset: &lt;distance&gt;; }</code></pre>
+<pre><code class="language-css">:root { text-underline-offset:&lt;distance&gt;; }</code></pre>
 </figure>
 
 <style>
@@ -479,9 +479,9 @@ text-decoration-skip-inset: none|auto;</code></pre>
 
 <p class="options">Choose a font: 
 <input placeholder="Scheherazade New"
-    oninput="document.getElementById('test-underline_offset').style.fontFamily = this.value; document.getElementById('test-underline_offset-control').style.fontFamily = this.value;"
+    oninput="document.getElementById('test-offset').style.fontFamily = this.value; document.getElementById('test-offset-control').style.fontFamily = this.value;"
     > 
-    Change the offset: <input id="offsetSlider" type="range" min="20" max="100" step="1" value="75" oninput="document.getElementById('test-underline_offset').style.textUnderlineOffset = this.value+'%';
+    Change the offset: <input id="offsetSlider" type="range" min="20" max="100" step="1" value="75" oninput="document.getElementById('test-offset').style.textUnderlineOffset = this.value+'%';
          document.getElementById('offsetSliderValue').value=this.value+'%';"
          style="width:8rem; height:1rem;" placeholder="Scheherazade New WF">
 <input value="75%" id="offsetSliderValue" style="width:3em;">
@@ -715,9 +715,9 @@ text-decoration-skip-inset: none|auto;</code></pre>
 <pre><code class="language-css">:root:lang(ja), [lang|=ja], 
 :root:lang(ko), [lang|=ko],
 :root:lang(mn), [lang|=mn] { 
-    text-underline-position: under right; }
+    text-underline-position:under right; }
 :root:lang(zh), [lang|=zh] { 
-    text-underline-position: under left; }
+    text-underline-position:under left; }
 </code></pre>
 </figure>
 
@@ -746,7 +746,7 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 </div>
 
 
-<p>The browser's default positioning of the vertical lines may need to be nearer or further away from the line of text. If you want to change this, use <code class="kw" translate="no">text-underline-offset</code>, as we saw in the previous section. It is noticeable that the default position of the line on the right for Gecko, Blink, and WebKit browsers tends to be closer to the text than when it is on the left.</p>
+<p>The browser's default positioning of the vertical lines may need to be nearer or further away from the line of text. For example, in some combinations of browser and font, the underline is broken  alongside  characters with glyphs that extend to the right. If you want to change this, use <code class="kw" translate="no">text-underline-offset</code>, as we saw in the previous section.</p>
 
 <p>The tests (below) show that Blink browsers do not automatically position Mongolian underlines on the correct side, so Mongolian underlines need to be styled in order to be interoperable. Chinese and Japanese underlines are, by default, positioned on the correct side by all major browsers.</p>
 
@@ -771,7 +771,7 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 
 <a href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Cp%20id%3D%22unstyled%22%3E%E3%83%91%E3%82%A4%E3%83%97%E3%81%AF%E6%B0%B4%E3%82%92%E9%81%8B%E3%81%B3%E3%81%BE%E3%81%99%3C%2Fp%3E%0A%3Cp%20id%3D%22teststyled%22%3E%E3%83%91%E3%82%A4%E3%83%97%E3%81%AF%E6%B0%B4%E3%82%92%E9%81%8B%E3%81%B3%E3%81%BE%E3%81%99%3C%2Fp%3E%0A%3Cp%20id%3D%22teststyled2%22%3E%E3%83%91%E3%82%A4%E3%83%97%E3%81%AF%E6%B0%B4%E3%82%92%E9%81%8B%E3%81%B3%E3%81%BE%E3%81%99%3C%2Fp%3E&css=.test%20%7B%20writing-mode%3Avertical-rl%3B%20padding%3A1rem%3B%20%7D%0A%23unstyled%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20%7D%0A%23teststyled%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20text-underline-position%3A%20under%20right%3B%20%7D%0A%23teststyled2%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20text-underline-position%3A%20under%20right%3B%20text-underline-offset%3A20%25%3B%20%7D&lang=ja&fontSize=36&width=482&height=281&a=If%20text-decoration%3Aunderline%20is%20used%20for%20vertical%20Japanese%20text%20the%20underline%20will%20be%20drawn%20to%20the%20right.&i=Test%20passes%20if%20the%20underline%20is%20drawn%20to%20the%20left%20of%20the%20Japanese%20text.&fonts=title%3AmacOS%2CHiragino%20Mincho%20Pro%2CToppan%20Bunkyu%20Mincho%2CYuMincho%2CHiragino%20Kaku%20Gothic%20Pro%2CHiragino%20Sans%2COsaka%2CToppan%20Bunkyu%20Gothic%2CYuGothic%2CArial%20Unicode%20MS%2CHiragino%20Maru%20Gothic%20Pro%2CTsukushi%20A%20Round%20Gothic%2CTsukushi%20B%20Round%20Gothic%2CToppan%20Bunkyu%20Midashi%20Gothic%2CYuKyokasho%2CYuKyokasho%20Yoko%2Ctitle%3AWindows%2CMS%20Mincho%2CMS%20PMincho%2CMeiryo%2CMeiryo%20UI%2CMS%20Gothic%2CMS%20PGothic%2CMS%20UI%20Gothic%2Ctitle%3ANoto%2FSIL%2CNoto%20Serif%20CJK%20JP%2CNoto%20Sans%20CJK%20JP" target="_blank">Japanese</a> •
 
-<a href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Cp%20id%3D%22unstyled%22%3E%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0%3C%2Fp%3E%0A%3Cp%20id%3D%22teststyled%22%3E%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0%3C%2Fp%3E%0A%3Cp%20id%3D%22teststyled2%22%3E%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0%3C%2Fp%3E&css=.test%20%7B%20writing-mode%3Avertical-lr%3B%20padding%3A1rem%3B%20%7D%0A%23unstyled%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20%7D%0A%23teststyled%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20text-underline-position%3A%20right%3B%20%7D%0A%23teststyled2%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20text-underline-position%3A%20right%3B%20text-underline-offset%3A20%25%3B%20%7D&lang=mn&fontSize=36&width=537&height=281&a=If%20text-decoration%3Aunderline%20is%20used%20for%20vertical%20Mongolian%20text%20the%20underline%20will%20be%20drawn%20to%20the%20right.&i=Test%20passes%20if%20the%20underline%20is%20drawn%20to%20the%20right%20of%20the%20Mongolian%20text.&fonts=title%3AWindows%2CMongolian%20Baiti%2Ctitle%3ANoto%2FSIL%2CNoto%20Sans%20Mongolian" target="_blank">Mongolian</a>
+<a href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Cp%20id%3D%22unstyled%22%3E%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0%3C%2Fp%3E%0A%3Cp%20id%3D%22teststyled%22%3E%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0%3C%2Fp%3E%0A%3Cp%20id%3D%22teststyled2%22%3E%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0%3C%2Fp%3E&css=.test%20%7B%20writing-mode%3Avertical-lr%3B%20padding%3A1rem%3B%20%7D%0A%23unstyled%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20%7D%0A%23teststyled%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20text-underline-position%3A%20right%3B%20%7D%0A%23teststyled2%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20text-underline-position%3A%20right%3B%20text-underline-offset%3A20%25%3B%20%7D&lang=mn&fontSize=36&width=537&height=281&a=If%20text-decoration%3Aunderline%20is%20used%20for%20vertical%20Mongolian%20text%20the%20underline%20will%20be%20drawn%20to%20the%20right.&i=Test%20passes%20if%20the%20underline%20is%20drawn%20to%20the%20right%20of%20the%20Mongolian%20text.&fonts=title%3AWindows%2CMongolian%20Baiti%2Ctitle%3ANoto%2FSIL%2CNoto%20Sans%20Mongolian%2Ctitle%3AOther%2CMongolian%20Universal%20White%2CMongolian%20Writing" target="_blank">Mongolian</a>
 </p>
 
 
@@ -783,7 +783,7 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 
 <a href="https://r12a.github.io/scripts/apps/showfonts/index.html?text=%E3%83%91%E3%82%A4%E3%83%97%E3%81%AF%E6%B0%B4%E3%82%92%E9%81%8B%E3%81%B3%E3%81%BE%E3%81%99&fonts=title%3AmacOS%2CHiragino%20Mincho%20Pro%2CToppan%20Bunkyu%20Mincho%2CYuMincho%2CHiragino%20Kaku%20Gothic%20Pro%2CHiragino%20Sans%2COsaka%2CToppan%20Bunkyu%20Gothic%2CYuGothic%2CArial%20Unicode%20MS%2CHiragino%20Maru%20Gothic%20Pro%2CTsukushi%20A%20Round%20Gothic%2CTsukushi%20B%20Round%20Gothic%2CToppan%20Bunkyu%20Midashi%20Gothic%2CYuKyokasho%2CYuKyokasho%20Yoko%2Ctitle%3AWindows%2CMS%20Mincho%2CMS%20PMincho%2CMeiryo%2CMeiryo%20UI%2CMS%20Gothic%2CMS%20PGothic%2CMS%20UI%20Gothic%2Ctitle%3ANoto%2FSIL%2CNoto%20Serif%20CJK%20JP%2CNoto%20Sans%20CJK%20JP&css=writing-mode%3Avertical-rl%3Btext-decoration%3A%20underline%202px%20tan%3B&lang=ja" target="_blank">Japanese</a> • 
 
-<a href="https://r12a.github.io/scripts/apps/showfonts/index.html?text=%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0&fonts=title%3AWindows%2CMongolian%20Baiti%2Ctitle%3ANoto%2FSIL%2CNoto%20Sans%20Mongolian&css=writing-mode%3Avertical-rl%3Btext-decoration%3A%20underline%202px%20tan%3B&lang=mn" target="_blank">Mongolian</a>
+<a href="https://r12a.github.io/scripts/apps/showfonts/index.html?text=%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0&fonts=title%3AWindows%2CMongolian%20Baiti%2Ctitle%3ANoto%2FSIL%2CNoto%20Sans%20Mongolian%2Ctitle%3AOther%2CMongolian%20Universal%20White%2CMongolian%20Writing&css=writing-mode%3Avertical-rl%3Btext-decoration%3A%20underline%202px%20tan%3B&lang=mn" target="_blank">Mongolian</a>
 </p>
 
 
@@ -798,7 +798,7 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 
 <a href="https://r12a.github.io/scripts/apps/showfonts/index.html?text=%E3%83%91%E3%82%A4%E3%83%97%E3%81%AF%E6%B0%B4%E3%82%92%E9%81%8B%E3%81%B3%E3%81%BE%E3%81%99&fonts=title%3AmacOS%2CHiragino%20Mincho%20Pro%2CToppan%20Bunkyu%20Mincho%2CYuMincho%2CHiragino%20Kaku%20Gothic%20Pro%2CHiragino%20Sans%2COsaka%2CToppan%20Bunkyu%20Gothic%2CYuGothic%2CArial%20Unicode%20MS%2CHiragino%20Maru%20Gothic%20Pro%2CTsukushi%20A%20Round%20Gothic%2CTsukushi%20B%20Round%20Gothic%2CToppan%20Bunkyu%20Midashi%20Gothic%2CYuKyokasho%2CYuKyokasho%20Yoko%2Ctitle%3AWindows%2CMS%20Mincho%2CMS%20PMincho%2CMeiryo%2CMeiryo%20UI%2CMS%20Gothic%2CMS%20PGothic%2CMS%20UI%20Gothic%2Ctitle%3ANoto%2FSIL%2CNoto%20Serif%20CJK%20JP%2CNoto%20Sans%20CJK%20JP&css=writing-mode%3Avertical-rl%3Btext-decoration%3A%20underline%202px%20tan%3B&lang=ja" target="_blank">Japanese</a> • 
 
-<a href="https://r12a.github.io/scripts/apps/showfonts/index.html?text=%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0&fonts=title%3AWindows%2CMongolian%20Baiti%2Ctitle%3ANoto%2FSIL%2CNoto%20Sans%20Mongolian&css=writing-mode%3Avertical-rl%3Btext-decoration%3A%20underline%202px%20tan%3Btext-underline-position%3A%20right%3B&lang=mn" target="_blank">Mongolian</a>
+<a href="https://r12a.github.io/scripts/apps/showfonts/index.html?text=%E1%A0%B5%E1%A0%A0%E1%A0%B7%E1%A0%A2%E1%A0%AE%E2%80%AF%E1%A0%B3%E1%A0%A0%E1%A0%AD%E1%A0%A0%E1%A0%A8%20%E1%A0%AD%E1%A0%A0%E1%A0%B3%E1%A0%A0%E1%A0%A8%E1%A0%8E%E1%A0%A0&fonts=title%3AWindows%2CMongolian%20Baiti%2Ctitle%3ANoto%2FSIL%2CNoto%20Sans%20Mongolian%2Ctitle%3AOther%2CMongolian%20Universal%20White%2CMongolian%20Writing&css=writing-mode%3Avertical-rl%3Btext-decoration%3A%20underline%202px%20tan%3Btext-underline-position%3A%20right%3B&lang=mn" target="_blank">Mongolian</a>
 </p>
 
 
@@ -858,8 +858,8 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 
 <figure class="example" lang="en">
 <pre><code class="language-css">u { text-decoration:underline; text-underline-position:under; }
-u.pnoun { text-decoration-style: solid; }
-u.book { text-decoration-style: wavy; }</code></pre>
+u.pnoun { text-decoration-style:solid; }
+u.book { text-decoration-style:wavy; }</code></pre>
 </figure>
 
 <div id="out-style" class="browser_output">
@@ -870,11 +870,11 @@ u.book { text-decoration-style: wavy; }</code></pre>
 <p lang="zh"><u style="text-decoration:underline 2px tan; text-underline-position:under; text-decoration-style: solid;">歐陽修</u></p>
 </div>
 
-<div id="test-style_auto" >
+<div id="test-style_wavy" >
 <p lang="zh"><u style="text-decoration: underline 2px tan; text-underline-position:under; text-decoration-style: wavy;">明妃曲</u></p>
 </div>
 </div>
-<p class="options">Choose a font: <input oninput="document.getElementById('test-under').style.fontFamily = this.value; document.getElementById('test-under_nodiac').style.fontFamily = this.value; document.getElementById('test-under-control').style.fontFamily = this.value;" placeholder="Scheherazade New WF">
+<p class="options">Choose a font: <input oninput="document.getElementById('test-style_flat').style.fontFamily = this.value; document.getElementById('test-under_nodiac').style.fontFamily = this.value; document.getElementById('test-style_wavy').style.fontFamily = this.value;" placeholder="Scheherazade New WF">
 </p>
 </div>
 
@@ -917,7 +917,9 @@ u.book { text-decoration-style: wavy; }</code></pre>
 <pre><code class="language-css">text-decoration-skip-inset: none | auto;</code></pre>
 </figure>
 
-<p>The bad news is that it is not yet supported  by  the major browser engines.  On the other hand, Gecko automatically puts the gap between <code class="kw" translate="no">u</code> elements even without the styling. But not Blink, nor WebKit.</p>
+<p>The bad news is that it is not yet supported  by  the major browser engines.</p>
+
+<p>On the other hand, Gecko automatically puts the gap between <code class="kw" translate="no">u</code> elements even without the styling. But not Blink, nor WebKit.</p>
 
 <p>In the following example, the 2 proper nouns are <span lang="zh">宋</span> (Song, the Dynasty) and <span lang="zh">歐陽修</span> (Ouyang Xiu, the author). The poem title is <span lang="zh">明妃曲</span> (Ming Fei Song).</p>
 
@@ -931,8 +933,8 @@ u.book { text-decoration-style: wavy; }</code></pre>
 
 <figure class="example" lang="en">
 <pre><code class="language-css">u { text-decoration:underline; text-underline-position:under; }
-u.pnoun { text-decoration-style: solid;  text-decoration-skip-inset: auto; }
-u.book { text-decoration-style: wavy; text-decoration-skip-inset: auto; }</code></pre>
+u.pnoun { text-decoration-style:solid;  text-decoration-skip-inset:auto; }
+u.book { text-decoration-style:wavy; text-decoration-skip-inset:auto; }</code></pre>
 </figure>
 
 <div id="out-skipInset" class="browser_output">
@@ -947,7 +949,7 @@ u.book { text-decoration-style: wavy; text-decoration-skip-inset: auto; }</code>
 <p lang="zh"><u class="pnoun">宋</u><u class="pnoun">歐陽修</u><u class="book">明妃曲</u></p>
 </div>
 </div>
-<p class="options">Choose a font: <input oninput="document.getElementById('test-under').style.fontFamily = this.value; document.getElementById('test-under_nodiac').style.fontFamily = this.value; document.getElementById('test-under-control').style.fontFamily = this.value;" placeholder="Scheherazade New WF">
+<p class="options">Choose a font: <input oninput="document.getElementById('test-skipInset_control').style.fontFamily = this.value; document.getElementById('test-under_nodiac').style.fontFamily = this.value; document.getElementById('test-skipInset_test').style.fontFamily = this.value;" placeholder="Scheherazade New WF">
 </p>
 </div>
 
@@ -960,7 +962,7 @@ u.book { text-decoration-style: wavy; text-decoration-skip-inset: auto; }</code>
 <p>In the following test there are 2 proper nouns, <span lang="zh">宋</span> (Song, the Dynasty) and <span lang="zh">歐陽修</span> (Ouyang Xiu, the author), followed by a poem title, <span lang="zh">明妃曲</span> (Ming Fei Song). There are no spaces around these.</p>
 
 <p>
-<a href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Cp%20id%3D%22control%22%20lang%3D%22zh%22%3E%3Cu%20class%3D%22pnoun%22%3E%E5%AE%8B%3C%2Fu%3E%3Cu%20class%3D%22pnoun%22%3E%E6%AD%90%E9%99%BD%E4%BF%AE%3C%2Fu%3E%3Cu%20class%3D%22book%22%3E%E6%98%8E%E5%A6%83%E6%9B%B2%3C%2Fu%3E%3C%2Fp%3E%0A%3Cp%20id%3D%22testp%22%20lang%3D%22zh%22%3E%3Cu%20class%3D%22pnoun%22%3E%E5%AE%8B%3C%2Fu%3E%3Cu%20class%3D%22pnoun%22%3E%E6%AD%90%E9%99%BD%E4%BF%AE%3C%2Fu%3E%3Cu%20class%3D%22book%22%3E%E6%98%8E%E5%A6%83%E6%9B%B2%3C%2Fu%3E%3C%2Fp%3E&css=u%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20text-underline-position%3A%20under%3B%20text-decoration-skip-inset%3A%20auto%3B%20%7D%0A%23testp%20u%20%7B%20text-decoration-skip-inset%3A%20auto%3B%20%7D%0A.nounp%20%7B%20text-decoration-style%3A%20solid%3B%20%7D%0A.book%20%7B%20text-decoration-style%3A%20wavy%3B%20%7D%0A&lang=zh&fontSize=36&width=347&height=252&a=Adjacent%20u%20elements%20are%20separated%20by%20a%20gap.&i=Test%20passes%20if%20there%20is%20a%20gap%20in%20the%20solid%20underline%20after%20the%20first%20character%2C%20and%20another%20between%20the%20solid%20and%20wavy%20underlines.%20Only%20the%20bottom%20line%20is%20styled%20using%20text-decoration-skip-inset.&fonts=title%3AmacOS%2CApple%20LiSung%2CLiSong%20Pro%2CSongti%20TC%2CNom%20Na%20Tong%2CApple%20LiGothic%2CHeiti%20TC%2CLantinghei%20TC%2CLiHei%20Pro%2CPingFang%20HK%2CPingFang%20TC%2CPingFang%20MO%2CYuanti%20TC%2CHiragino%20Sans%20TC%2CArial%20Unicode%20MS%2CBiaukaiTC%2CBiaukaiHK%2CKaiti%20TC%2CXingkai%20TC%2CBaoli%20TC%2CHannotate%20TC%2CHanziPen%20TC%2CLibian%20TC%2CLingWai%20TC%2CWawati%20TC%2CWeibei%20TC%2CYuppy%20TC%2Ctitle%3AWindows%2CMingLiu%2CPMingLiu%2CMicrosoft%20JhengHei%2CDFKai-SB%2Ctitle%3ANoto%2FSIL%2CNoto%20Serif%20CJK%20TC%2CNoto%20Sans%20CJK%20TC" target="_blank">Chinese</a>
+<a href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Cp%20id%3D%22control%22%20lang%3D%22zh%22%3E%3Cu%20class%3D%22pnoun%22%3E%E5%AE%8B%3C%2Fu%3E%3Cu%20class%3D%22pnoun%22%3E%E6%AD%90%E9%99%BD%E4%BF%AE%3C%2Fu%3E%3Cu%20class%3D%22book%22%3E%E6%98%8E%E5%A6%83%E6%9B%B2%3C%2Fu%3E%3C%2Fp%3E%0A%3Cp%20id%3D%22testp%22%20lang%3D%22zh%22%3E%3Cu%20class%3D%22pnoun%22%3E%E5%AE%8B%3C%2Fu%3E%3Cu%20class%3D%22pnoun%22%3E%E6%AD%90%E9%99%BD%E4%BF%AE%3C%2Fu%3E%3Cu%20class%3D%22book%22%3E%E6%98%8E%E5%A6%83%E6%9B%B2%3C%2Fu%3E%3C%2Fp%3E&css=u%20%7B%20text-decoration%3A%20underline%202px%20tan%3B%20text-underline-position%3A%20under%3B%20%7D%0A%23testp%20u%20%7B%20text-decoration-skip-inset%3A%20auto%3B%20%7D%0A.nounp%20%7B%20text-decoration-style%3A%20solid%3B%20%7D%0A.book%20%7B%20text-decoration-style%3A%20wavy%3B%20%7D%0A&lang=zh&fontSize=36&width=347&height=252&a=Adjacent%20u%20elements%20are%20separated%20by%20a%20gap.&i=Test%20passes%20if%20there%20is%20a%20gap%20in%20the%20solid%20underline%20after%20the%20first%20character%2C%20and%20another%20between%20the%20solid%20and%20wavy%20underlines.%20Only%20the%20bottom%20line%20is%20styled%20using%20text-decoration-skip-inset.&fonts=title%3AmacOS%2CApple%20LiSung%2CLiSong%20Pro%2CSongti%20TC%2CNom%20Na%20Tong%2CApple%20LiGothic%2CHeiti%20TC%2CLantinghei%20TC%2CLiHei%20Pro%2CPingFang%20HK%2CPingFang%20TC%2CPingFang%20MO%2CYuanti%20TC%2CHiragino%20Sans%20TC%2CArial%20Unicode%20MS%2CBiaukaiTC%2CBiaukaiHK%2CKaiti%20TC%2CXingkai%20TC%2CBaoli%20TC%2CHannotate%20TC%2CHanziPen%20TC%2CLibian%20TC%2CLingWai%20TC%2CWawati%20TC%2CWeibei%20TC%2CYuppy%20TC%2Ctitle%3AWindows%2CMingLiu%2CPMingLiu%2CMicrosoft%20JhengHei%2CDFKai-SB%2Ctitle%3ANoto%2FSIL%2CNoto%20Serif%20CJK%20TC%2CNoto%20Sans%20CJK%20TC" target="_blank">Chinese</a>
 </p>
 
 
