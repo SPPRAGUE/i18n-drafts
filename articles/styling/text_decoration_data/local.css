@@ -14,10 +14,13 @@
 .multipleFigs { display: flex; flex-direction: row; flex-wrap: wrap; }
 .multipleFigs>div { flex:1; text-align:center; }
 
-.options { font-size: 90%; }
+.browser_output p.options { font-size: 70%; margin-block-start: 2rem; }
 
 details.moreTests { margin-inline-start: 10%; margin-inline-end: 35%; font-size: 80%; margin-block: 2rem; }
 summary { font-style: italic; cursor: pointer; }
 details p { margin-inline: 0; }
 
 details figure { margin-inline:7.5%; }
+
+
+.language-css code { padding: 0; }
