@@ -838,7 +838,7 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 <h2>Styling the line shape</h2>
 
 <div id="textDecorationStyle_sidenote" class="sidenoteGroup">
-<p>In Chinese, underlines are used for other purposes than emphasis (interlinear dots provide the emphasis), and the shape of the line carries semantic value.  A solid, plain line is used to demarcate proper nouns.  Book or poem titles, on the other hand, are typically indicated using a wavy line.  Similar distinctions can be seen in <a href="https://github.com/w3c/type-samples/issues/58" target="_blank">Mongolian text</a>.</p>
+<p>In Chinese, underlines are used for other purposes than emphasis (interlinear dots provide the emphasis), and the shape of the line carries semantic value.  A solid, plain line is used to demarcate proper nouns.  Book or poem titles, on the other hand, may be indicated using a wavy line.  Similar distinctions can be seen in <a href="https://github.com/w3c/type-samples/issues/58" target="_blank">Mongolian text</a>.</p>
 
 <aside class="implnote">
 <p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> <img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> <img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> &nbsp; ✅  All three major browser engines support the use of <code class="kw" translate="no">text-underline-style</code>.</p>
@@ -949,10 +949,12 @@ u.book { text-decoration-style:wavy; text-decoration-skip-inset:auto; }</code></
 <p lang="zh"><u class="pnoun">宋</u><u class="pnoun">歐陽修</u><u class="book">明妃曲</u></p>
 </div>
 </div>
-<p class="options">Choose a font: <input oninput="document.getElementById('test-skipInset_control').style.fontFamily = this.value; document.getElementById('test-under_nodiac').style.fontFamily = this.value; document.getElementById('test-skipInset_test').style.fontFamily = this.value;" placeholder="Scheherazade New WF">
+<p class="options">Choose a font: <input oninput="document.getElementById('test-skipInset_control').style.fontFamily = this.value; document.getElementById('test-under_nodiac').style.fontFamily = this.value; document.getElementById('test-skipInset_test').style.fontFamily = this.value;">
 </p>
 </div>
 
+
+<p>One thing that might be expected is that the underline runs the full width of the underlined text if it is not adjacent to another underline. So in the examples just above, the underlines wouldn't be shortened at the far left and far right — only in between the adjacent underlines.  This is not currently described in the CSS specification.</p>
 
 
 
