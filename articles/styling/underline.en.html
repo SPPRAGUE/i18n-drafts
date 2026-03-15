@@ -9,19 +9,19 @@ var f = { }
 
 // AUTHORS should fill in these assignments:
 f.directory = 'articles/styling'+'/'; // the path to this file, not including /International or the file name
-f.filename = 'underlines'; // the file name WITHOUT extensions
+f.filename = 'underline'; // the file name WITHOUT extensions
 f.authors = 'Richard Ishida, W3C'; // author(s) and affiliations
 f.previousauthors = ''; // as above
 f.modifiers = ''; // people making substantive changes, and their affiliation
-f.searchString = 'article-underlines'; // blog search string - usually the filename without extensions
+f.searchString = 'article-underline'; // blog search string - usually the filename without extensions
 f.firstPubDate = '2026-03-06'; // date of the first publication of the document (after review)
 f.lastSubstUpdate = { date:'2026-03-06', time:'10:10'}  // date and time of latest substantive changes to this document
 f.status = 'review';  // should be one of draft, review, published, notreviewed or obsolete
 f.path = '../../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
-f.thisVersion = { date:'2026-03-06', time:'10:10'} // date and time of latest edits to this document/translation
-f.contributors = ''; // people providing useful contributions or feedback during review or at other times
+f.thisVersion = { date:'2026-03-15', time:'10:10'} // date and time of latest edits to this document/translation
+f.contributors = 'Fantasai provided review feedback.'; // people providing useful contributions or feedback during review or at other times
 // make sure to translate the information in the meta description element
 // also make sure that the lang attribute on the html tag is correct!
 
@@ -32,7 +32,7 @@ f.breadcrumb = 'styling';
 
 f.additionalLinks = ''
 </script>
-<script src="text_decoration_data/translations.js"> </script>
+<script src="underline-data/translations.js"> </script>
 <script src="../../javascript/doc-structure/article-dt.js"></script>
 <script src="../../javascript/boilerplate-text/boilerplate-en.js"> </script>
 <!--TRANSLATORS must change -en in the line just above to the subtag for their language! -->
@@ -42,7 +42,7 @@ f.additionalLinks = ''
 <link rel="copyright" href="#copyright">
 <script src="../../javascript/prism.js"></script>
 <link rel="stylesheet" href="../../style/prism.css">
-<link rel="stylesheet" href="text_decoration_data/local.css">
+<link rel="stylesheet" href="underline-data/local.css">
 
 
 
@@ -117,7 +117,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <div class="figWrap">
 <figure id="fig_arabic_font_metrics">
-<img src="text_decoration_data/arabic_font_metrics.png" alt="An illustration of how far above and below Arabic glyphs extend, beyond the Latin ones." style="max-height:12rem;">
+<img src="underline-data/arabic_font_metrics.png" alt="An illustration of how far above and below Arabic glyphs extend, beyond the Latin ones." style="max-height:12rem;">
 <figcaption>Comparison of Latin and Arabic script extenders.</figcaption>
 </figure>
 </div>
@@ -157,7 +157,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <figure id="fig_fromfont_example" style="width:100%; margin-inline:0;">
 <figcaption>Two fonts where the underline doesn't move, followed by 3 fonts where it does when <code class="kw" translate="no">from-font</code> is applied.</figcaption>
-<p><img src="text_decoration_data/fig_fromfont_example.jpg" alt="" style="margin-block:1rem; width:100%;"></p>
+<p><img src="underline-data/fig_fromfont_example.jpg" alt="" style="margin-block:1rem; width:100%;"></p>
 </figure>
 </aside>
 </div>
@@ -246,7 +246,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 <p><span class="leadin">Arabic.</span> Tests with 43 system, Noto, and SIL Arabic fonts found that only 11 moved the underline down when <code class="kw" translate="no">from-font</code> was applied. Of those 11, only 7 actually cleared the descenders. Diacritics below the descenders are not usually present in Arabic and Persian language text, but they may occur for educational or clarification purposes, and there are certain orthographies using the Arabic script that always include all diacritics (such as African ajami texts). When diacritics appear below the descenders they are sometimes bisected by the underline.</p>
 
 <figure class="resultsImg" id="fig_arabic_from_font_results">
-<img src="text_decoration_data/arabic_from_font_results.jpg" alt="" style="width:20rem;">
+<img src="underline-data/arabic_from_font_results.jpg" alt="" style="width:20rem;">
 <figcaption>Vowelled words from Wolofal, Hausa, Pashto, and Kashmiri. Only Scheherazade New and Amiri fonts move the underline down when from-font is applied. Neither clears all the diacritics.</figcaption>
 </figure>
 
@@ -255,7 +255,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 <p><span class="leadin">Tibetan</span> The application of this property only produced a small shift in the position of the underline for those fonts with the metric. The bottom of the subjoined glyphs (and sometimes single consonant descenders) was not cleared.</p>
 
 <figure class="resultsImg" id="fig_tibetan_from_font_results">
-<img src="text_decoration_data/fig_tibetan_from_font_results.jpg" alt="" style="width:20rem;">
+<img src="underline-data/fig_tibetan_from_font_results.jpg" alt="" style="width:20rem;">
 <figcaption>Test results for Tibetan fonts on macOS in the Chrome browser.</figcaption>
 </figure>
 
@@ -285,7 +285,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <figure id="fig_under_example" style="width:100%; margin-inline:0;">
 <figcaption>Vowelled Arabic text where <code class="kw" translate="no">under</code> is applied.</figcaption>
-<p><img src="text_decoration_data/fig_under_example.jpg" alt="" style="margin-block:1rem; width:100%;"></p>
+<p><img src="underline-data/fig_under_example.jpg" alt="" style="margin-block:1rem; width:100%;"></p>
 </figure>
 </aside>
 </div>
@@ -375,7 +375,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 
 <figure class="resultsImg" id="fig_arabic_under_results">
-<img src="text_decoration_data/fig_arabic_under_results.jpg" alt="" style="width:100%;">
+<img src="underline-data/fig_arabic_under_results.jpg" alt="" style="width:100%;">
 <figcaption>A selection of Arabic test results for Chrome (left), Firefox (middle) and Safari (right), when the value is set to <code class="kw" translate="no">under</code>.</figcaption>
 </figure>
 
@@ -386,7 +386,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <figure class="resultsImg" id="fig_javanese_under_results">
 <div style="white-space: nowrap;">
-<img src="text_decoration_data/fig_javanese_under_results.jpg" alt="" style="width:100%;">
+<img src="underline-data/fig_javanese_under_results.jpg" alt="" style="width:100%;">
 </div>
 <figcaption>A selection of Javanese test results for Chrome (left), Firefox (middle) and Safari (right), when the value is set to <code class="kw" translate="no">under</code>.</figcaption>
 </figure>
@@ -398,7 +398,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <figure class="resultsImg" id="fig_khmer_under_results">
 <div style="white-space: nowrap;">
-<img src="text_decoration_data/fig_khmer_under_results.jpg" alt="" style="width:100%;">
+<img src="underline-data/fig_khmer_under_results.jpg" alt="" style="width:100%;">
 </div>
 <figcaption>A selection of Khmer test results for Chrome (left), Firefox (middle) and Safari (right), when the value is set to <code class="kw" translate="no">under</code>.</figcaption>
 </figure>
@@ -410,7 +410,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <figure class="resultsImg" id="fig_tibetan_under_results">
 <div style="white-space: nowrap;">
-<img src="text_decoration_data/fig_tibetan_under_results.jpg" alt="" style="width:100%;">
+<img src="underline-data/fig_tibetan_under_results.jpg" alt="" style="width:100%;">
 </div>
 <figcaption>A selection of Tibetan test results for Chrome (left), Firefox (middle) and Safari (right), when the value is set to <code class="kw" translate="no">under</code>.</figcaption>
 </figure>
@@ -447,7 +447,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <figure id="fig_offset_example" style="width:100%; margin-inline:0;">
 <figcaption>Vowelled Arabic text where <code class="kw" translate="no">text-underline-offset</code> is set to <code class="kw" translate="no">75%</code>.</figcaption>
-<p><img src="text_decoration_data/fig_offset_example.jpg" alt="" style="margin-block:1rem; width:100%;"></p>
+<p><img src="underline-data/fig_offset_example.jpg" alt="" style="margin-block:1rem; width:100%;"></p>
 </figure>
 </aside>
 </div>
@@ -490,7 +490,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 
 
-<p>The value can be expressed as a fixed distance, for example using <code class="kw" translate="no">px</code>, but generally speaking this is suboptimal because if the font size is changed that distance remains the same. It would be necessary to change the underline offset each time a change is made to the font size. A better approach is to specify the distance in ems or as a percentage of 1em.</p>
+<p>The value can be expressed as a fixed distance, for example using <code class="kw" translate="no">px</code>, but generally speaking this is suboptimal because if the font size is changed that distance remains the same. It would be necessary to change the underline offset each time a change is made to the font size. A better approach is to specify the distance in ems or as a percentage.</p>
 
 <p>The actual value needed will commonly depend on the <strong>script</strong> characteristics.  The tests run below showed the following values to be effective on the whole: for unvowelled Arabic, 45%; for vowelled Arabic orthographies, 75%; for Javanese, 100%; for Khmer, 90%, and for Tibetan, 60%. However, some font variation also occurs; for example, unvowelled text in the Scheherazade New and Amiri fonts required a setting of 60%, rather than 45%.</p>
 
@@ -548,13 +548,13 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 
 <figure class="resultsImg" id="fig_arabic_offset_results">
-<img src="text_decoration_data/fig_arabic_offset_results.jpg" alt="" style="width:100%;">
+<img src="underline-data/fig_arabic_offset_results.jpg" alt="" style="width:100%;">
 <figcaption>A selection of Arabic test results for Chrome (left), Firefox (middle) and Safari (right), when the <code class="kw" translate="no">text-underline-offset</code> value is set to <code class="kw" translate="no">45%</code>.</figcaption>
 </figure>
 
 
 <figure class="resultsImg" id="fig_arabicd_offset_results">
-<img src="text_decoration_data/fig_arabicd_offset_results.jpg" alt="" style="width:100%;">
+<img src="underline-data/fig_arabicd_offset_results.jpg" alt="" style="width:100%;">
 <figcaption>A selection of vowelled Arabic test results for Chrome (left) and Firefox (right) when the <code class="kw" translate="no">text-underline-offset</code> value is set to <code class="kw" translate="no">75%</code>. (Safari results are not shown since no preinstalled fonts support the diacritics for these languages.)</figcaption>
 </figure>
 
@@ -565,7 +565,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <figure class="resultsImg" id="fig_javanese_offset_results">
 <div style="white-space: nowrap;">
-<img src="text_decoration_data/fig_javanese_offset_results.jpg" alt="" style="width:100%;">
+<img src="underline-data/fig_javanese_offset_results.jpg" alt="" style="width:100%;">
 </div>
 <figcaption>A selection of Javanese test results for Chrome (left), Firefox (middle) and Safari (right), when the <code class="kw" translate="no">text-underline-offset</code> value is set to <code class="kw" translate="no">100%</code>.</figcaption>
 </figure>
@@ -577,7 +577,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <figure class="resultsImg" id="fig_khmer_offset_results">
 <div style="white-space: nowrap;">
-<img src="text_decoration_data/fig_khmer_offset_results.jpg" alt="" style="width:100%;">
+<img src="underline-data/fig_khmer_offset_results.jpg" alt="" style="width:100%;">
 </div>
 <figcaption>A selection of Khmer test results for Chrome (left), Firefox (middle) and Safari (right), when the <code class="kw" translate="no">text-underline-offset</code> value is set to <code class="kw" translate="no">90%</code>.</figcaption>
 </figure>
@@ -589,7 +589,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <figure class="resultsImg" id="fig_tibetan_offset_results">
 <div style="white-space: nowrap;">
-<img src="text_decoration_data/fig_tibetan_offset_results.jpg" alt="" style="width:100%;">
+<img src="underline-data/fig_tibetan_offset_results.jpg" alt="" style="width:100%;">
 </div>
 <figcaption>A selection of Tibetan test results for Chrome (left), Firefox (middle) and Safari (right), when the <code class="kw" translate="no">text-underline-offset</code> value is set to <code class="kw" translate="no">60%</code>.</figcaption>
 </figure>
@@ -628,7 +628,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 <p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> <img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> <img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> &nbsp; ✅  All three major browser engines support the use of <code class="kw" translate="no">text-underline-position</code>.</p>
 
 <figure id="under_example" style="width:100%; margin-inline:0;">
-<p><img src="text_decoration_data/under.jpg" alt="" style="height:10rem;"></p>
+<p><img src="underline-data/under.jpg" alt="" style="height:10rem;"></p>
 <figcaption>How text-underline-position:under can change the position of the underline.</figcaption>
 </figure>
 </aside>
@@ -695,7 +695,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 
 <figure id="underV_example" style="width:100%; margin-inline:0;">
-<p><img src="text_decoration_data/vertical.jpg" alt="" style="height:14rem;"></p>
+<p><img src="underline-data/vertical.jpg" alt="" style="height:14rem;"></p>
 <figcaption>Default underline positions for (right to left) Japanese, Mongolian, and Chinese.</figcaption>
 </figure>
 </aside>
@@ -845,7 +845,7 @@ Choose a side: <label><input type="radio" name="vunder" onClick="setUnderline('.
 
 
 <figure id="fig_textDecorationStyle_example" style="width:100%; margin-inline:0;">
-<p><img src="text_decoration_data/fig_style.jpg" alt="" style="height:7rem;"></p>
+<p><img src="underline-data/fig_style.jpg" alt="" style="height:7rem;"></p>
 <figcaption>Styled line shapes for proper nouns (top) and book/poem titles (bottom) in Chinese.</figcaption>
 </figure>
 </aside>
@@ -903,7 +903,7 @@ u.book { text-decoration-style:wavy; }</code></pre>
 
 
 <figure id="fig_textDecorationSkipInset_example" style="width:100%; margin-inline:0;">
-<p><img src="text_decoration_data/fig_skip_inset.jpg" alt="" style="height:3rem;"></p>
+<p><img src="underline-data/fig_skip_inset.jpg" alt="" style="height:3rem;"></p>
 <figcaption>Small gaps between separate underlining for proper nouns and a poem title in Chinese. No spaces are present.</figcaption>
 </figure>
 </aside>
