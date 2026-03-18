@@ -34,7 +34,7 @@ if (issues.length > 0) {
   for (const [relativePath, fileIssues] of grouped) {
     console.error(`\n${relativePath}`);
     for (const issue of fileIssues) {
-      console.error(`  - ${issue.message}`);
+      console.error(`  - ${formatIssue(issue)}`);
     }
   }
   process.exitCode = 1;
@@ -66,76 +66,89 @@ function validatePage(absolutePath) {
 
   pageCount.validated += 1;
   const relativePath = toPosix(path.relative(repoRoot, absolutePath));
-  const htmlLang = extractHtmlLang(html);
-  const metadata = extractMetadata(html);
+  const htmlContext = createTextContext(html);
+  const htmlLang = extractHtmlLang(html, htmlContext);
+  const metadata = extractMetadata(html, htmlContext);
   const parsedName = parsePageFilename(path.basename(relativePath));
 
   if (!htmlLang) {
     addIssue(relativePath, 'Missing `<html lang="...">` declaration.');
-  } else if (parsedName.language && parsedName.language !== htmlLang) {
+  } else if (parsedName.language && parsedName.language !== htmlLang.value) {
     addIssue(
       relativePath,
-      `Filename language suffix \`${parsedName.language}\` does not match \`<html lang="${htmlLang}">\`.`
+      `Filename language suffix \`${parsedName.language}\` does not match \`<html lang="${htmlLang.value}">\`.`,
+      htmlLang.line
     );
-  } else if (!parsedName.language && htmlLang !== 'en') {
+  } else if (!parsedName.language && htmlLang.value !== 'en') {
     addIssue(
       relativePath,
-      `Non-English page uses \`<html lang="${htmlLang}">\` but the filename does not have a recognizable language suffix.`
+      `Non-English page uses \`<html lang="${htmlLang.value}">\` but the filename does not have a recognizable language suffix.`,
+      htmlLang.line
     );
   }
 
   validateMetadata(relativePath, metadata, parsedName);
   validateDates(relativePath, metadata);
-  validateBoilerplate(relativePath, absolutePath, html, htmlLang);
-  validateLocalAssets(relativePath, absolutePath, html);
-  validateTranslations(relativePath, absolutePath, html);
+  validateBoilerplate(relativePath, absolutePath, html, htmlLang, htmlContext);
+  validateLocalAssets(relativePath, absolutePath, html, htmlContext);
+  validateTranslations(relativePath, absolutePath, html, htmlContext);
 }
 
 function looksLikeContentPage(html) {
   return /var\s+f\s*=\s*\{\s*\}/i.test(html) && /\bf\.filename\s*=/i.test(html);
 }
 
-function extractHtmlLang(html) {
-  const match = html.match(/<html\b[^>]*\blang\s*=\s*["']([^"']+)["']/i);
-  return match ? match[1].trim().toLowerCase() : null;
-}
-
-function extractMetadata(html) {
-  const match = html.match(/<script\b[^>]*>([\s\S]*?\bvar\s+f\s*=\s*\{\s*\}[\s\S]*?)<\/script>/i);
-  const block = match ? match[1] : '';
+function extractHtmlLang(html, textContext) {
+  const regex = /<html\b[^>]*\blang\s*=\s*["']([^"']+)["']/i;
+  const match = regex.exec(html);
+  if (!match) {
+    return null;
+  }
 
   return {
-    directory: parseStringAssignment(block, 'directory'),
-    filename: parseStringAssignment(block, 'filename'),
-    path: parseStringAssignment(block, 'path'),
-    firstPubDate: parseSimpleStringValue(block, 'firstPubDate'),
-    thisVersionDate: parseObjectDateValue(block, 'thisVersion'),
-    lastSubstUpdateDate: parseObjectDateValue(block, 'lastSubstUpdate'),
+    value: match[1].trim().toLowerCase(),
+    line: textContext.lineNumberAt(match.index),
   };
 }
 
-function parseStringAssignment(block, fieldName) {
-  const line = block
-    .split(/\r?\n/)
-    .find((candidate) => new RegExp(`\\bf\\.${escapeRegExp(fieldName)}\\s*=`).test(candidate));
+function extractMetadata(html, textContext) {
+  const regex = /<script\b[^>]*>([\s\S]*?\bvar\s+f\s*=\s*\{\s*\}[\s\S]*?)<\/script>/i;
+  const match = regex.exec(html);
+  const block = match ? match[1] : '';
+  const blockIndex = match ? match.index + match[0].indexOf(block) : -1;
 
-  if (!line) {
+  return {
+    directory: parseStringAssignment(block, 'directory', blockIndex, textContext),
+    filename: parseStringAssignment(block, 'filename', blockIndex, textContext),
+    path: parseStringAssignment(block, 'path', blockIndex, textContext),
+    firstPubDate: parseSimpleStringValue(block, 'firstPubDate', blockIndex, textContext),
+    thisVersionDate: parseObjectDateValue(block, 'thisVersion', blockIndex, textContext),
+    lastSubstUpdateDate: parseObjectDateValue(block, 'lastSubstUpdate', blockIndex, textContext),
+  };
+}
+
+function parseStringAssignment(block, fieldName, blockIndex, textContext) {
+  const lineRegex = new RegExp(`^.*\\bf\\.${escapeRegExp(fieldName)}\\s*=.*$`, 'm');
+  const lineMatch = lineRegex.exec(block);
+  const line = lineMatch ? textContext.lineNumberAt(blockIndex + lineMatch.index) : null;
+
+  if (!lineMatch) {
     return { ok: false, reason: `Missing \`f.${fieldName}\` assignment.` };
   }
 
-  const withoutComment = line.replace(/\/\/.*$/, '').trim();
+  const withoutComment = lineMatch[0].replace(/\/\/.*$/, '').trim();
   const match = withoutComment.match(
     new RegExp(`\\bf\\.${escapeRegExp(fieldName)}\\s*=\\s*(.+?)\\s*;?$`)
   );
 
   if (!match) {
-    return { ok: false, reason: `Could not parse \`f.${fieldName}\`.` };
+    return { ok: false, reason: `Could not parse \`f.${fieldName}\`.`, line };
   }
 
   try {
-    return { ok: true, value: parseStringExpression(match[1]) };
+    return { ok: true, value: parseStringExpression(match[1]), line };
   } catch (error) {
-    return { ok: false, reason: `Could not parse \`f.${fieldName}\`: ${error.message}` };
+    return { ok: false, reason: `Could not parse \`f.${fieldName}\`: ${error.message}`, line };
   }
 }
 
@@ -160,20 +173,33 @@ function parseStringExpression(expression) {
     .join('');
 }
 
-function parseSimpleStringValue(block, fieldName) {
-  const match = block.match(
-    new RegExp(`\\bf\\.${escapeRegExp(fieldName)}\\s*=\\s*['"]([^'"]+)['"]`)
-  );
-  return match ? match[1] : null;
+function parseSimpleStringValue(block, fieldName, blockIndex, textContext) {
+  const regex = new RegExp(`\\bf\\.${escapeRegExp(fieldName)}\\s*=\\s*['"]([^'"]+)['"]`);
+  const match = regex.exec(block);
+  if (!match) {
+    return { value: null, line: null };
+  }
+
+  return {
+    value: match[1],
+    line: textContext.lineNumberAt(blockIndex + match.index),
+  };
 }
 
-function parseObjectDateValue(block, fieldName) {
-  const match = block.match(
-    new RegExp(
-      `\\bf\\.${escapeRegExp(fieldName)}\\s*=\\s*\\{[\\s\\S]*?\\bdate\\s*:\\s*['"]([^'"]+)['"]`
-    )
+function parseObjectDateValue(block, fieldName, blockIndex, textContext) {
+  const regex = new RegExp(
+    `\\bf\\.${escapeRegExp(fieldName)}\\s*=\\s*\\{[\\s\\S]*?\\bdate\\s*:\\s*['"]([^'"]+)['"]`
   );
-  return match ? match[1] : null;
+  const match = regex.exec(block);
+  if (!match) {
+    return { value: null, line: null };
+  }
+
+  const dateOffset = match[0].search(/\bdate\s*:/);
+  return {
+    value: match[1],
+    line: textContext.lineNumberAt(blockIndex + match.index + Math.max(dateOffset, 0)),
+  };
 }
 
 function parsePageFilename(fileName) {
@@ -197,11 +223,15 @@ function validateMetadata(relativePath, metadata, parsedName) {
 
 function assertStringField(relativePath, parsedField, label, expected) {
   if (!parsedField.ok) {
-    addIssue(relativePath, parsedField.reason);
+    addIssue(relativePath, parsedField.reason, parsedField.line);
     return;
   }
   if (parsedField.value !== expected) {
-    addIssue(relativePath, `${label} is \`${parsedField.value}\`, expected \`${expected}\`.`);
+    addIssue(
+      relativePath,
+      `${label} is \`${parsedField.value}\`, expected \`${expected}\`.`,
+      parsedField.line
+    );
   }
 }
 
@@ -223,23 +253,23 @@ function pathToRepoRoot(relativePath) {
 function validateDates(relativePath, metadata) {
   validateDate(relativePath, 'f.firstPubDate', metadata.firstPubDate);
   validateDate(relativePath, 'f.thisVersion.date', metadata.thisVersionDate);
-  if (metadata.lastSubstUpdateDate) {
+  if (metadata.lastSubstUpdateDate.value) {
     validateDate(relativePath, 'f.lastSubstUpdate.date', metadata.lastSubstUpdateDate);
   }
 }
 
-function validateDate(relativePath, label, value) {
-  if (!value) {
-    addIssue(relativePath, `Missing ${label}.`);
+function validateDate(relativePath, label, field) {
+  if (!field.value) {
+    addIssue(relativePath, `Missing ${label}.`, field.line);
     return;
   }
 
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-    addIssue(relativePath, `${label} must use YYYY-MM-DD; found \`${value}\`.`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
+    addIssue(relativePath, `${label} must use YYYY-MM-DD; found \`${field.value}\`.`, field.line);
     return;
   }
 
-  const [year, month, day] = value.split('-').map(Number);
+  const [year, month, day] = field.value.split('-').map(Number);
   const utcDate = new Date(Date.UTC(year, month - 1, day));
   const isRealDate =
     utcDate.getUTCFullYear() === year &&
@@ -247,27 +277,31 @@ function validateDate(relativePath, label, value) {
     utcDate.getUTCDate() === day;
 
   if (!isRealDate) {
-    addIssue(relativePath, `${label} is not a real calendar date: \`${value}\`.`);
+    addIssue(relativePath, `${label} is not a real calendar date: \`${field.value}\`.`, field.line);
     return;
   }
 
-  if (value > todayIso) {
-    addIssue(relativePath, `${label} is in the future: \`${value}\` > \`${todayIso}\`.`);
+  if (field.value > todayIso) {
+    addIssue(
+      relativePath,
+      `${label} is in the future: \`${field.value}\` > \`${todayIso}\`.`,
+      field.line
+    );
   }
 }
 
-function validateBoilerplate(relativePath, absolutePath, html, htmlLang) {
-  const tags = extractTags(stripHtmlComments(html), 'script');
+function validateBoilerplate(relativePath, absolutePath, html, htmlLang, textContext) {
+  const tags = extractTags(stripHtmlComments(html), 'script', textContext);
   const matches = [];
 
   for (const tag of tags) {
-    const attributes = parseAttributes(tag);
+    const attributes = parseAttributes(tag.markup);
     if (!attributes.src) {
       continue;
     }
     const match = attributes.src.match(/(?:^|\/)boilerplate-([a-z0-9-]+)\.js$/i);
     if (match) {
-      matches.push(match[1].toLowerCase());
+      matches.push({ language: match[1].toLowerCase(), line: tag.line });
     }
   }
 
@@ -280,49 +314,51 @@ function validateBoilerplate(relativePath, absolutePath, html, htmlLang) {
     return;
   }
 
-  const uniqueMatches = [...new Set(matches)];
+  const uniqueMatches = [...new Set(matches.map((match) => match.language))];
   if (uniqueMatches.length > 1) {
     addIssue(
       relativePath,
-      `Multiple boilerplate languages referenced: ${uniqueMatches.map((lang) => `\`${lang}\``).join(', ')}.`
+      `Multiple boilerplate languages referenced: ${uniqueMatches.map((lang) => `\`${lang}\``).join(', ')}.`,
+      matches.map((match) => match.line)
     );
   }
 
-  if (!uniqueMatches.includes(htmlLang)) {
+  if (!uniqueMatches.includes(htmlLang.value)) {
     addIssue(
       relativePath,
-      `Boilerplate script language ${uniqueMatches.map((lang) => `\`${lang}\``).join(', ')} does not match \`<html lang="${htmlLang}">\`.`
+      `Boilerplate script language ${uniqueMatches.map((lang) => `\`${lang}\``).join(', ')} does not match \`<html lang="${htmlLang.value}">\`.`,
+      collectLineNumbers(htmlLang.line, matches.map((match) => match.line))
     );
   }
 }
 
-function validateLocalAssets(relativePath, absolutePath, html) {
+function validateLocalAssets(relativePath, absolutePath, html, textContext) {
   const commentFreeHtml = stripHtmlComments(html);
   const assets = [];
-  const seen = new Set();
+  const references = new Map();
 
-  for (const tag of extractTags(commentFreeHtml, 'script')) {
-    const attributes = parseAttributes(tag);
+  for (const tag of extractTags(commentFreeHtml, 'script', textContext)) {
+    const attributes = parseAttributes(tag.markup);
     if (attributes.src) {
-      assets.push({ kind: 'script', ref: attributes.src });
+      assets.push({ kind: 'script', ref: attributes.src, line: tag.line });
     }
   }
 
-  for (const tag of extractTags(commentFreeHtml, 'img')) {
-    const attributes = parseAttributes(tag);
+  for (const tag of extractTags(commentFreeHtml, 'img', textContext)) {
+    const attributes = parseAttributes(tag.markup);
     if (attributes.src) {
-      assets.push({ kind: 'image', ref: attributes.src });
+      assets.push({ kind: 'image', ref: attributes.src, line: tag.line });
     }
   }
 
-  for (const tag of extractTags(commentFreeHtml, 'link')) {
-    const attributes = parseAttributes(tag);
+  for (const tag of extractTags(commentFreeHtml, 'link', textContext)) {
+    const attributes = parseAttributes(tag.markup);
     if (!attributes.href || !attributes.rel) {
       continue;
     }
     const relTokens = attributes.rel.toLowerCase().split(/\s+/);
     if (relTokens.includes('stylesheet')) {
-      assets.push({ kind: 'stylesheet', ref: attributes.href });
+      assets.push({ kind: 'stylesheet', ref: attributes.href, line: tag.line });
     }
   }
 
@@ -333,26 +369,33 @@ function validateLocalAssets(relativePath, absolutePath, html) {
     }
 
     const dedupeKey = `${asset.kind}\u0000${resolved.absolutePath}`;
-    if (seen.has(dedupeKey)) {
-      continue;
-    }
-    seen.add(dedupeKey);
+    const entry = references.get(dedupeKey) || {
+      kind: asset.kind,
+      ref: asset.ref,
+      resolved,
+      lines: [],
+    };
+    entry.lines.push(asset.line);
+    references.set(dedupeKey, entry);
+  }
 
-    if (!fs.existsSync(resolved.absolutePath)) {
+  for (const asset of references.values()) {
+    if (!fs.existsSync(asset.resolved.absolutePath)) {
       addIssue(
         relativePath,
-        `Missing ${asset.kind} file referenced by \`${asset.ref}\` (${resolved.relativePath}).`
+        `Missing ${asset.kind} file referenced by \`${asset.ref}\` (${asset.resolved.relativePath}).`,
+        asset.lines
       );
     }
   }
 }
 
-function validateTranslations(relativePath, absolutePath, html) {
+function validateTranslations(relativePath, absolutePath, html, textContext) {
   const commentFreeHtml = stripHtmlComments(html);
   const translationsScripts = new Set();
 
-  for (const tag of extractTags(commentFreeHtml, 'script')) {
-    const attributes = parseAttributes(tag);
+  for (const tag of extractTags(commentFreeHtml, 'script', textContext)) {
+    const attributes = parseAttributes(tag.markup);
     if (!attributes.src) {
       continue;
     }
@@ -382,8 +425,8 @@ function validateTranslations(relativePath, absolutePath, html) {
 
     const translationsRelative = toPosix(path.relative(repoRoot, translationsPath));
     const cachedIssues = loadAndValidateTranslations(translationsPath);
-    for (const message of cachedIssues) {
-      addIssue(translationsRelative, message);
+    for (const issue of cachedIssues) {
+      addIssue(translationsRelative, issue.message, issue.lines);
     }
   }
 }
@@ -396,25 +439,29 @@ function loadAndValidateTranslations(absolutePath) {
 
   const fileIssues = [];
   const source = fs.readFileSync(absolutePath, 'utf8');
+  const textContext = createTextContext(source);
   const sandbox = {};
 
   try {
     vm.runInNewContext(source, sandbox, { filename: absolutePath });
   } catch (error) {
-    fileIssues.push(`could not be evaluated (${error.message})`);
+    fileIssues.push({ message: `could not be evaluated (${error.message})`, lines: [] });
     translationsCache.set(absolutePath, fileIssues);
     return fileIssues;
   }
 
   const trans = sandbox.trans;
   if (!trans || typeof trans !== 'object') {
-    fileIssues.push('does not define `trans`.');
+    fileIssues.push({ message: 'does not define `trans`.', lines: [] });
     translationsCache.set(absolutePath, fileIssues);
     return fileIssues;
   }
 
   if (!Array.isArray(trans.versions)) {
-    fileIssues.push('`trans.versions` is missing or is not an array.');
+    fileIssues.push({
+      message: '`trans.versions` is missing or is not an array.',
+      lines: collectLineNumbers(findLineNumber(source, textContext, /\btrans\.versions\b/)),
+    });
     translationsCache.set(absolutePath, fileIssues);
     return fileIssues;
   }
@@ -426,17 +473,25 @@ function loadAndValidateTranslations(absolutePath) {
     }
 
     if (!Array.isArray(value)) {
-      fileIssues.push(`\`trans.${key}\` is not an array.`);
+      fileIssues.push({
+        message: `\`trans.${key}\` is not an array.`,
+        lines: collectLineNumbers(
+          findLineNumber(source, textContext, new RegExp(`\\btrans\\.${escapeRegExp(key)}\\b`))
+        ),
+      });
       continue;
     }
 
     const extras = value.filter((entry) => !versions.has(String(entry)));
     if (extras.length > 0) {
-      fileIssues.push(
-        `\`trans.${key}\` contains values not listed in \`trans.versions\`: ${extras
+      fileIssues.push({
+        message: `\`trans.${key}\` contains values not listed in \`trans.versions\`: ${extras
           .map((entry) => `\`${entry}\``)
-          .join(', ')}.`
-      );
+          .join(', ')}.`,
+        lines: collectLineNumbers(
+          findLineNumber(source, textContext, new RegExp(`\\btrans\\.${escapeRegExp(key)}\\b`))
+        ),
+      });
     }
   }
 
@@ -445,12 +500,22 @@ function loadAndValidateTranslations(absolutePath) {
 }
 
 function stripHtmlComments(html) {
-  return html.replace(/<!--[\s\S]*?-->/g, '');
+  return html.replace(/<!--[\s\S]*?-->/g, (comment) => comment.replace(/[^\r\n]/g, ' '));
 }
 
-function extractTags(html, tagName) {
-  const matches = html.match(new RegExp(`<${tagName}\\b[^>]*>`, 'gi'));
-  return matches || [];
+function extractTags(html, tagName, textContext) {
+  const matches = [];
+  const regex = new RegExp(`<${tagName}\\b[^>]*>`, 'gi');
+  let match;
+
+  while ((match = regex.exec(html)) !== null) {
+    matches.push({
+      markup: match[0],
+      line: textContext ? textContext.lineNumberAt(match.index) : null,
+    });
+  }
+
+  return matches;
 }
 
 function parseAttributes(tagMarkup) {
@@ -543,8 +608,8 @@ function decodeReferencePath(referencePath) {
   }
 }
 
-function addIssue(relativePath, message) {
-  issues.push({ relativePath, message });
+function addIssue(relativePath, message, lines) {
+  issues.push({ relativePath, message, lines: collectLineNumbers(lines) });
 }
 
 function groupByFile(fileIssues) {
@@ -560,6 +625,64 @@ function groupByFile(fileIssues) {
 
 function toPosix(filePath) {
   return filePath.split(path.sep).join('/');
+}
+
+function createTextContext(source) {
+  const lineStarts = [0];
+  for (let index = 0; index < source.length; index += 1) {
+    if (source[index] === '\n') {
+      lineStarts.push(index + 1);
+    }
+  }
+
+  return {
+    lineNumberAt(index) {
+      if (!Number.isInteger(index) || index < 0) {
+        return null;
+      }
+
+      let low = 0;
+      let high = lineStarts.length - 1;
+      while (low <= high) {
+        const mid = Math.floor((low + high) / 2);
+        if (lineStarts[mid] <= index) {
+          low = mid + 1;
+        } else {
+          high = mid - 1;
+        }
+      }
+
+      return high + 1;
+    },
+  };
+}
+
+function collectLineNumbers(...values) {
+  return [...new Set(values.flat().filter((value) => Number.isInteger(value) && value > 0))].sort(
+    (a, b) => a - b
+  );
+}
+
+function findLineNumber(source, textContext, regex) {
+  const match = regex.exec(source);
+  return match ? textContext.lineNumberAt(match.index) : null;
+}
+
+function formatIssue(issue) {
+  const location = formatIssueLocation(issue.lines);
+  return location ? `${location}: ${issue.message}` : issue.message;
+}
+
+function formatIssueLocation(lines) {
+  if (!lines || lines.length === 0) {
+    return '';
+  }
+
+  if (lines.length === 1) {
+    return `line ${lines[0]}`;
+  }
+
+  return `lines ${lines.join(', ')}`;
 }
 
 function formatToday() {
