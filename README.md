@@ -25,3 +25,18 @@ Editors should be familiar with and use the following:
 
 - [GitHub guidelines for working with i18n documents](https://www.w3.org/International/i18n-activity/guidelines/github)
 - [Editorial guidelines for working with i18n documents](https://www.w3.org/International/i18n-activity/guidelines/editing)
+
+### Validation
+
+If you don't already have Node.js, install it first:
+
+1. Go to https://nodejs.org/en/download
+2. Install the current LTS release for your platform.
+
+Then run the metadata and asset checks with:
+
+```bash
+npm test
+```
+
+The validator checks page filename language suffixes, key `f.*` metadata fields, date formats, local script/image/stylesheet references, `boilerplate-<lang>.js`, and companion `translations.js` consistency.
