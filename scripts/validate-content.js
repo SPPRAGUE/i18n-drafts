@@ -18,18 +18,40 @@ const contentRoots = [
   'techniques',
 ];
 
+const cli = parseArguments(process.argv.slice(2));
 const issues = [];
 const pageCount = { scanned: 0, validated: 0 };
+const translationCount = { validated: 0 };
 const translationsCache = new Map();
 const reportedTranslationFiles = new Set();
 const todayIso = formatToday();
 
-for (const root of contentRoots) {
-  walkDirectory(path.join(repoRoot, root));
+if (cli.help) {
+  printUsage();
+  process.exit(0);
+}
+
+if (cli.errors.length > 0) {
+  for (const error of cli.errors) {
+    console.error(error);
+  }
+  console.error('');
+  printUsage();
+  process.exit(1);
+}
+
+if (cli.files.length > 0) {
+  validateRequestedFiles(cli.files);
+} else {
+  for (const root of contentRoots) {
+    walkDirectory(path.join(repoRoot, root));
+  }
 }
 
 if (issues.length > 0) {
-  console.error(`Found ${issues.length} issue(s) across ${pageCount.validated} content page(s).`);
+  console.error(
+    `Found ${issues.length} issue(s) across ${pageCount.validated} content page(s) and ${translationCount.validated} translation file(s).`
+  );
   const grouped = groupByFile(issues);
   for (const [relativePath, fileIssues] of grouped) {
     console.error(`\n${relativePath}`);
@@ -39,7 +61,72 @@ if (issues.length > 0) {
   }
   process.exitCode = 1;
 } else {
-  console.log(`Validated ${pageCount.validated} content page(s); no issues found.`);
+  console.log(
+    `Validated ${pageCount.validated} content page(s) and ${translationCount.validated} translation file(s); no issues found.`
+  );
+}
+
+function parseArguments(args) {
+  const files = [];
+  const errors = [];
+
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+
+    if (arg === '--help' || arg === '-h') {
+      return { help: true, files: [], errors: [] };
+    }
+
+    if (arg === '--files') {
+      const values = [];
+      index += 1;
+
+      while (index < args.length && !args[index].startsWith('--')) {
+        values.push(...splitFileList(args[index]));
+        index += 1;
+      }
+
+      index -= 1;
+      if (values.length === 0) {
+        errors.push('`--files` requires at least one path.');
+        continue;
+      }
+
+      files.push(...values);
+      continue;
+    }
+
+    if (arg.startsWith('--files=')) {
+      const values = splitFileList(arg.slice('--files='.length));
+      if (values.length === 0) {
+        errors.push('`--files` requires at least one path.');
+        continue;
+      }
+
+      files.push(...values);
+      continue;
+    }
+
+    errors.push(`Unknown argument \`${arg}\`.`);
+  }
+
+  return {
+    help: false,
+    files: [...new Set(files)],
+    errors,
+  };
+}
+
+function splitFileList(value) {
+  return value
+    .split(',')
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+}
+
+function printUsage() {
+  console.error('Usage: node scripts/validate-content.js [--files path[,path...]]');
+  console.error('       node scripts/validate-content.js [--files path1 path2 ...]');
 }
 
 function walkDirectory(directory) {
@@ -55,6 +142,50 @@ function walkDirectory(directory) {
     }
     pageCount.scanned += 1;
     validatePage(fullPath);
+  }
+}
+
+function validateRequestedFiles(requestedPaths) {
+  for (const requestedPath of requestedPaths) {
+    const absolutePath = path.resolve(repoRoot, requestedPath);
+    const relativePath = displayPathFor(requestedPath, absolutePath);
+
+    if (!isWithinRepo(absolutePath)) {
+      addIssue(relativePath, 'Requested path is outside the repository root.');
+      continue;
+    }
+
+    if (!fs.existsSync(absolutePath)) {
+      addIssue(relativePath, 'Requested path does not exist.');
+      continue;
+    }
+
+    const stats = fs.statSync(absolutePath);
+    if (stats.isDirectory()) {
+      walkDirectory(absolutePath);
+      continue;
+    }
+
+    if (!stats.isFile()) {
+      addIssue(relativePath, 'Requested path is not a regular file.');
+      continue;
+    }
+
+    const baseName = path.basename(absolutePath).toLowerCase();
+    const extension = path.extname(baseName);
+
+    if (extension === '.html') {
+      pageCount.scanned += 1;
+      validatePage(absolutePath);
+      continue;
+    }
+
+    if (baseName === 'translations.js') {
+      validateTranslationsFile(absolutePath);
+      continue;
+    }
+
+    addIssue(relativePath, 'Requested file is not a content HTML page or `translations.js` file.');
   }
 }
 
@@ -417,17 +548,22 @@ function validateTranslations(relativePath, absolutePath, html, textContext) {
     if (!fs.existsSync(translationsPath)) {
       continue;
     }
+    validateTranslationsFile(translationsPath);
+  }
+}
 
-    if (reportedTranslationFiles.has(translationsPath)) {
-      continue;
-    }
-    reportedTranslationFiles.add(translationsPath);
+function validateTranslationsFile(absolutePath) {
+  const normalizedPath = path.resolve(absolutePath);
+  if (reportedTranslationFiles.has(normalizedPath)) {
+    return;
+  }
+  reportedTranslationFiles.add(normalizedPath);
+  translationCount.validated += 1;
 
-    const translationsRelative = toPosix(path.relative(repoRoot, translationsPath));
-    const cachedIssues = loadAndValidateTranslations(translationsPath);
-    for (const issue of cachedIssues) {
-      addIssue(translationsRelative, issue.message, issue.lines);
-    }
+  const translationsRelative = toPosix(path.relative(repoRoot, normalizedPath));
+  const cachedIssues = loadAndValidateTranslations(normalizedPath);
+  for (const issue of cachedIssues) {
+    addIssue(translationsRelative, issue.message, issue.lines);
   }
 }
 
@@ -625,6 +761,19 @@ function groupByFile(fileIssues) {
 
 function toPosix(filePath) {
   return filePath.split(path.sep).join('/');
+}
+
+function isWithinRepo(absolutePath) {
+  const relativePath = path.relative(repoRoot, absolutePath);
+  return relativePath === '' || (!relativePath.startsWith('..') && !path.isAbsolute(relativePath));
+}
+
+function displayPathFor(requestedPath, absolutePath) {
+  const relativePath = path.relative(repoRoot, absolutePath);
+  if (relativePath === '' || (!relativePath.startsWith('..') && !path.isAbsolute(relativePath))) {
+    return toPosix(relativePath || requestedPath);
+  }
+  return toPosix(requestedPath);
 }
 
 function createTextContext(source) {

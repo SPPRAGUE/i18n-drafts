@@ -39,4 +39,10 @@ Then run the metadata and asset checks with:
 npm test
 ```
 
+To validate only specific files, pass them through to the script:
+
+```bash
+npm test -- --files questions/qa-link-lang.en.html tutorials/tutorial-char-enc/index.ro.html
+```
+
 The validator checks page filename language suffixes, key `f.*` metadata fields, date formats, local script/image/stylesheet references, `boilerplate-<lang>.js`, and companion `translations.js` consistency.
