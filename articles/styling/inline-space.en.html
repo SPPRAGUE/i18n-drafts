@@ -92,7 +92,9 @@ function setFont (classname, value) {
 <p>In principle, Japanese and Chinese texts don't use space characters. However, sometimes it is necessary to increase or decrease gaps between characters to improve readability. This article looks at ways of using CSS to add gaps between certain types of text,  to reduce gaps between punctuation marks, and to manage paragraph-initial spacing. It does not look at the changes in spacing between characters that are introduced during full justification.</p>
 
 <p>Rather than simply reproducing the spec itself here, we provide task-oriented guidance to help content authors  achieve key techniques.</p>
-<p>Note that some of the technologies described here are still under development.</p>
+
+<p><em>Note that some of the technologies described here are still under development, and browser adoption is only partial at best. In what follows we will describe what you should do when the CSS specification is properly implemented by browsers, and also describe what currently works and doesn't work.</em></p>
+
 
 <p>Apart from <code class="kw" translate="no">text-decoration</code>, the CSS properties we will use are:</p>
 
@@ -139,7 +141,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <p>Solid set text is normally best for readability, however in large print sizes, such as for magazine headings, it may be desirable to reduce the distance between certain characters. This is typically done by reducing the distance between adjacent letter faces.</p>
 
-<p>To create inter-character spacing in HTML use the CSS <code class="kw" translate="no">letter-spacing</code> property, with the appropriate value, which can be negative or positive.</p>
+<p><span class="leadin">How to do it.</span> To create inter-character spacing in HTML use the CSS <code class="kw" translate="no">letter-spacing</code> property, with the appropriate value, which can be negative or positive.</p>
 
 
 
@@ -169,6 +171,10 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <p class="options">Choose a font: <input oninput="document.querySelector('#demo-letter_spacing .test_lines').style.fontFamily = this.value;"></p>
 </div>
+
+
+
+<p><span class="leadin">Does it work?</span> Browsers using Blink, Gecko, and WebKit engines all support the use of <code class="kw" translate="no">letter-spacing</code> as described here.</p>
 </section>
 
 
@@ -211,7 +217,11 @@ text-decoration-skip-inset:none|auto;</code></pre>
 </aside>
 </div>
 
-<p>In theory, to achieve this in web pages you should use the <code class="kw" translate="no">text-autospace</code> CSS property in your style sheet. Do not use space characters! <strong>In practise, as we will see, browser adoption is only partial at best. In what follows we will describe what you should do when the CSS specification is properly implemented by browsers, and also describe what currently works and doesn't work.</strong></p>
+
+<section id="autospaceHow">
+<h3>How to do it</h3>
+
+<p>In theory, to achieve this in web pages you should use the <code class="kw" translate="no">text-autospace</code> CSS property in your style sheet. Do not use space characters!</p>
 
 <p>The CSS specification expects that, by default, the browser should automatically insert a gap between runs of ideographs and runs of alphanumeric text (ie. the <code class="kw" translate="no">normal</code> value). The size of the gap is dependent on the browser, however the CSS spec suggests 1/8 of the width of an ideographic character, which is on the smaller side of the suggest lengths. Unfortunately, no browser currently inserts a gap by default at this time.</p>
 
@@ -231,19 +241,59 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 
 
-
 <dl>
 <dt>ideograph-alpha or ideograph-numeric</dt>
+
+
 <aside class="floatedImplnote">
-<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> &nbsp; ❌  Blink browsers don't support the use of these values.</p>
-<p class="impl"><img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> &nbsp; ✅❌  Gecko browsers support these values when used individually, but not when used together.</p>
-<p class="impl"><img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> &nbsp; ✅❌  WebKit browsers create a small gap before the alphanumeric text, but not after. This applies whether or not both values are used together.</p>
+<p class="feature">ideograph-alpha</p>
+<table class="implTable">
+<thead><!--<th colspan="3" style="white-space: nowrap">Browser engine support for</th>
+<tr><th colspan="3">text-spacing-trim</th></tr>-->
+<tr>
+<th><img src="inline-space-data/icon_blink.svg" class="browser_icon" alt="Blink" title="Blink"></th>
+<th><img src="inline-space-data/icon_gecko.svg" class="browser_icon" alt="Gecko" title="Gecko"></th>
+<th><img src="inline-space-data/icon_webkit.svg" class="browser_icon" alt="WebKit" title="WebKit"></th>
+</tr>
+</thead>
+<tbody>
+<tr><td>❌</td><td>✅❌</td><td>✅❌</td></tr>
+</tbody>
+</table>
+
+<p class="feature">ideograph-numeric</p>
+<table class="implTable">
+<thead>
+<tr>
+<th><img src="inline-space-data/icon_blink.svg" class="browser_icon" alt="Blink" title="Blink"></th>
+<th><img src="inline-space-data/icon_gecko.svg" class="browser_icon" alt="Gecko" title="Gecko"></th>
+<th><img src="inline-space-data/icon_webkit.svg" class="browser_icon" alt="WebKit" title="WebKit"></th>
+</tr>
+</thead>
+<tbody>
+<tr><td>❌</td><td>✅❌</td><td>✅❌</td></tr>
+</tbody>
+</table>
 </aside>
 
 
-<dd>These 2 values can be used individually to exclude the other option, or they can be used together to create gaps around both alpha and numeric text.</dd>
+
+
+<!--<aside class="floatedImplnote">
+<table class="implTable">
+<tr><td><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"></td>
+<td><img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"></td>
+<td><img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"></td></tr>
+<tr><td>❌</td><td>✅❌</td><td>✅❌</td></tr>
+</table>
+</aside>-->
+
 
 <dd>
+<p>These 2 values can be used individually to exclude the other option, or they can be used together to create gaps around both alpha and numeric text.</p>
+
+<p>At the time of writing, Blink browsers don't support the use of these values. Gecko browsers support these values when used individually, but not when used together. WebKit browsers create a small gap before the alphanumeric text, but not after. This applies whether or not both values are used together.</p>
+
 <details class="moreTests"><summary>Tests</summary>
 <ol>
 <li>
@@ -270,15 +320,29 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 
 <dt style="clear: right;">replace</dt>
-<aside class="floatedImplnote">
-<p class="impl"><img src="../../icons/chrome_16x16.png" width="16" height="16" alt="Chrome" title="Chrome"> <img src="../../icons/firefox_16x16.png" width="16" height="16" alt="Firefox" title="Firefox"> <img src="../../icons/safari_16x16.png" width="16" height="16" alt="Safari" title="Safari"> &nbsp; ❌  None of the three major browser engines currently support the use of <code class="kw" translate="no">replace</code>.</p>
 
-<p>Adding the <code class="kw" translate="no">replace</code> keyword causes Gecko and WebKit browsers to fail to apply the gaps they would produce without it.</p>
+
+<aside class="floatedImplnote">
+<p class="feature">replace</p>
+<table class="implTable">
+<thead>
+<tr>
+<th><img src="inline-space-data/icon_blink.svg" class="browser_icon" alt="Blink" title="Blink"></th>
+<th><img src="inline-space-data/icon_gecko.svg" class="browser_icon" alt="Gecko" title="Gecko"></th>
+<th><img src="inline-space-data/icon_webkit.svg" class="browser_icon" alt="WebKit" title="WebKit"></th>
+</tr>
+</thead>
+<tbody>
+<tr><td>❌</td><td>❌</td><td>❌</td></tr>
+</tbody>
+</table>
 </aside>
 
-<dd>There are 2 ways in which CSS can add gaps. If the text already contains gaps produced using ordinary space characters the CSS will, by default, only add gaps where there are no spaces. If, on the other hand, you want to reduce the width of any space-based gaps and apply even spacing throughout, use the <code class="kw" translate="no">replace</code> value. <code class="kw" translate="no">text-autospace:ideograph-alpha ideograph-numeric replace;</code> removes any space characters from the displayed text (without changing the characters in memory) and replaces them with a standard width gap; it also creates gaps where the space character hadn't been used.</dd>
-
 <dd>
+<p>There are 2 ways in which CSS can add gaps. If the text already contains gaps produced using ordinary space characters the CSS will, by default, only add gaps where there are no spaces. If, on the other hand, you want to reduce the width of any space-based gaps and apply even spacing throughout, use the <code class="kw" translate="no">replace</code> value. <code class="kw" translate="no">text-autospace:ideograph-alpha ideograph-numeric replace;</code> removes any space characters from the displayed text (without changing the characters in memory) and replaces them with a standard width gap; it also creates gaps where the space character hadn't been used.</p>
+
+<p>None of the three major browser engines currently support the use of <code class="kw" translate="no">replace</code>. In fact, it's worse. If you add the <code class="kw" translate="no">replace</code> keyword, Gecko and WebKit browsers will no longer apply the gaps they would produce without it.</p>
+
 <details class="moreTests"><summary>Tests</summary>
 <ol>
 <li>
@@ -303,12 +367,22 @@ text-decoration-skip-inset:none|auto;</code></pre>
 </dl>
 
 
-<p>Most of the time you will probably want to use the following:<br>
+<p>Ideally, when browsers support the CSS, you will probably want to use the following most of the time:<br>
 <code>text-autospace: ideograph-alpha ideograph-numeric replace;</code></p>
 
-<p>As shown in the side panel, the text-autospace property is still not interoperably implemented on major browser engines, and what partial implementations exist are problematic. No browser adds the autospace by default.  That said, adding a text-autospace rule to your CSS style sheet now doesn't do any harm, and may improve the rendered text as implementations improve. (For now, however, drop the replace keyword, since it scuppers what spacing is applied.)</p>
+<p>However, while the <code class="kw" translate="no">replace</code> value stops the other values working, you may want to go with:<br>
+<code>text-autospace: ideograph-alpha ideograph-numeric;</code></p>
+</section>
 
-<p>The following demo has three paragraphs.  The first has no styling. The second is styled only with ideograph-alpha ideograph-numeric. And the third line adds the replace keyword. Space characters surround the term "gilt top".</p>
+
+
+
+<section id="autospaceWork">
+<h3>Does it work?</h3>
+
+<p>As shown in the side panel, the <code class="kw" translate="no">text-autospace</code> property is still not interoperably implemented on major browser engines, and what partial implementations exist are problematic. No browser adds the autospace by default.  That said, adding a <code class="kw" translate="no">text-autospace</code> rule to your CSS style sheet now doesn't do any harm, and may improve the rendered text as implementations improve. (For now, however, drop the <code class="kw" translate="no">replace</code> keyword, since it scuppers what spacing is applied.)</p>
+
+<p>The following demo has three paragraphs.  The first has no styling. The second is styled only with ideograph-alpha ideograph-numeric. And the third line adds the <code class="kw" translate="no">replace</code> keyword. Space characters surround the term "gilt top".</p>
 
 
 <figure class="example" lang="en">
@@ -337,7 +411,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 <p class="options">Choose a font: <input oninput="document.querySelector('#demo-autospace .test_lines').style.fontFamily = this.value;"></p>
 </div>
 </section>
-
+</section>
 
 
 
@@ -352,13 +426,21 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <p>When text is arranged on a strict grid pattern, none of this space removal applies.</p>
 
+<p>The following sections look at how to manage gaps around punctuation.</p>
+
+<ul>
+<li><a class="secref">punctuation_sequences</a></li>
+<li><a class="secref">punctuation_initial</a></li>
+<li><a class="secref">punctuation_final</a></li>
+</ul>
+</section>
 
 
 
 
 
 <section id="punctuation_sequences">
-<h3>Collapsing space in runs of punctuation</h3>
+<h2>Collapsing space in runs of punctuation</h2>
 
 <p>When certain multiple punctuation marks appear side by side, the cumulative blank parts of each character can add up to create an inappropriately large gap. Such large gaps should be eliminated, to improve readability. Here we will use brackets to illustrate this, but this applies to a number of character combinations. See <a class="figref">fig_character_frame</a>.</p>
 
@@ -387,7 +469,41 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 
 
-<p><span class="leadin">How to do it.</span> The CSS Text spec proposes a way remove superfluous gaps between punctuation marks using the <code class="kw" translate="no">text-spacing-trim</code> CSS property.</p>
+<section id="punctuationHow">
+<h3>How to do it</h3>
+
+
+<p>The CSS Text spec proposes a way remove superfluous gaps between punctuation marks using the <code class="kw" translate="no">text-spacing-trim</code> CSS property.</p>
+
+<aside class="floatedImplnote">
+<p class="feature">default behaviour</p>
+<table class="implTable">
+<thead>
+<tr>
+<th><img src="inline-space-data/icon_blink.svg" class="browser_icon" alt="Blink" title="Blink"></th>
+<th><img src="inline-space-data/icon_gecko.svg" class="browser_icon" alt="Gecko" title="Gecko"></th>
+<th><img src="inline-space-data/icon_webkit.svg" class="browser_icon" alt="WebKit" title="WebKit"></th>
+</tr>
+</thead>
+<tbody>
+<tr><td>✅</td><td>❌</td><td>❌</td></tr>
+</tbody>
+</table>
+
+<p class="feature">text-spacing-trim</p>
+<table class="implTable">
+<thead>
+<tr>
+<th><img src="inline-space-data/icon_blink.svg" class="browser_icon" alt="Blink" title="Blink"></th>
+<th><img src="inline-space-data/icon_gecko.svg" class="browser_icon" alt="Gecko" title="Gecko"></th>
+<th><img src="inline-space-data/icon_webkit.svg" class="browser_icon" alt="WebKit" title="WebKit"></th>
+</tr>
+</thead>
+<tbody>
+<tr><td>✅</td><td>❌</td><td>❌</td></tr>
+</tbody>
+</table>
+</aside>
 
 
 <p>You can indicate to the browser that you want to do this using <code class="kw" translate="no">text-spacing-trim:normal</code>, but in fact, any of the following additional values for that property remove space in punctuation clusters: <code class="kw" translate="no">trim-both</code>, <code class="kw" translate="no">space-first</code>, <code class="kw" translate="no">trim-start</code>, and <code class="kw" translate="no">trim-all</code>. (The difference between these values relates to the handling of space at the start of a paragraph, which is discussed below).</p>
@@ -419,9 +535,16 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 
 <p>If, for some reason, you want to prevent the space collapsing you can use <code class="kw" translate="no">text-spacing-trim:space-all</code>.</p>
+</section>
 
 
-<p><span class="leadin">Does it work?</span> As of the time of writing, browser support for this CSS property is limited.</p>
+
+
+
+<section id="punctuationWork">
+<h3>Does it work?</h3>
+
+<p>As of the time of writing, browser support for this CSS property is limited.</p>
 
 <p>Blink browsers support gap reduction using the values mentioned above, but also reduce the gap by default — no styling needed.</p>
 
@@ -435,7 +558,7 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 
 <section id="punctuation_initial">
-<h3>Line-initial punctuation</h3>
+<h2>Line-initial punctuation</h2>
 
 <p>This section is concerned with punctuation marks that normally include built-in space on the left, such as the bracket <span style="background-color:antiquewhite">『</span>.  We'll use that for the following examples, although this applies also to other punctuation marks.</p>
 <p>When a punctuation mark like this appears at the beginning of a line, there are a number of possibilities. At the <strong>beginning of a paragraph</strong>, we may want to see:</p>
@@ -682,11 +805,10 @@ Adjust line length: <input id="offsetSlider3" type="range" min="20" max="100" st
 
 
 <section id="punctuation_final">
-<h3>Line-final punctuation</h3>
+<h2>Line-final punctuation</h2>
 
 
 
-</section>
 </section>
 
 
