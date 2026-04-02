@@ -16,8 +16,8 @@
 
 .browser_output p.options { font-size: 70%; margin-block-start: 2rem; }
 
-details.moreTests { margin-inline-start: 5em; margin-inline-end:0; font-size: 80%; margin-block: 2rem; }
-summary { font-style: italic; cursor: pointer; }
+details.moreTests { font-size: 80%; margin-block: 2rem; }
+summary { font-style: italic; cursor: pointer; margin-inline-start: 5% }
 details p { margin-inline: 0; }
 
 details figure { margin-inline:7.5%; }
@@ -32,4 +32,20 @@ details ol {
     }
 
 
+dl {
+    margin-inline-start: unset;
+    margin-inline-end: unset;
+    }
+dt {
+    margin-inline-start: 7.5%;
+    margin-inline-end: 32%;
+    }
+dd {
+    margin-inline-start: 10%;
+    margin-inline-end: 32%;
+    }
 
+
+.floatedImplnote {
+    font-size: 80%;
+    }
