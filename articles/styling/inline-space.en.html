@@ -14,13 +14,13 @@ f.authors = 'Richard Ishida, W3C'; // author(s) and affiliations
 f.previousauthors = ''; // as above
 f.modifiers = ''; // people making substantive changes, and their affiliation
 f.searchString = 'article-inline-space'; // blog search string - usually the filename without extensions
-f.firstPubDate = '2026-03-16'; // date of the first publication of the document (after review)
-f.lastSubstUpdate = { date:'2026-03-16', time:'10:10'}  // date and time of latest substantive changes to this document
-f.status = 'review';  // should be one of draft, review, published, notreviewed or obsolete
+f.firstPubDate = '2026-04-02'; // date of the first publication of the document (after review)
+f.lastSubstUpdate = { date:'2026-04-02', time:'04:29'}  // date and time of latest substantive changes to this document
+f.status = 'draft';  // should be one of draft, review, published, notreviewed or obsolete
 f.path = '../../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
-f.thisVersion = { date:'2026-03-16', time:'10:10'} // date and time of latest edits to this document/translation
+f.thisVersion = { date:'2026-04-02', time:'04:29'} // date and time of latest edits to this document/translation
 f.contributors = 'The initial text for this article is taken from the <cite>Text spacing</cite> section of <a href="https://r12a.github.io/scripts/jpan/ja.html#letterspace">Japanese (Kanji, Hiragana, Katakana, & Latin) Orthography Notes</a> and <a href="https://r12a.github.io/scripts/hani/zh.html#letterspace">Han (Chinese) Orthography Notes</a>.'; // people providing useful contributions or feedback during review or at other times
 // make sure to translate the information in the meta description element
 // also make sure that the lang attribute on the html tag is correct!
@@ -446,66 +446,103 @@ text-decoration-skip-inset:none|auto;</code></pre>
 <li>one and a half spaces before the bracket</li>
 </ol>
 
-<p>These decisions will typically be dictated by whether or not a paragraph is preceded by a blank line, or whether the first line of the paragraph is indented.</p>
+<p>These decisions will typically be influenced by whether or not a paragraph is preceded by a blank line, or whether the first line of the paragraph is indented.</p>
 
-<p>In each case, a bracket that appears at the beginning of a line but is <strong>within the paragraph</strong> should have no space before it.</p>
+<p>In each case, a bracket that appears at the beginning of a line but is <strong>not at the start of the paragraph</strong> should have no space before it.</p>
 
-
-
-<p>When paragraphs are preceded by a blank line, and therefore the first line of the paragraph is not indented, you will likely want to remove the space at the start of the paragraph. To do this, you can use <code class="kw" translate="no">text-spacing-trim</code> with the value <code class="kw" translate="no">trim-start</code> or <code class="kw" translate="no">trim-both</code>.</p>
+<p>The CSS specification recommends the use of <code class="kw" translate="no">text-spacing-trim</code> to position the initial bracket. Unfortunately, <code class="kw" translate="no">text-spacing-trim</code> is not supported by Gecko or WebKit browsers.  There is, however, some support for Blink browsers, such as Chrome and Edge.</p>
 
 
-<figure class="example" lang="en">
+
+<section id="punc_initial_nospace">
+<h4>Scenario #1: No space</h4>
+
+<figure id="fig_trim_start" style="float:right; margin-block: 0;">
+<img src="inline-space-data/fig_op_nospace.jpg" alt="" style="width:16rem;">
+</figure>
+
+
+<p>When paragraphs are separated by blank lines, the first line of the paragraph is often not indented. When a paragraph begins with an opening bracket, it is common to remove the halfwidth space before it.</p>
+<p>To do this, you can use <code class="kw" translate="no">text-spacing-trim</code> with the value <code class="kw" translate="no">trim-start</code> or <code class="kw" translate="no">trim-both</code>.</p>
+
+
+<figure class="example" lang="en" style="clear: both;">
 <pre><code class="language-css">:root { text-spacing-trim: trim-start; }
 p { margin-block: 1em; }</code></pre>
 </figure>
 
 <style>
-#demo-trim-start .test_lines { font-size: 1.6rem; line-height: 1.4; }
+#demo-trim-start .test_lines { font-size: 1.6rem; line-height: 1.4; font-family: YuMincho, "MS Mincho","Noto Serif CJK JP"; writing-mode:vertical-rl; height: 14em; }
 #demo-trim-start span { background-color: antiquewhite; }
+#demo-trim-start p { margin-block: 1em; }
 </style>
 
 <div id="demo-trim-start" class="browser_output">
 <p class="browser_output_title">Output in your browser. (Adjust the line length so that both opening brackets appear at the start of the line.)</p>
 
 <div class="test_lines">
-<div id="demo-trim-start_test" style="text-spacing-trim: trim-start;">
-<p lang="ja"><span>『</span>先生はそう言った。私はその言葉の意味をすぐには理解できなかった。しかし、先生は続けてこうも言った<span>『</span>人間というものは、時に自分でも気づかないうちに他人を傷つけるものだよ』と。</p>
+<div id="demo-trim-start_test" style="text-spacing-trim: space-first;">
+<p lang="ja">内容は釈実に進化してきた。</p>
+<p lang="ja" style=""><span style="background-color:antiquewhite;">「</span>今回何よりお伝えしたいのは<span style="background-color:antiquewhite;">『</span>家族旅行ハワイ』の行き先にハワイ島が加わったことです。」</p>
+<p lang="ja" style="text-indent: 1em;">溶岩大地が圧巻のハワイ火山国立公園、マウナケア山から望むサ</p>
 </div>
 </div>
 
 <p class="options">Choose a font: <input oninput="document.querySelector('#demo-trim-start .test_lines').style.fontFamily = this.value;">  &nbsp; 
 
-Adjust line length: <input id="offsetSlider2" type="range" min="20" max="100" step="1" value="100" 
-    oninput="document.getElementById('demo-trim-start_test').style.width = this.value+'%';
-         document.getElementById('offsetSliderValue2').value=this.value+'%';"
-         style="width:8rem; height:1rem;" placeholder="Scheherazade New WF">
-<input value="100%" id="offsetSliderValue2" style="width:3em;"></p>
+Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step="1" value="14" 
+    oninput="document.getElementById('demo-trim-start_test').style.height = this.value+'em';
+         document.getElementById('offsetSliderValue2').value=this.value+'em';"
+         style="width:10em; height:1em;" placeholder="">
+<input value="14em" id="offsetSliderValue2" style="width:3em;"></p>
 </div>
 
+<p>The <code class="kw" translate="no">trim-both</code> value is not supported by Blink browsers.</p>
+</section>
+
+
+<details>
+<summary>Tests</summary>
+<p><a href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Cp%3E%3Cspan%3E%E3%80%90%3C%2Fspan%3E%E6%8B%AC%E5%BC%A7%E5%8F%A5%E8%AA%AD%E7%82%B9%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%96%3C%2Fspan%3E%E6%8B%AC%E5%BC%A7%E5%8F%A5%E8%AA%AD%E7%82%B9%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%94%3C%2Fspan%3E%E6%8B%AC%E5%BC%A7%E5%8F%A5%E8%AA%AD%E7%82%B9%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%EF%BC%BB%3C%2Fspan%3E%E6%8B%AC%E5%BC%A7%E5%8F%A5%E8%AA%AD%E7%82%B9%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%EF%BC%88%3C%2Fspan%3E%E6%8B%AC%E5%BC%A7%E5%8F%A5%E8%AA%AD%E7%82%B9%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%88%3C%2Fspan%3E%E6%8B%AC%E5%BC%A7%E5%8F%A5%E8%AA%AD%E7%82%B9%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%8A%3C%2Fspan%3E%E6%8B%AC%E5%BC%A7%E5%8F%A5%E8%AA%AD%E7%82%B9%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%8C%3C%2Fspan%3E%E6%8B%AC%E5%BC%A7%E5%8F%A5%E8%AA%AD%E7%82%B9%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%8E%3C%2Fspan%3E%E6%8B%AC%E5%BC%A7%E5%8F%A5%E8%AA%AD%E7%82%B9%3C%2Fp%3E%0A&css=.test%20%7B%20writing-mode%3Avertical-rl%3B%20%7D%0Aspan%20%7B%20background-color%3A%20antiquewhite%3B%20%7D%0Ap%20%7B%20text-spacing-trim%3Atrim-start%3B%20%20%7D&lang=ja&fontSize=36&fontFamily=yumincho&width=900&height=261&a=text-spacing-trim%3Atrim-start%20trims%20leading%20space%20from%20opening%20brackets%20at%20the%20start%20of%20a%20Japanese%20paragraph.&i=Tests%20pass%20if%20the%20bracket%20and%20its%20coloured%20background%20are%20half%20an%20em%20in%20width%20and%20touch%20the%20top%20of%20the%20box.">text-spacing-trim:trim-start trims leading space from opening brackets at the start of a Japanese paragraph.</a></p>
+
+<p><a href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Cp%3E%3Cspan%3E%E3%80%90%3C%2Fspan%3E%E6%8B%AC%E8%99%9F%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%96%3C%2Fspan%3E%E6%8B%AC%E8%99%9F%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%94%3C%2Fspan%3E%E6%8B%AC%E8%99%9F%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%EF%BC%BB%3C%2Fspan%3E%E6%8B%AC%E8%99%9F%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%EF%BC%88%3C%2Fspan%3E%E6%8B%AC%E8%99%9F%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%88%3C%2Fspan%3E%E6%8B%AC%E8%99%9F%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%8A%3C%2Fspan%3E%E6%8B%AC%E8%99%9F%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%8C%3C%2Fspan%3E%E6%8B%AC%E8%99%9F%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F%3C%2Fp%3E%0A%3Cp%3E%3Cspan%3E%E3%80%8E%3C%2Fspan%3E%E6%8B%AC%E8%99%9F%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F%3C%2Fp%3E%0A&css=.test%20span%20%7B%20background-color%3A%20antiquewhite%3B%20%7D%0A.test%20p%20%7B%20text-spacing-trim%3Atrim-start%3B%20%20%7D&lang=zh-hant&fontSize=36&width=900&height=850&a=text-spacing-trim%3Atrim-start%20trims%20leading%20space%20from%20opening%20brackets%20at%20the%20start%20of%20a%20Traditional%20Chinese%20paragraph.&i=Tests%20pass%20if%20the%20bracket%20and%20its%20coloured%20background%20are%20half%20an%20em%20in%20width%20and%20touch%20the%20side%20of%20the%20box.&fonts=Apple LiSung,LiSong Pro,MingLiu,PMingLiu,Songti TC,Noto Serif CJK TC,Nom Na Tong,Apple LiGothic,Heiti TC,Lantinghei TC,LiHei Pro,Microsoft JhengHei,Noto Sans CJK TC,PingFang HK,PingFang TC,PingFang MO,Yuanti TC,Hiragino Sans TC,BiaukaiTC,BiaukaiHK,DFKai-SB,Kaiti TC,Xingkai TC,Baoli TC,Hannotate TC,HanziPen TC,Libian TC,LingWai TC,Wawati TC,Weibei TC,Yuppy TC">text-spacing-trim:trim-start trims leading space from opening brackets at the start of a Traditional Chinese paragraph.</a></p>
 
 
 
 
-<p>When paragraphs are <em>not</em> preceded by a blank line, and therefore the first line of the paragraph <em>is</em> indented, you can use the same values of <code class="kw" translate="no">text-spacing-trim</code> but with <code class="kw" translate="no">text-indent</code>.</p>
+<section id="punc_hanging">
+<h4>Scenario #2: Hanging punctuation</h4>
 
 
-<figure class="example" lang="en">
-<pre><code class="language-css">:root { text-spacing-trim: trim-start; }
-p { margin-block: 0; text-indent: 1em; }</code></pre>
+<figure id="fig_op_halfspace" style="float:right">
+<img src="inline-space-data/fig_op_halfspace.jpg" alt="" style="width:12rem;">
+</figure>
+
+<p>A common arrangement for Japanese text is to remove the gaps between paragraphs, and start each paragraph with a one em indent. When an opening bracket appears at the beginning of the first line in the paragraph, it occupies the right-hand half of that indentation. This can be visually analysed as a fullwidth character replacing the indent, or as the halfwidth bracket ‘hanging’ to the left of/above the actual line start.</p>
+<p>For this arrangement, the CSS specification suggests the rules shown in the box below. The <code class="kw" translate="no">text-indent</code> property applies the indent across all paragraphs. The <code class="kw" translate="no">text-spacing-trim</code> line removes the leading space from the bracket. Then the <code class="kw" translate="no">hanging-punctuation</code> line moves the bracket into the indent space.</p>
+
+
+<figure class="example" lang="en" style="clear: both;">
+<pre><code class="language-css">p {
+  margin: 0;
+  text-indent: 1em;
+  text-spacing-trim: trim-both;
+  hanging-punctuation: first;
+  }</code></pre>
 </figure>
 
 <style>
 #demo-indent .test_lines { font-size: 1.6rem; line-height: 1.4; }
 #demo-indent span { background-color: antiquewhite; }
 #demo-indent .test_lines p { text-indent: 1em; margin-block: 0; }
+#demo-indent_test p { text-spacing-trim: trim-start; hanging-punctuation: first; }
 </style>
 
 <div id="demo-indent" class="browser_output">
 <p class="browser_output_title">Output in your browser. (Adjust the line length so that both opening brackets appear at the start of the line.)</p>
 
 <div class="test_lines">
-<div id="demo-indent_test" style="text-spacing-trim: trim-start;">
+<div id="demo-indent_test">
 <p lang="ja"><span>『</span>先生はそう言った。私はその言葉の意味をすぐには理解できなかった。しかし、先生は続けてこうも言った<span>『</span>人間というものは、時に自分でも気づかないうちに他人を傷つけるものだよ』と。</p>
 </div>
 </div>
@@ -518,7 +555,59 @@ Adjust line length: <input id="offsetSlider4" type="range" min="20" max="100" st
          style="width:8rem; height:1rem;" placeholder="Scheherazade New WF">
 <input value="100%" id="offsetSliderValue4" style="width:3em;"></p>
 </div>
+</section>
 
+
+
+
+
+
+<section id="punc_chinese">
+<h4>Scenario #3: Non-hanging indent</h4>
+
+
+<figure id="fig_op_chinese" style="float:right">
+<img src="inline-space-data/fig_op_chinese.jpg" alt="" style="width:12rem;">
+</figure>
+
+<p>The figure to the right shows Chinese paragraphs with the first line indented. In the case of Chinese, the typical indent is 2em. The leading space of the bracket is removed, but unlike the previous Japanese example, the bracket doesn't hang in the indent space.</p>
+
+<p>The following CSS will achieve this effect. The <code class="kw" translate="no">text-indent</code> property, once again, applies the indent across all paragraphs (but 2 em gaps this time). The <code class="kw" translate="no">text-spacing-trim</code> line then removes the leading space from the bracket.</p>
+
+
+<figure class="example" lang="en" style="clear: both;">
+<pre><code class="language-css">p {
+  margin: 0;
+  text-indent: 2em;
+  text-spacing-trim: trim-both;
+  }</code></pre>
+</figure>
+
+<style>
+#demo-chinese .test_lines { font-size: 1.6rem; line-height: 1.4; }
+#demo-chinese span { background-color: antiquewhite; }
+#demo-chinese .test_lines p { text-indent: 2em; margin-block: 0; }
+#demo-chinese_test p { text-spacing-trim: trim-start; }
+</style>
+
+<div id="demo-chinese" class="browser_output">
+<p class="browser_output_title">Output in your browser. (Adjust the line length so that both opening brackets appear at the start of the line.)</p>
+
+<div class="test_lines">
+<div id="demo-chinese_test">
+<p lang="ja"><span>〖</span>第二段以開括號起筆，約十二字後再添<span>〖</span>一記符號以呼應層次感。</p>
+</div>
+</div>
+
+<p class="options">Choose a font: <input oninput="document.querySelector('#demo-chinese .test_lines').style.fontFamily = this.value;">  &nbsp; 
+
+Adjust line length: <input id="offsetSlider4" type="range" min="20" max="100" step="1" value="100" 
+    oninput="document.getElementById('demo-chinese_test').style.width = this.value+'%';
+         document.getElementById('offsetSliderValue4').value=this.value+'%';"
+         style="width:8rem; height:1rem;" placeholder="">
+<input value="100%" id="offsetSliderValue4" style="width:3em;"></p>
+</div>
+</section>
 
 
 
@@ -649,10 +738,29 @@ Adjust line length: <input id="offsetSlider3" type="range" min="20" max="100" st
 <p>From JAL</p>
 
 <div style="writing-mode:vertical-rl; height:32rem; text-spacing-trim:trim-start; font-size:1.4rem; font-family:yumincho; width:70%;">
-<p><span style="background-color:antiquewhite;">「</span>今回何よりお伝えしたいのは<span style="background-color:antiquewhite;">『</span>家族旅行ハワイ』の行き先にハワイ島が加わったことです。」</p>
 
-<p>溶岩大地が圧巻のハワイ火山国立公園、マウナケア山から望むサ</p>
+<p>内容は釈実に進化してきた。</p>
+
+<p style="text-indent: 1em;hanging-punctuation: first;"><span style="background-color:antiquewhite;">「</span>今回何よりお伝えしたいのは<span style="background-color:antiquewhite;">『</span>家族旅行ハワイ』の行き先にハワイ島が加わったことです。」</p>
+
+<p style="text-indent: 1em;hanging-punctuation: first;">溶岩大地が圧巻のハワイ火山国立公園、マウナケア山から望むサ</p>
 </div>
+
+
+
+<style>#test2 p { margin: 0; text-indent:2em; }</style>
+
+<div id="test2" style="writing-mode:vertical-rl; height:28rem; font-size:1.4rem; font-family:'LiSong Pro'; width:70%;">
+
+<p>第一段以柔和意象鋪陳心境，字句緩慢流動如風中微光。</p>
+
+<p style=" text-spacing-trim:trim-start;"><span style="background-color:antiquewhite;">〖</span>第二段以開括號起筆，約十二字後再添<span style="background-color:antiquewhite;">〖</span>一記符號以呼應層次感。</p>
+
+<p>第三段以靜謐語氣收束情緒，讓餘韻在字裡行間延展。</p>
+</div>
+
+
+
 
 <p>と担当者の渡辺亜紀。ハワイ島はオアフ島とは異なり、観光の主なテーマは大自然。溶岩大地が圧巻のハワイ火山国立公園、マウナケア山から望むサンセットや星空、海を見渡す斜面のコナコーヒー農園など、ダイナミックな景観美が特徴だ。</p>
 
