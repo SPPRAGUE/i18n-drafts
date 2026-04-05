@@ -587,6 +587,8 @@ text-decoration-skip-inset:none|auto;</code></pre>
 
 <p>The <code class="kw" translate="no">text-spacing-trim</code> property has a number of possible values. Each property affects the width of punctuation marks at the start and end of a line. <a class="figref">fig_text_spacing_trim_values</a> provides an overview. Brackets that are the first character in a paragraph may or may not be preceded by indentation (set using a different property).</p>
 
+<p><em style="font-size: 90%;">For each value in <a class="figref">fig_text_spacing_trim_values</a>, three lines are shown containing brackets.  The first line shows whether a paragraph-initial bracket is fullwidth or halfwidth. The left of the second line shows what an inline bracket would look like when wrapped to a new line. To the right of the second line, a halfwidth graphic indicates that a closing bracket at line end can be reduced to fit. The third line shows the expected width of a paragraph-final bracket when there is adequate space after it to show a fullwidth glyph.</em></p>
+
 
 <style>
 #tst_values td:nth-child(3) { max-width: 30em; }
@@ -996,6 +998,7 @@ Adjust line length: <input id="offsetSlider4" type="range" min="5" max="20" step
 </div>
 
 <p>In the test above we use the <code class="kw" translate="no">trim-start</code> value, simply because that works in Blink browsers.  Ideally, you would be able to also use <code class="kw" translate="no">trim-both</code>.</p>
+<p>This approach works in Blink browsers, but in Gecko and WebKit browsers the brackets are not reduced in size. For the paragraph-initial bracket, this produces 2½ spaces before the bracket.</p>
 </section>
 
 
@@ -1076,7 +1079,24 @@ Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step
 <input value="15em" id="offsetSliderValue5" style="width:3em;"></p>
 </div>
 
-<p>Blink browsers support this value. Gecko and WebKit browsers are fine with the paragraph-initial bracket (because no styling is applied), but don't support the value, so a bracket wrapped to a new line will be fullwidth.</p>
+<p>Blink browsers support this value. Gecko and WebKit browsers are fine with the paragraph-initial bracket (because no styling is applied), but haven't implemented the value, which means that a bracket wrapped to a new line will be fullwidth.</p>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section id="punc_other">
+<h3>Other values</h3>
+
+<p>The other values, <code class="kw" translate="no">normal</code>, <code class="kw" translate="no">space-all</code>, and <code class="kw" translate="no">trim-all</code>, produce effects illustrated in <a class="figref">fig_text_spacing_trim_values</a>.</p>
+
+<p>Note that, in addition to keeping fullwidth glyphs at line start and end, <code class="kw" translate="no">space-all</code> also prohibits the collapse of space between adjacent, inline punctuation (see <a class="secref">punctuation_sequences</a>).</p>
 </section>
 
 
