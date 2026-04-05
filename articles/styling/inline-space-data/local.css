@@ -1,11 +1,3 @@
-@font-face {
-    font-family: 'Scheherazade New WF';
-    src: url('../../../style/fonts/scheherazadenew-regular-webfont.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-	}
-
-
 
 .codeExample { margin:0 0 0 7.5%; width: 60%; }
 .codeExample figure { margin:0; }
@@ -16,21 +8,17 @@
 
 .browser_output p.options { font-size: 70%; margin-block-start: 2rem; }
 
-details.moreTests { font-size: 80%; margin-block: 2rem; }
-details.moreTests p { margin-inline-start:7.5%; margin-inline-end: 32%; }
-summary { font-style: italic; cursor: pointer; margin-inline-start: 7.5% }
-details p { margin-inline: 0; }
-
-details figure { margin-inline:7.5%; }
-
-
 .language-css code { padding: 0; }
 
 
-details ol {
-    margin-inline-start: 10%;
-    margin-inline-end: 0;
-    }
+details.moreTests { font-size: 90%; margin-block: 2rem; }
+/*details.moreTests p { margin-inline-start:7.5%; margin-inline-end: 32%; }
+*/summary { font-style: italic; cursor: pointer; margin-inline-start: 7.5% }
+details p { margin-inline: 0; }
+
+details figure { margin-inline: 7.5%; }
+
+
 
 
 dl {
