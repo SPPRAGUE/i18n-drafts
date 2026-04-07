@@ -11,7 +11,7 @@
 .language-css code { padding: 0; }
 
 
-details.moreTests { font-size: 90%; margin-block: 2rem; }
+details.moreTests { font-size: 90%; margin-block: 1rem; }
 /*details.moreTests p { margin-inline-start:7.5%; margin-inline-end: 32%; }
 */summary { font-style: italic; cursor: pointer; margin-inline-start: 7.5% }
 details p { margin-inline: 0; }

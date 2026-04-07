@@ -410,9 +410,9 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 
 
 <dd>
-<p>There are 2 ways in which CSS can add gaps. If the text already contains gaps produced using ordinary space characters the CSS will, by default, only add gaps where there are no spaces. If, on the other hand, you want to reduce the width of any space-based gaps and apply even spacing throughout, use the <code class="kw" translate="no">replace</code> value. <code class="kw" translate="no">text-autospace:ideograph-alpha ideograph-numeric replace;</code> removes any space characters from the displayed text (without changing the characters in memory) and replaces them with a standard width gap; it also creates gaps where the space character hadn't been used.</p>
+<p>There are 2 ways in which CSS can add gaps. If the text already contains gaps produced using ordinary space characters the CSS will, by default, only add gaps where there are no spaces. If, on the other hand, you want to reduce the width of any space-based gaps and apply even spacing throughout, use the <code class="kw" translate="no">replace</code> value. <code class="kw" translate="no">text-autospace:ideograph-alpha ideograph-numeric replace;</code> removes any space character glyphs from the displayed text (without changing the characters in memory) and replaces them with a standard width gap; it also creates gaps where the space character hadn't been used.</p>
 
-<p>None of the three major browser engines currently support the use of <code class="kw" translate="no">replace</code>. In fact, it's worse. If you add the <code class="kw" translate="no">replace</code> keyword, Gecko and WebKit browsers will no longer apply the gaps they would produce without it. Note also that the <code class="kw" translate="no">replace</code> keyword cannot be used with <code class="kw" translate="no">normal</code>, which seems to be a shame.</p>
+<p>None of the three major browser engines currently support the use of <code class="kw" translate="no">replace</code>. In fact, it's worse. If you add the <code class="kw" translate="no">replace</code> keyword, Gecko and WebKit browsers will no longer apply the gaps they would produce without it. Note also that the <code class="kw" translate="no">replace</code> keyword cannot be used with <code class="kw" translate="no">normal</code>, which seems to be a shame. (A <a href="https://github.com/w3c/csswg-drafts/issues/13774">feature request</a> was raised about this.)</p>
 </dd>
 
 
@@ -777,7 +777,7 @@ Apple LiSung<br>LiSong Pro<br>Songti TC<br>Nom Na Tong<br>Apple LiGothic<br>Heit
 </table>
 
 
-<p>The above results were derived from text displayed in horizontal lines. Some fonts (such as PingFang TC) support the expected behavour in horizontal text, but not in vertically set text. You should also be careful to note whether the font supports glyphs for the bracket you want to use: for example, the Hiragino Sans TC font doesn't appear to support the 〖 bracket (although it does support the 【 bracket) — if you use that bracket you may see unexpected failures.</p>
+<p>The above results were derived from text displayed in horizontal lines. Some fonts (such as PingFang TC) support the expected behavour in horizontal text, but not in vertically set text. You should also be careful to note whether the font supports glyphs for the bracket you want to use: for example, the Hiragino Sans TC font doesn't appear to support the 〖 bracket (although it does support the 【 bracket) — if you use that bracket and that font you may see unexpected failures.</p>
 
 <!--<details class="moreTests">
 <summary>Tests</summary>
