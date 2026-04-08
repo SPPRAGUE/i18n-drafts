@@ -20,7 +20,7 @@ f.status = 'draft';  // should be one of draft, review, published, notreviewed o
 f.path = '../../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
-f.thisVersion = { date:'2026-04-08', time:'15:39' } // date and time of latest edits to this document/translation
+f.thisVersion = { date:'2026-04-08', time:'16:20' } // date and time of latest edits to this document/translation
 f.contributors = 'The initial text for this article is taken from the <cite>Text spacing</cite> section of <a href="https://r12a.github.io/scripts/jpan/ja.html#letterspace">Japanese (Kanji, Hiragana, Katakana, & Latin) Orthography Notes</a> and <a href="https://r12a.github.io/scripts/hani/zh.html#letterspace">Han (Chinese) Orthography Notes</a>.'; // people providing useful contributions or feedback during review or at other times
 // make sure to translate the information in the meta description element
 // also make sure that the lang attribute on the html tag is correct!
@@ -131,7 +131,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 <figure id="fig_arabic_font_metrics">
 <img src="inline-space-data/fig_letter_spacing_1.jpeg" alt="An illustration of a heading above paragraphs of text which has been lengthened by inserting spaces between characters." style="max-height:12rem;">
 <img src="inline-space-data/fig_letter_spacing_2.jpeg" alt="An illustration of a heading above paragraphs of text which has been lengthened by inserting spaces between characters." style="max-height:12rem;">
-<figcaption>Examples of headings where letter spacing has been applied..</figcaption>
+<figcaption>Examples of headings where letter spacing has been applied.</figcaption>
 </figure>
 </div>
 
@@ -777,7 +777,7 @@ Apple LiSung<br>LiSong Pro<br>Songti TC<br>Nom Na Tong<br>Apple LiGothic<br>Heit
 </table>
 
 
-<p>The above results were derived from text displayed in horizontal lines. Some fonts (such as PingFang TC) support the expected behavour in horizontal text, but not in vertically set text. You should also be careful to note whether the font supports glyphs for the bracket you want to use: for example, the Hiragino Sans TC font doesn't appear to support the 〖 bracket (although it does support the 【 bracket) — if you use that bracket and that font you may see unexpected failures.</p>
+<p>The above results were derived from text displayed in horizontal lines. Some fonts (such as PingFang TC) support the expected behaviour in horizontal text, but not in vertically set text. You should also be careful to note whether the font supports glyphs for the bracket you want to use: for example, the Hiragino Sans TC font doesn't appear to support the 〖 bracket (although it does support the 【 bracket) — if you use that bracket and that font you may see unexpected failures.</p>
 
 <!--<details class="moreTests">
 <summary>Tests</summary>
@@ -868,7 +868,7 @@ Apple LiSung<br>LiSong Pro<br>Songti TC<br>Nom Na Tong<br>Apple LiGothic<br>Heit
 <li>
 <p><span class="leadin">Assertion:</span> <a href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Cp%3E%3Cspan%3E%E3%80%8C%3C%2Fspan%3E%E4%BB%8A%E5%9B%9E%E4%BD%95%E3%82%88%E3%82%8A%E3%81%8A%E4%BC%9D%E3%81%88%E3%81%97%E3%81%9F%E3%81%84%E3%81%AE%E3%81%AF%3Cspan%3E%E3%80%8E%3C%2Fspan%3E%E5%AE%B6%E6%97%8F%E6%97%85%E8%A1%8C%E3%83%8F%E3%83%AF%E3%82%A4%E3%80%8F%E3%81%AE%E8%A1%8C%E3%81%8D%E5%85%88%E3%81%AB%E3%83%8F%E3%83%AF%E3%82%A4%E5%B3%B6%E3%81%8C%E5%8A%A0%E3%82%8F%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8%E3%81%A7%E3%81%99%E3%80%82%E3%80%8D%3C%2Fp%3E%0A&css=.test%20span%20%7B%20background-color%3A%20antiquewhite%3B%20%7D%0A.test%20p%20%7B%20text-spacing-trim%3Atrim-both%3B%20font-family%3AYuMincho%3B%20%7D&lang=ja&fontSize=36&width=540&height=215&a=text-spacing-trim%3Atrim-both%20trims%20leading%20space%20from%20opening%20brackets%20at%20the%20start%20of%20a%20paragraph%20on%20macOS.&i=Run%20this%20test%20on%20macOS.%20The%20specified%20font%20should%20support%20this%20behaviour.%20Adjust%20the%20width%20of%20the%20box%20below%20so%20that%20both%20brackets%20appear%20at%20the%20start%20of%20a%20line.%20Test%20passes%20if%20both%20brackets%20and%20their%20coloured%20background%20are%20half%20an%20em%20in%20width%20and%20touch%20the%20side%20of%20the%20box." target="_blank"><code class="kw" translate="no">text-spacing-trim:trim-both</code> trims leading space from opening brackets at the start of a paragraph on macOS.</a></p>
 
-<p><span class="leadin">Results:</span> Fails for Blink, Gecko and WebKit browers.</p>
+<p><span class="leadin">Results:</span> Fails for Blink, Gecko and WebKit browsers.</p>
 </li>
 </ol>
 </details></aside>
@@ -953,7 +953,7 @@ Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step
 <li>
 <p><span class="leadin">Assertion:</span> <a href="https://w3c.github.io/i18n-tests/exploratory/index.html?text=%3Cp%3E%3Cspan%3E%E3%80%8C%3C%2Fspan%3E%E4%BB%8A%E5%9B%9E%E4%BD%95%E3%82%88%E3%82%8A%E3%81%8A%E4%BC%9D%E3%81%88%E3%81%97%E3%81%9F%E3%81%84%E3%81%AE%E3%81%AF%3Cspan%3E%E3%80%8E%3C%2Fspan%3E%E5%AE%B6%E6%97%8F%E6%97%85%E8%A1%8C%E3%83%8F%E3%83%AF%E3%82%A4%E3%80%8F%E3%81%AE%E8%A1%8C%E3%81%8D%E5%85%88%E3%81%AB%E3%83%8F%E3%83%AF%E3%82%A4%E5%B3%B6%E3%81%8C%E5%8A%A0%E3%82%8F%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8%E3%81%A7%E3%81%99%E3%80%82%E3%80%8D%3C%2Fp%3E%0A&css=.test%20span%20%7B%20background-color%3A%20antiquewhite%3B%20%7D%0A.test%20p%20%7B%20text-spacing-trim%3Atrim-both%3B%20font-family%3AYuMincho%3B%20%7D&lang=ja&fontSize=36&width=540&height=215&a=text-spacing-trim%3Atrim-both%20trims%20leading%20space%20from%20opening%20brackets%20at%20the%20start%20of%20a%20paragraph%20on%20macOS.&i=Run%20this%20test%20on%20macOS.%20The%20specified%20font%20should%20support%20this%20behaviour.%20Adjust%20the%20width%20of%20the%20box%20below%20so%20that%20both%20brackets%20appear%20at%20the%20start%20of%20a%20line.%20Test%20passes%20if%20both%20brackets%20and%20their%20coloured%20background%20are%20half%20an%20em%20in%20width%20and%20touch%20the%20side%20of%20the%20box." target="_blank"><code class="kw" translate="no">text-spacing-trim:trim-both</code> trims leading space from opening brackets at the start of a paragraph on macOS.</a></p>
 
-<p><span class="leadin">Results:</span> Fails for Blink, Gecko and WebKit browers.</p>
+<p><span class="leadin">Results:</span> Fails for Blink, Gecko and WebKit browsers.</p>
 </li>
 </ol>
 </details>-->
@@ -1328,7 +1328,7 @@ Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step
 <section id="punctuation_final">
 <h2>Line-final punctuation</h2>
 
-<p>When we consider line-final punctuation we want to know whether a closing bracket or other punctuation with trailing space will have that space removed automatically when there is only enough space at the line end for a halfwidth character. If there is a halfwidth character gap but the punctuation remains fullwidth, it will be wrapped to the following line, taking with it the previous character (because closing brackets should not occure at the start of a line).</p>
+<p>When we consider line-final punctuation we want to know whether a closing bracket or other punctuation with trailing space will have that space removed automatically when there is only enough space at the line end for a halfwidth character. If there is a halfwidth character gap but the punctuation remains fullwidth, it will be wrapped to the following line, taking with it the previous character (because closing brackets should not occur at the start of a line).</p>
 
 <p>All of the <code class="kw" translate="no">text-spacing-trim</code> values automatically reduce the width of a closing bracket at the end of a line, except for the <code class="kw" translate="no">space-all</code> value.</p>
 
