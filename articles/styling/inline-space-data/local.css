@@ -11,6 +11,10 @@
 .language-css code { padding: 0; }
 
 
+aside .moreTests p { margin-inline: 7.5%; }
+aside hr { width: 50%; color: #eee; }
+
+
 details.moreTests { font-size: 90%; margin-block: 1rem; }
 /*details.moreTests p { margin-inline-start:7.5%; margin-inline-end: 32%; }
 */summary { font-style: italic; cursor: pointer; margin-inline-start: 7.5% }
@@ -18,6 +22,8 @@ details p { margin-inline: 0; }
 
 details figure { margin-inline: 7.5%; }
 
+
+.testData { background: seashell; padding: 1rem; }
 
 
 
