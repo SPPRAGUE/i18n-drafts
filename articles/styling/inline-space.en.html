@@ -807,7 +807,7 @@ Apple LiSung<br>LiSong Pro<br>Songti TC<br>Nom Na Tong<br>Apple LiGothic<br>Heit
 
 
 <figure id="fig_trim_startX" style=" margin-block: 0;">
-<img src="inline-space-data/fig_op_nospace.jpg" alt="" style="width:16rem;">
+<img src="inline-space-data/fig_op_nospace.jpg" alt="" style="width:24rem;">
 </figure>
 
 
@@ -978,7 +978,7 @@ Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step
 
 
 <figure id="fig_op_halfspace" style="/*float:right*/">
-<img src="inline-space-data/fig_op_halfspace.jpg" alt="" style="width:12rem;">
+<img src="inline-space-data/fig_op_halfspace.jpg" alt="" style="width:22rem;">
 </figure>
 
 <p>A common arrangement for Japanese text is to remove the gaps between paragraphs, and start each paragraph with a one em indent. When an opening bracket appears at the beginning of the first line in the paragraph, it occupies the right-hand (or lower) half of that indentation. This can be visually analysed as a fullwidth character replacing the indent, or as the halfwidth bracket ‘hanging’ to the left of/above the actual line start.</p>
@@ -1213,7 +1213,7 @@ Adjust line length: <input id="offsetSlider4" type="range" min="5" max="20" step
 
 
 <figure id="fig_op_spacefirst">
-<img src="inline-space-data/fig_op_halfspace.jpg" alt="" style="width:12rem;">
+<img src="inline-space-data/fig_op_spacefirst.jpg" alt="" style="width:22rem;">
 </figure>
 
 <p>A lot of existing content, especially in ePub documents, was created before CSS addressed the problems of paragraph-initial punctuation. Common practice, as a result, involves the use of an ideographic space character before most initial paragraph lines, but the substitution of a fullwidth bracket glyph instead where needed. This gives the half space before the bracket that we saw in the hanging example above. It looks identical, but it is achieved by using characters, rather than styling.</p>
@@ -1339,6 +1339,14 @@ Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step
 
 <p>All of the <code class="kw" translate="no">text-spacing-trim</code> values automatically reduce the width of a closing bracket at the end of a line, except for the <code class="kw" translate="no">space-all</code> value.</p>
 
+<p>If you want to justify text so that a closing bracket at the end of a line is flush with the ends of the characters on adjacent lines, you need to choose a value of <code class="kw" translate="no">text-spacing-trim</code> that forces a halfwidth bracket at the line end. For this, <code class="kw" translate="no">trim-both</code> is preferable to <code class="kw" translate="no">trim-start</code>, because the latter may put a fullwidth glyph at the line end.</p>
+
+
+<figure id="fig_fully_justified">
+<img src="inline-space-data/fig_justified.jpg" alt="" style="height:10em; margin-inline:2em;">
+<img src="inline-space-data/fig_fully_justified.jpg" alt="" style="height:10em; margin-inline:2em;">
+<figcaption>A line ending with a bracket that is justified using <code class="kw" translate="no">trim-start</code> (left), and the same line justified flush using <code class="kw" translate="no">trim-both</code> (right).</figcaption>
+</figure>
 </section>
 
 
@@ -1417,10 +1425,46 @@ Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step
 </div>
 
 
+<div id="test3" style="writing-mode:vertical-rl; height:28em; font-size:1.4rem; font-family:'YuMincho', 'LiSong Pro'; width:70%; text-spacing-trim: trim-start; ">
+
+<p lang="ja">路地の入り口に新しくオープンした書店は、静かで明るく、午後にはよくお客さんで賑わっていた。</p>
+<p lang="ja" style=""><span style="background-color:antiquewhite">「</span>古い地図がお好きなら、一番奥の棚にまだ何枚かありますよ。</p>
+<p lang="ja" style="">ドアは開いていた。店内に入ると、<span style="background-color:antiquewhite">『</span>古書は丁寧にお取り扱いください』という文字が、まだインクの色が鮮やかに残っていた。</p>
+<p lang="ja">店を出る頃には雨は止んでいて、入り口前の石段にはうっすらと水滴が残っていた。</p>
 </div>
 
 
+<div id="test3" style="writing-mode:vertical-rl; height:20em; font-size:1.4rem; font-family:'YuMincho', 'LiSong Pro'; width:70%; text-spacing-trim: trim-start; ">
 
+<p lang="ja">古代の祭礼は地域で異なる。</p>
+<p lang="ja" style=""><span style="background-color:antiquewhite">【</span>祭具】は木製が主流である</p>
+<p lang="ja" style="">儀式の形態は多様で、古式<span style="background-color:antiquewhite">『</span>型』も残る。</p>
+<p lang="ja">現在も一部で継承されている。</p>
+</div>
+</div>
+
+<div id="test3" style="writing-mode:vertical-rl; height:18em; font-size:1.4rem; font-family:'YuMincho', 'LiSong Pro'; width:70%; text-spacing-trim: trim-start; ">
+
+<p lang="ja">古代祭礼の形態は地域ごとに異なっていた。</p>
+<p lang="ja" style=""><span style="background-color:antiquewhite">「</span>祭りは心の拠り所だ」と古老は語った。</p>
+<p lang="ja" style="">儀式の準備には多くの<span style="background-color:antiquewhite">『</span>古式』道具が使われた。</p>
+<p lang="ja">現在も一部地域で伝統が受け継がれている。</p>
+</div>
+
+
+<div id="test4" style="writing-mode:vertical-rl; height:11em; font-size:1.4rem; font-family:'YuMincho', 'LiSong Pro'; width:70%; text-spacing-trim: space-first; ">
+
+<p lang="ja" style="margin:0;">&#x3000;古代祭礼の形態は地域ごとに異なっていた。</p>
+<p lang="ja" style="margin:0;"><span style="background-color:antiquewhite">「</span>祭りは心の拠り所だ」と古老は語った。</p>
+<p lang="ja" style="margin:0;">&#x3000;儀式の準備には多くの<span style="background-color:antiquewhite">『</span>古式』道具が使われた。</p>
+<p lang="ja" style="margin:0;">&#x3000;現在も一部地域で伝統が受け継がれている。</p>
+</div>
+
+
+<div id="test5" style="height:11em; font-size:1.4rem; font-family:'YuMincho', 'LiSong Pro'; width:26em; text-spacing-trim: space-first; text-align: justify-all;">
+
+<p lang="ja" style="margin-inline:10rem;">今回何よりお伝えしたいのは『家族旅行ハワイ<span style="background-color:antiquewhite">』</span>の行き先にハワイ島が加わったことです。</p>
+</div>
 
 
 
