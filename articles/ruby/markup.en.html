@@ -62,24 +62,32 @@ function highlightCode () {
 </script>
 </head>
 
+
+
+
 <body>
 <header>
-  <nav id="mainNavigation"></nav><script>document.getElementById('mainNavigation').innerHTML = mainNavigation</script>
-  
-  <h1>Ruby Markup	</h1>
+<nav id="mainNavigation"></nav><script>document.getElementById('mainNavigation').innerHTML = mainNavigation</script>
+
+<h1>Ruby Markup	</h1>
 </header>
 
 
-  <div id="audience">
-    <div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script>
-    </div>
-    
-  <p>Ruby is the name given to the small annotations in Japanese and Chinese content that are rendered alongside base text, usually to provide phonetic information, but sometimes to provide other information. We will assume that you are familiar with how you want your ruby to look. (If not,  <a class="print" href="https://www.w3.org/International/questions/qa-ruby">see the short overview</a> of how ruby works.)</p>
-    <aside class="insideinfonote">
-  <p class="info">For a brief overview of what to expect when the browser renders the markup without CSS support, see the section <a href="#visual">What can I expect to see?</a> below.</p>
-    </aside>
-  <p class="info">This article will only discuss how to use HTML5 <em>markup</em> for ruby text. The aim of markup is principally to <em>establish the relationships</em> between the <dfn>base text</dfn> and the <dfn>ruby text</dfn> (the annotations). For information about how to then apply adjustments to the default <em>styling</em> of ruby text, see <a href="styling.en" class="print"><cite>Ruby Styling</cite></a>.</p>
+<div id="audience">
+<div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script>
+</div>
 
+
+
+<p>Ruby is the name given to the small annotations in Japanese and Chinese content that are rendered alongside base text, usually to provide phonetic information, but sometimes to provide other information. We will assume that you are familiar with how you want your ruby to look. (If not,  <a class="print" href="https://www.w3.org/International/questions/qa-ruby">see the short overview</a> of how ruby works.)</p>
+
+<aside class="insideinfonote">
+<p class="info">For a brief overview of what to expect when the browser renders the markup without CSS support, see the section <a href="#visual">What can I expect to see?</a> below.</p>
+</aside>
+
+<p class="info">This article will only discuss how to use HTML5 <em>markup</em> for ruby text. The aim of markup is principally to <em>establish the relationships</em> between the <dfn>base text</dfn> and the <dfn>ruby text</dfn> (the annotations). For information about how to then apply adjustments to the default <em>styling</em> of ruby text, see <a href="styling.en" class="print"><cite>Ruby Styling</cite></a>.</p>
+
+<p style="font-style: italic;">Note that some of the technologies described here are still under development, and browser adoption is only partial — in particular, the tabular model is so far only supported by Gecko browsers. In what follows we will describe what you should do when the new Ruby Extensions specification is properly implemented by browsers, and also describe what currently works and doesn't work.</p>
 
 
 <section id="Slide0090">
@@ -131,7 +139,7 @@ function highlightCode () {
 
 <p>It is important to clarify some points about the <code class="kw" translate="no">rb</code> tag here. Many sources will tell you that <code class="kw" translate="no">rb</code> is not supported in browsers, and so it was removed from the HTML Standard. In fact, since <code class="kw" translate="no">ruby</code> was added to HTML, all major browsers have parsed and recognised the <code class="kw" translate="no">rb</code> element perfectly well when it is used for the interleaved markup approach described in this section.</p>
 
-<p>What is not yet supported (in browsers other than those using the Gecko engine) is the <em>association between</em> the <code class="kw" translate="no">rb</code> and <code class="kw" translate="no">rt</code> tags in the tabular markup model, also described here — the <code class="kw" translate="no">rb</code> element is still parsed and recognised, but just not correctly associated with the relevant <code class="kw" translate="no">rt</code> element. That association is key to the tabular model working, so none of the examples of that model on this page will work for Blink and WebKit based browsers yet (but not because of the presence of the <code class="kw" translate="no">rb</code> tag).</p>
+<p>What is not yet supported (in browsers other than those using the Gecko engine) is the <em>association between</em> the <code class="kw" translate="no">rb</code> and <code class="kw" translate="no">rt</code> tags in the <em>tabular</em> markup model, also described here — the <code class="kw" translate="no">rb</code> element is still parsed and recognised, but just not correctly associated with the relevant <code class="kw" translate="no">rt</code> element. That association is key to the tabular model working, so none of the examples of that model on this page will work for Blink and WebKit based browsers yet (but not because of the presence of the <code class="kw" translate="no">rb</code> tag).</p>
 
 <p>Because the <code class="kw" translate="no">rb</code> element works perfectly well for all major browsers in interleaved markup, and in fact brings with it some benefits, we use it for  such examples here. It will also show up in examples of the tabular markup, because its presence is essential for that model to work.</p>
 </section>
