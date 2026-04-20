@@ -1940,6 +1940,14 @@ h2:hover > a.selflink, h3 > a.selflink, h4 > a.selflink, h5 > a.selflink, h6 > a
 .browser_output p:first-of-type {
 	margin-block-end: .5rem;
 	}
+.howto-header {
+    font-size: 110%; 
+    color:#aaa;
+    margin-inline-end:1em
+    }
+.language-css code, .language-html code {
+    padding-inline: 0;
+    }
 /* END IN-DOC TESTS */
 
 
@@ -1951,3 +1959,7 @@ h2:hover > a.selflink, h3 > a.selflink, h4 > a.selflink, h5 > a.selflink, h6 > a
 	font-style: normal;
 	}
 /* END HIGHLIGHT */
+
+
+
+
