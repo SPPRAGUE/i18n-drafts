@@ -137,6 +137,8 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 
 <p>Solid set text is normally best for readability, however in large print sizes, such as for magazine headings, it may be desirable to reduce the distance between certain characters. This is typically done by reducing the distance between adjacent letter faces.</p>
 
+<p>(Having said that normally text is set solid, there are occasions where general text might be set with inter-character spacing throughout, such as for some individuals with learning disabilities.)</p>
+
 <aside class="floatedImplnote">
 <p class="feature">letter-spacing</p>
 <table class="implTable">
@@ -715,7 +717,7 @@ A closing bracket at the end of a paragraph with space available is fullwidth.</
 <td>A paragraph-initial bracket is halfwidth.<br>
 An inline bracket that wraps to a line start is halfwidth.<br>
 A closing bracket at line end  is always halfwidth.<br>
-This produces halfwidth glyphs for punctuation (including middle dots) wherever they occur, not just at line start/end.</td>
+This produces halfwidth glyphs for punctuation (including middle dots) <strong>wherever</strong> they occur, not just at line start/end.</td>
 </tr>
 <tr><td>space-all</td>
 <td><img src="inline-space-data/cell_full_open.jpg"> ...................................................<br>
@@ -724,12 +726,20 @@ This produces halfwidth glyphs for punctuation (including middle dots) wherever 
 <td>A paragraph-initial bracket is fullwidth.<br>
 An inline bracket that wraps to a line start is fullwidth.<br>
 A closing bracket at line end is always fullwidth.<br>
-This produces fullwidth glyphs for punctuation wherever they occur, not just at line start/end.</td>
+This produces fullwidth glyphs for punctuation <strong>wherever</strong> they occur, not just at line start/end.</td>
 </tr>
 </tbody>
 </table>
 <figcaption>Values of the property <code class="kw" translate="no">text-spacing-trim</code>, and their effects on brackets at the start and end of a line.</figcaption>
 </figure>
+
+<p style="font-style: italic;">(An <a href="https://github.com/w3c/csswg-drafts/issues/13789">issue has been raised</a> in the CSS repository suggesting that it would be simpler for content authors to be able to set each of the behaviours above separately, rather than using keywords that only cover certain combinations.)</p>
+
+
+
+
+
+
 
 
 <section id="punc_fonts">
@@ -1238,6 +1248,8 @@ Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step
 <p>The other values, <code class="kw" translate="no">normal</code>, <code class="kw" translate="no">space-all</code>, and <code class="kw" translate="no">trim-all</code>, produce effects illustrated in <a class="figref">fig_text_spacing_trim_values</a>.</p>
 
 <p>Note that, in addition to keeping fullwidth glyphs at line start and end, <code class="kw" translate="no">space-all</code> also prohibits the collapse of space between adjacent, inline punctuation (see <a class="secref">punctuation_sequences</a>).</p>
+
+<p>Similarly, <code class="kw" translate="no">trim-all</code> reduces the width of brackets and other punctuation with collapsible space <strong>everywhere</strong>, not just at line start and end positions, but wherever it occurs.  This is what distinguishes trim-all from trim-both; the latter </p>
 </section>
 </section>
 
