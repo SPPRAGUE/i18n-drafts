@@ -664,7 +664,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 
 <p>The <code class="kw" translate="no">text-spacing-trim</code> property has a number of possible values. Each property affects the width of punctuation marks at the start and end of a line. <a class="figref">fig_text_spacing_trim_values</a> provides an overview. Brackets that are the first character in a paragraph may or may not be preceded by indentation (set using a different property).</p>
 
-<p style="font-size: 90%; line-height: 1.4;"><em>For each value in <a class="figref">fig_text_spacing_trim_values</a>, three lines are shown containing brackets.  The first line shows whether a paragraph-initial bracket is fullwidth or halfwidth. The left side of the second line shows what an inline bracket would look like when wrapped to a new line. To the right of the second line, a halfwidth graphic indicates that a closing bracket at line end can be reduced to fit. The third line shows the expected width of a paragraph-final bracket when there is adequate space after it to show a fullwidth glyph.</em></p>
+<p style="font-size: 90%; line-height: 1.4;"><em>For each value in <a class="figref">fig_text_spacing_trim_values</a>, three lines are shown containing brackets.  The first line shows whether a paragraph-initial bracket is fullwidth or halfwidth. The left side of the second line shows what an inline bracket would look like when wrapped to a new line. To the right of the second line, a halfwidth graphic indicates that a closing bracket at line end can be reduced to fit if only a halfwidth gap is available. The third line shows the expected width of a paragraph-final bracket when there is adequate space after it to show a fullwidth glyph.</em></p>
 
 
 <style>
@@ -676,49 +676,54 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 
 <figure id="fig_text_spacing_trim_values">
 <table id="tst_values">
---><tbody>
+<tbody>
 <tr><td>normal</td>
-<td><img src="inline-space-data/cell_full_open.jpg"> .......................................<br>
-<img src="inline-space-data/cell_full_open.jpg"> ................................. <img src="inline-space-data/cell_half_close.jpg"><br>
+<td><img src="inline-space-data/cell_full_open.jpg"> ...................................................<br>
+<img src="inline-space-data/cell_full_open.jpg"> ........................... <img src="inline-space-data/cell_full_close.jpg"> or <img src="inline-space-data/cell_half_close.jpg"><br>
 ............ <img src="inline-space-data/cell_full_close.jpg"></td>
-<td>A paragraph-initial bracket is fullwidth.<br>An inline bracket that wraps to a line start is fullwidth.<br>A closing bracket at line end can be reduced to fit. A closing bracket at the end of a paragraph with space available is fullwidth.</td>
+<td>A paragraph-initial bracket is fullwidth.<br>An inline bracket that wraps to a line start is fullwidth.<br>A closing bracket at line end can be reduced to fit. <br>
+A closing bracket at the end of a paragraph with space available is fullwidth.</td>
 </tr>
 <tr><td>trim-both</td>
-<td><img src="inline-space-data/cell_half_open.jpg"> .......................................<br>
-<img src="inline-space-data/cell_half_open.jpg"> ................................. <img src="inline-space-data/cell_half_close.jpg"><br>
+<td><img src="inline-space-data/cell_half_open.jpg"> .......................................................<br>
+<img src="inline-space-data/cell_half_open.jpg"> ............................................... <img src="inline-space-data/cell_half_close.jpg"><br>
 ............ <img src="inline-space-data/cell_half_close.jpg"></td>
 <td>A paragraph-initial bracket is halfwidth.<br>
 An inline bracket that wraps to a line start is halfwidth.<br>
-A closing bracket at line end  is halfwidth.</td>
+A closing bracket at line end  is always halfwidth.</td>
 </tr>
 <tr><td>trim-start</td>
-<td><img src="inline-space-data/cell_half_open.jpg"> .......................................<br>
-<img src="inline-space-data/cell_half_open.jpg"> ................................. <img src="inline-space-data/cell_half_close.jpg"><br>
+<td><img src="inline-space-data/cell_half_open.jpg"> ......................................................<br>
+<img src="inline-space-data/cell_half_open.jpg"> ................................ <img src="inline-space-data/cell_full_close.jpg"> or <img src="inline-space-data/cell_half_close.jpg"><br>
 ............ <img src="inline-space-data/cell_full_close.jpg"></td>
-<td>A paragraph-initial bracket is halfwidth.<br>An inline bracket that wraps to a line start is halfwidth.<br>A closing bracket at line end can be reduced to fit. A closing bracket at the end of a paragraph with space available is fullwidth.</td>
+<td>A paragraph-initial bracket is halfwidth.<br>An inline bracket that wraps to a line start is halfwidth.<br>
+A closing bracket at line end can be reduced to fit.<br>
+A closing bracket at the end of a paragraph with space available is fullwidth.</td>
 </tr>
 <tr><td>space-first</td>
-<td><img src="inline-space-data/cell_full_open.jpg"> .......................................<br>
-<img src="inline-space-data/cell_half_open.jpg"> ................................. <img src="inline-space-data/cell_half_close.jpg"><br>
+<td><img src="inline-space-data/cell_full_open.jpg"> ...................................................<br>
+<img src="inline-space-data/cell_half_open.jpg"> ................................. <img src="inline-space-data/cell_full_close.jpg"> or <img src="inline-space-data/cell_half_close.jpg"><br>
 ............ <img src="inline-space-data/cell_full_close.jpg"></td>
-<td>A paragraph-initial bracket is fullwidth.<br>An inline bracket that wraps to a line start is halfwidth.<br>A closing bracket at line end can be reduced to fit. A closing bracket at the end of a paragraph with space available is fullwidth.</td>
+<td>A paragraph-initial bracket is fullwidth.<br>An inline bracket that wraps to a line start is halfwidth.<br>
+A closing bracket at line end can be reduced to fit.<br>
+A closing bracket at the end of a paragraph with space available is fullwidth.</td>
 </tr>
 <tr><td>trim-all</td>
-<td><img src="inline-space-data/cell_half_open.jpg"> .......................................<br>
-<img src="inline-space-data/cell_half_open.jpg"> ................................. <img src="inline-space-data/cell_half_close.jpg"><br>
+<td><img src="inline-space-data/cell_half_open.jpg"> .........................................................<br>
+<img src="inline-space-data/cell_half_open.jpg"> ............................................. <img src="inline-space-data/cell_half_close.jpg"><br>
 ............ <img src="inline-space-data/cell_half_close.jpg"></td>
 <td>A paragraph-initial bracket is halfwidth.<br>
 An inline bracket that wraps to a line start is halfwidth.<br>
-A closing bracket at line end  is halfwidth.<br>
+A closing bracket at line end  is always halfwidth.<br>
 This produces halfwidth glyphs for punctuation (including middle dots) wherever they occur, not just at line start/end.</td>
 </tr>
 <tr><td>space-all</td>
-<td><img src="inline-space-data/cell_full_open.jpg"> .......................................<br>
-<img src="inline-space-data/cell_full_open.jpg"> ................................. <img src="inline-space-data/cell_full_close.jpg"><br>
+<td><img src="inline-space-data/cell_full_open.jpg"> ...................................................<br>
+<img src="inline-space-data/cell_full_open.jpg"> ....................................... <img src="inline-space-data/cell_full_close.jpg"><br>
 ............ <img src="inline-space-data/cell_full_close.jpg"></td>
 <td>A paragraph-initial bracket is fullwidth.<br>
 An inline bracket that wraps to a line start is fullwidth.<br>
-A closing bracket at line end is fullwidth.<br>
+A closing bracket at line end is always fullwidth.<br>
 This produces fullwidth glyphs for punctuation wherever they occur, not just at line start/end.</td>
 </tr>
 </tbody>
