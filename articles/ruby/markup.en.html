@@ -21,7 +21,7 @@ f.path = '../../' // what you need to prepend to a URL to get to the /Internatio
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
 f.thisVersion = { date:'2026-04-24', time:'10:40' } // date and time of latest edits to this document/translation
-f.contributors = 'Fantasai, Xidorn Quan, Addison Phillips'; // people providing useful contributions or feedback during review or at other times
+f.contributors = 'Fantasai, Xidorn Quan, Addison Phillips. An initial AI summary was then developed further for the Key Takeaways section.'; // people providing useful contributions or feedback during review or at other times
 // make sure to translate the information in the meta description element
 // also make sure that the lang attribute on the html tag is correct!
 
@@ -116,7 +116,77 @@ function highlightCode () {
   <p>There are a number of ways to use  HTML markup to produce even this simple example. The code  above uses opening and closing tags for all elements, and uses tags for <code class="kw" translate="no">rb</code> elements, but we'll see in a moment that there are alternative approaches that use less markup, or move the markup around.</p>
   <p>Browsers will automatically position the annotations above the base characters in horizontal writing mode, and to the right in vertical writing mode. To change that you will need to use CSS (<code class="kw" translate="no">ruby-position</code>). That and other ways to alter the rendering of the ruby are discussed in the companion article, <a href="styling.en" class="print">Ruby Styling</a>.</p>
   </section>
-  
+
+
+
+
+
+
+
+
+
+
+
+<section id="takeaways">
+<h2>Key takeaways</h2>
+
+<p>Although authors will usually jump directly to the task they need from the table of contents, the following provides a brief overview of the current state of implementation across the page as a whole.</p>
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">✅</bdi> Reliable</p>
+<p class="summary">All major browsers handle it correctly.</p>
+</aside>
+
+<p><span class="leadin">Basic ruby markup.</span> Simple ruby works everywhere. All major browsers correctly render simple, single‑sided ruby (one annotation per base). Browsers position ruby text above horizontal base text and to the right in vertical writing.</p>
+
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">✅</bdi> Reliable</p>
+<p class="summary">Avoid whitespace; include <code class="kw" translate="no">rb</code> for styling flexibility.</p>
+</aside>
+
+<p><span class="leadin">Interleaved markup (rb/rt alternating).</span> HTML allows ruby to be written as:</p>
+<ul>
+<li>fully explicit: <code>&lt;rb&gt;…&lt;/rb&gt;&lt;rt&gt;…&lt;/rt&gt;</code>,</li>
+<li>interleaved without <code class="kw" translate="no">rb</code> tags: <code>base&lt;rt&gt;annotation&lt;/rt&gt;</code>, and</li>
+<li>using start‑tag‑only variants: <code>&lt;rb&gt;…&lt;rt&gt;…&lt;rb&gt;…&lt;rt&gt;…</code></li>
+</ul>
+
+<p>Be aware that some browsers introduce unwanted spaces if the <code class="kw" translate="no">ruby</code> element contains line breaks or whitespace. Prefer inclusion of&nbsp; <code class="kw" translate="no">rb</code> for styling, accessibility, and future flexibility.</p>
+
+
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">⚠️</bdi> Uneven support</p>
+<p class="summary">Fully supported in Gecko; layout issues in Blink/&#x200B;WebKit.</p>
+</aside>
+
+<p><span class="leadin">Tabular markup (all rb first, then all rt).</span> This model is important for (a) inline ruby text (e.g. showing all annotations after a word), (b) searchability (the underlying text remains contiguous), and (c) future CSS Ruby features (e.g. jukugo ruby). Currently, Gecko handles tabular markup well. Blink/​WebKit parse it but do not lay it out correctly.</p>
+
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">⚠️</bdi> Uneven support</p>
+<p class="summary">Gecko best; others allow nesting only.</p>
+</aside>
+
+<p><span class="leadin">Double‑Sided Ruby.</span> Annotation on both sides of the base requires nested markup or <code class="kw" translate="no">rtc</code> containers. Currently, Gecko produces sensible results for most patterns. Blink/​WebKit handle nested markup reasonably but fail on other patterns. Nested markup can be complicated.</p>
+
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">✅⚠️</bdi> Mostly straightforward.</p>
+<p class="summary">Markup valid; full jukugo styling depends on upcoming CSS Ruby features..</p>
+</aside>
+
+<p><span class="leadin">Mono/group/jukugo ruby.</span> Mono-ruby and group-ruby work as expected. Jukugo-ruby markup is valid, but full styling support depends on future CSS.</p>
+
+<br>
+
+<p>The <a href="https://www.w3.org/TR/html-ruby-extensions/">Ruby Extensions</a> spec is expected to move to Candidate Recommendation status soon. Once it is implemented by browsers, all of the above should be supported.</p>
+</section>
+
+
+
+
   
 <section id="tags">
 <h2>Tag strategies</h2>
