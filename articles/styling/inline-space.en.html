@@ -21,7 +21,7 @@ f.path = '../../' // what you need to prepend to a URL to get to the /Internatio
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
 f.thisVersion = { date:'2026-04-08', time:'16:20' } // date and time of latest edits to this document/translation
-f.contributors = 'The initial text for this article is taken from the <cite>Text spacing</cite> section of <a href="https://r12a.github.io/scripts/jpan/ja.html#letterspace">Japanese (Kanji, Hiragana, Katakana, & Latin) Orthography Notes</a> and <a href="https://r12a.github.io/scripts/hani/zh.html#letterspace">Han (Chinese) Orthography Notes</a>.'; // people providing useful contributions or feedback during review or at other times
+f.contributors = 'The initial text for this article is taken from the <cite>Text spacing</cite> section of <a href="https://r12a.github.io/scripts/jpan/ja.html#letterspace">Japanese (Kanji, Hiragana, Katakana, & Latin) Orthography Notes</a> and <a href="https://r12a.github.io/scripts/hani/zh.html#letterspace">Han (Chinese) Orthography Notes</a>. An AI summary was created, then developed further for the Key Takeaways section.'; // people providing useful contributions or feedback during review or at other times
 // make sure to translate the information in the meta description element
 // also make sure that the lang attribute on the html tag is correct!
 
@@ -91,7 +91,7 @@ function setFont (classname, value) {
 
 <p>In principle, Japanese and Chinese texts don't use space characters. However, sometimes it is necessary to increase or decrease gaps between characters to improve readability. This article looks at ways of using CSS to add gaps between certain types of text,  to reduce gaps between punctuation marks, and to manage paragraph-initial spacing. It does not look at the changes in spacing between characters that are introduced during full justification.</p>
 
-<p>Rather than simply reproducing the spec itself here, we provide task-oriented guidance to help content authors  achieve key techniques.</p>
+<p>Rather than simply reproducing the spec itself here, we provide task-oriented guidance to help content authors  achieve key techniques. We make the assumption that content authors know what they want to do, and this article helps them understand how to do it.</p>
 
 <p><em>Note that some of the technologies described here are still under development, and browser adoption is only partial at best. In what follows we will describe what you should do when the CSS specification is properly implemented by browsers, and also describe what currently works and doesn't work.</em></p>
 
@@ -111,6 +111,57 @@ text-indent: [ &lt;length-percentage&gt; ] &amp;&amp; hanging? &amp;&amp; each-l
 hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code>
 </pre>
 </figure>
+</section>
+
+
+
+
+
+<section id="takeaways">
+<h2>Key takeaways</h2>
+
+<p>Although authors will usually jump directly to the task they need from the table of contents, the following provides a brief overview of the current state of implementation across the page as a whole.</p>
+
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">✅</bdi> Reliable</p>
+<p class="summary">Fully interoperable.</p>
+</aside>
+
+<p><span class="leadin">Inter-character letter-spacing.</span> Modern browsers reliably support adjusting spacing between characters, including CJK text. Positive and negative tracking behaves consistently across engines.</p>
+
+
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">❌</bdi> Unreliable</p>
+<p class="summary">No automatic support; styled behaviour inconsistent.</p>
+</aside>
+
+<p><span class="leadin">Spacing around alphabetic or numeric phrases.</span> Browsers do not automatically insert the small gaps expected in CJK typography when Latin letters or numbers appear inside CJK text. Attempts to style these gaps produce inconsistent results: Blink and Gecko behave differently, and WebKit only inserts a gap on one side. The “replace” behaviour (uniform spacing even when spaces exist) is not implemented, and currently breaks other behaviour when specified.</p>
+
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">⚠️</bdi> Blink‑only</p>
+<p class="summary">No support in Gecko/WebKit.</p>
+</aside>
+
+<p><span class="leadin">Collapsing space in runs of punctuation.</span> Blink browsers collapse excessive spacing between adjacent punctuation marks by default. Gecko and WebKit do not collapse these gaps, and styled collapsing is only effective in Blink.</p>
+
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">⚠️</bdi> Blink‑only &amp; font‑dependent</p>
+<p class="summary">Not supported in Gecko/&#x200B;WebKit.</p>
+</aside>
+
+<p><span class="leadin">Collapsing line‑initial space.</span> Blink reduces leading space for opening punctuation at the start of a line or paragraph, but results depend on the font. Gecko and WebKit do not reduce this space.</p>
+
+
+<aside class="floatedImplnote">
+<p class="availability"><bdi class="icon">⚠️</bdi> Mostly Blink‑only</p>
+<p class="summary">Not interoperable.</p>
+</aside>
+
+<p><span class="leadin">Collapsing line‑final space.</span> Blink reduces trailing space for closing punctuation at the end of a line, helping it fit without wrapping. Gecko and WebKit do not implement this behaviour.</p>
 </section>
 
 
@@ -222,7 +273,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 
 <p>The amount of spacing can vary. The Chinese Layout Requirements document suggests up to a ¼em space. The Japanese Layout Requirements document suggests a ¼em space, but sometimes other spaces may be appropriate, such as ⅙em. The amount of space introduced by a space character is too large, and it is much more convenient to insert the correctly sized gap through styling.</p>
 
-<p>Such spacing is not needed when the phrase is followed or preceded by punctuation that already has built in space. It also doesn't appear at the line start/end. It should also be noted that autospacing is additive with letter-spacing, and can also be affected by justification.</p>
+<p>Such spacing is not needed when the phrase is followed or preceded by punctuation that already has built in space. It also doesn't appear at the line start/end. It should also be noted that autospacing is additive with <a href="#letter_spacing">letter-spacing</a>, and can also be affected by justification.</p>
 
 
 
@@ -281,7 +332,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </tr>
 </thead>
 <tbody>
-<tr><td>✅</td><td>✅</td><td>✅❌</td></tr>
+<tr><td>✅</td><td>✅</td><td>⚠️</td></tr>
 </tbody>
 </table>
 
@@ -316,7 +367,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </tr>
 </thead>
 <tbody>
-<tr><td>❌</td><td>✅❌</td><td>✅❌</td></tr>
+<tr><td>❌</td><td>⚠️</td><td>⚠️</td></tr>
 </tbody>
 </table>
 
@@ -330,7 +381,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </tr>
 </thead>
 <tbody>
-<tr><td>❌</td><td>✅❌</td><td>✅❌</td></tr>
+<tr><td>❌</td><td>⚠️</td><td>⚠️</td></tr>
 </tbody>
 </table>
 
@@ -646,7 +697,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 
 
 <section id="punctuation_initial">
-<h2>Line-initial punctuation</h2>
+<h2>Collapsing line-initial space</h2>
 
 <p>This section is concerned with punctuation marks that normally include built-in space on the left, such as the bracket <span style="background-color:antiquewhite">「</span>.  We'll use that for the following examples, although this applies also to other punctuation marks.</p>
 <p>When a punctuation mark like this appears at the beginning of a line, there are a number of possibilities. These decisions will typically be influenced by whether or not a paragraph is preceded by a blank line, or whether the first line of the paragraph is indented.</p>
@@ -1260,7 +1311,7 @@ Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step
 
 
 <section id="punctuation_final">
-<h2>Line-final punctuation</h2>
+<h2>Collapsing line-end space</h2>
 
 <p>When we consider line-final punctuation we want to know whether a closing bracket or other punctuation with trailing space will have that space removed automatically when there is only enough space at the line end for a halfwidth character. If there is a halfwidth character gap but the punctuation remains fullwidth, it will be wrapped to the following line, taking with it the previous character (because closing brackets should not occur at the start of a line).</p>
 
