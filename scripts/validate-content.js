@@ -677,12 +677,7 @@ function resolveLocalReference(reference, pagePath) {
   }
 
   if (cleaned.startsWith('/International/')) {
-    const rootedPath = decodeReferencePath(cleaned.slice('/International/'.length));
-    const absolutePath = path.join(repoRoot, rootedPath);
-    return {
-      absolutePath,
-      relativePath: toPosix(path.relative(repoRoot, absolutePath)),
-    };
+    return null;
   }
 
   const localPath = localRelativePath(reference);
@@ -720,7 +715,7 @@ function localRelativePath(reference) {
   }
 
   if (cleaned.startsWith('/International/')) {
-    return cleaned.slice('/International/'.length);
+    return null;
   }
 
   if (cleaned.startsWith('/')) {
