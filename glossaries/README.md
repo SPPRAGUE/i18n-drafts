@@ -2,6 +2,10 @@
 
 This directory stores per-language glossaries that translators can use to keep recurring terminology consistent across pages in this repository.
 
+## Active glossaries
+
+- [Simplified Chinese](zh-hans.md)
+
 ## File naming
 
 - Keep one glossary file per target language.
