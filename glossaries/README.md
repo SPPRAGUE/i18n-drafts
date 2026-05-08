@@ -13,17 +13,18 @@ This directory stores per-language glossaries that translators can use to keep r
 
 1. Copy `glossaries/_template.md` to `glossaries/<lang>.md`.
 2. Replace the placeholder title and guidance text.
-3. Add terms to the tables below using one row per English term sense.
-4. Keep notes short so the file stays readable and can be parsed later if needed.
+3. Write the glossary's headings, guidance, notes, and non-English columns in the target language. Keep the English term column in English.
+4. Add terms to the tables below using one row per English term sense.
+5. Keep notes short so the file stays readable and can be parsed later if needed.
 
 ## Required sections in each language glossary
 
-Each `glossaries/<lang>.md` file should contain:
+Each `glossaries/<lang>.md` file should contain these sections, written in the target language:
 
 1. A title for the language glossary
 2. A short "How to use this glossary" section
-3. A `## Preferred terms` table
-4. A `## Terms under discussion` table
+3. A preferred terms table
+4. A terms under discussion table
 
 ## Entry rules
 
