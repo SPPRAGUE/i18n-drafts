@@ -20,7 +20,7 @@ f.status = 'notreviewed';  // should be one of draft, review, published, notrevi
 f.path = '../' // what you need to prepend to a URL to get to the /International directory 
 
 // AUTHORS AND TRANSLATORS should fill in these assignments:
-f.thisVersion = { date:'2021-01-20', time:'12:18'} // date and time of latest edits to this document/translation
+f.thisVersion = { date:'2026-04-10', time:'16:55' } // date and time of latest edits to this document/translation
 f.contributors = ''; // people providing useful contributions or feedback during review or at other times
 // make sure to translate the information in the meta description element
 // also make sure that the lang attribute on the html tag is correct!
@@ -37,10 +37,17 @@ f.additionalLinks = ''
 <script src="../javascript/boilerplate-text/boilerplate-en.js"></script><!--TRANSLATORS must change -en to the subtag for their language!-->
 <script src="../javascript/doc-structure/sitepage-2022.js"> </script>
 <script src="../javascript/articletoc-2022.js"></script>
+<script src="../javascript/templates/contact-templates.js"></script>
 
 <link rel="stylesheet" href="../style/sitepage-2022.css" />
 <!-- <link rel="stylesheet" href="specdev-data/local.css" /> -->
 <link rel="copyright" href="#copyright"/>
+
+<style>
+summary { font-style: italic; }
+section > section { padding-inline-start: 3em; }
+.listTitle { list-style-type: none; margin-block-start: 1em; font-weight: bold; }
+</style>
 </head>
 
 <body>
@@ -62,18 +69,11 @@ f.additionalLinks = ''
 <div style="clear: both;">
 
 
-<style>
-summary { font-style: italic; }
-section > section { padding-inline-start: 3em; }
-.listTitle { list-style-type: none; margin-block-start: 1em; font-weight: bold; }
-</style>
-
-
 <section id="resources">
 <h2><a href="#advice">Learn</a></h2>
 
 <ul>
-<li><a href="https://www.w3.org/International/technique-index">Learn to internationalize</a></li>
+<li><a href="https://www.w3.org/International/technique-index">Learn to internationalize</a>
 
 	<ul>
 	<li class="listTitle">Techniques for content authors</li>
@@ -92,7 +92,7 @@ section > section { padding-inline-start: 3em; }
 	<li><a href="https://w3c.github.io/typography/gap-analysis/language-matrix">Language matrix</a></li>
 	<li><a href="https://w3c.github.io/type-samples/">Type samples</a></li>
 	<li><a href="https://w3c.github.io/i18n-drafts/getting-started/languagedev.en">Language enablement</a></li>
-	</ul>
+	</ul></li>
 </ul>
 </section>
 </div>
@@ -162,12 +162,10 @@ section > section { padding-inline-start: 3em; }
 
 <div class="section">
 <h2 id="contacts"><a href="#contacts">Contacts</a></h2>
-			<ul>
-				<li><a href="mailto:xfq@w3.org">Fuqiao Xue (xfq @ w3.org)</a>, Internationalization Lead, Internationalization Working Group Staff Contact</li>
-				<li><a href="mailto:ishida@w3.org">Richard Ishida (ishida @ w3.org)</a>, Internationalization Specialist</li>
-				<li><a href="mailto:addisoni18n@gmail.com">Addison Phillips (addisoni18n @ gmail.com)</a>, Internationalization Working Group Chair</li>
-				<li><a href="mailto:duerst@it.aoyama.ac.jp">Martin Dürst (duerst @ it.aoyama.ac.jp)</a>, Internationalization Interest Group Chair</li>
-			</ul>
+<div id="contactList"></div>
+<script>
+contactTemplates.render('contactList', 'about-en')
+</script>
 		</div>
 </div>
 
