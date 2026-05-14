@@ -1293,14 +1293,40 @@ p { margin-block: 1em; }</code></pre>
 
 
 
+<section id="punc_space_all">
+<h3>Scenario #5: Space-all</h3>
+
+<p>Taiwanese content authors may prefer to use <code class="kw" translate="no">space-all</code>. In addition to keeping fullwidth glyphs at line start and end, <code class="kw" translate="no">space-all</code> also prohibits the collapse of space between adjacent, inline punctuation (see <a class="secref">punctuation_sequences</a>).</p>
+
+
+<figure id="fig_space_all">
+<img src="inline-space-data/fig_space_all.jpg" alt="" style="width:22rem;">
+</figure>
+</section>
+
+
+
+
+
+
+
+
+
+
 <section id="punc_other">
 <h3>Other values</h3>
 
-<p>The other values, <code class="kw" translate="no">normal</code>, <code class="kw" translate="no">space-all</code>, and <code class="kw" translate="no">trim-all</code>, produce effects illustrated in <a class="figref">fig_text_spacing_trim_values</a>.</p>
+<p>The other values, <code class="kw" translate="no">normal</code>, and <code class="kw" translate="no">trim-all</code>, produce effects illustrated in <a class="figref">fig_text_spacing_trim_values</a>.</p>
 
-<p>Note that, in addition to keeping fullwidth glyphs at line start and end, <code class="kw" translate="no">space-all</code> also prohibits the collapse of space between adjacent, inline punctuation (see <a class="secref">punctuation_sequences</a>).</p>
+<p><code class="kw" translate="no">trim-all</code> reduces the width of brackets and other punctuation with collapsible space <strong>everywhere</strong>, not just at line start and end positions, but wherever it occurs.  This is what distinguishes <code class="kw" translate="no">trim-all</code> from <code class="kw" translate="no">trim-both</code>.</p>
 
-<p>Similarly, <code class="kw" translate="no">trim-all</code> reduces the width of brackets and other punctuation with collapsible space <strong>everywhere</strong>, not just at line start and end positions, but wherever it occurs.  This is what distinguishes trim-all from trim-both; the latter </p>
+<p><code class="kw" translate="no">trim-both</code> trims excess space at line start and end, but leaves space intact within a line. For example:</p>
+
+<p><img src="inline-space-data/trim_both_internal.jpg" alt="" style="max-width:40em;"></p>
+
+<p>By contrast, <code class="kw" translate="no">trim-all</code> trims excess space everywhere. For example:</p>
+
+<p><img src="inline-space-data/trim_all_internal.jpg" alt="" style="max-width:40em;"></p>
 </section>
 </section>
 
