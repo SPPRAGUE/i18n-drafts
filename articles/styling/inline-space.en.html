@@ -236,7 +236,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-letter_spacing .test_lines').style.fontFamily = this.value;"></p>
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-letter_spacing .test_lines').style.fontFamily = this.value;"></label></p>
 </div>
 
 
@@ -497,7 +497,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-autospace .test_lines').style.fontFamily = this.value;"></p>
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-autospace .test_lines').style.fontFamily = this.value;"></label></p>
 </div>
 
 
@@ -667,7 +667,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-text_spacing_trim .test_lines').style.fontFamily = this.value;"></p>
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-text_spacing_trim .test_lines').style.fontFamily = this.value;"></label></p>
 </div>
 
 
@@ -973,12 +973,12 @@ p { margin-block: 1em; }</code></pre>
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-trim-start .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho">  &nbsp; 
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-trim-start .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho"></label>  &nbsp; 
 
-Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step=".5" value="10" 
+<label>Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step=".5" value="10" 
     oninput="document.getElementById('demo-trim-start_test').style.height = this.value+'em';
          document.getElementById('offsetSliderValue2').value=this.value+'em';"
-         style="width:8em; height:1em;" placeholder="">
+         style="width:8em; height:1em;" placeholder=""></label>
 <input value="10em" id="offsetSliderValue2" style="width:3em;"></p>
 </div>
 
@@ -995,7 +995,7 @@ Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step
 
 
 <section id="punc_hanging">
-<h3>Scenario #2: Hanging punctuation</h3>
+<h3>Scenario #2: ‘Hanging’ punctuation</h3>
 
 
 <figure id="fig_op_halfspace" style="/*float:right*/">
@@ -1089,12 +1089,12 @@ Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-indent .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho">  &nbsp; 
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-indent .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho"></label>  &nbsp; 
 
-Adjust line length: <input id="offsetSlider3" type="range" min="5" max="20" step=".5" value="10.5" 
+<label>Adjust line length: <input id="offsetSlider3" type="range" min="5" max="20" step=".5" value="10.5" 
     oninput="document.getElementById('demo-indent_test').style.height = this.value+'em';
          document.getElementById('offsetSliderValue3').value=this.value+'em';"
-         style="width:8em; height:1em;" placeholder="">
+         style="width:8em; height:1em;" placeholder=""></label>
 <input value="10.5em" id="offsetSliderValue3" style="width:3em;"></p>
 </div>
 
@@ -1177,12 +1177,12 @@ Adjust line length: <input id="offsetSlider3" type="range" min="5" max="20" step
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-chinese .test_lines').style.fontFamily = this.value;">  &nbsp; 
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-chinese .test_lines').style.fontFamily = this.value;"></label>  &nbsp; 
 
-Adjust line length: <input id="offsetSlider4" type="range" min="5" max="20" step="1" value="10" 
+<label>Adjust line length: <input id="offsetSlider4" type="range" min="5" max="20" step="1" value="10" 
     oninput="document.getElementById('demo-chinese_test').style.height = this.value+'em';
          document.getElementById('offsetSliderValue4').value=this.value+'em';"
-         style="width:8em; height:1em;" placeholder="">
+         style="width:8em; height:1em;" placeholder=""></label>
 <input value="10em" id="offsetSliderValue4" style="width:3em;"></p>
 </div>
 
@@ -1270,12 +1270,12 @@ Adjust line length: <input id="offsetSlider4" type="range" min="5" max="20" step
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-spacefirst .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho">  &nbsp; 
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-spacefirst .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho"></label>  &nbsp; 
 
-Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step="1" value="10" 
+<label>Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step="1" value="10" 
     oninput="document.getElementById('demo-spacefirst_test').style.height = this.value+'em';
          document.getElementById('offsetSliderValue5').value=this.value+'em';"
-         style="width:8em; height:1em;" placeholder="">
+         style="width:8em; height:1em;" placeholder=""></label>
 <input value="10em" id="offsetSliderValue5" style="width:3em;"></p>
 </div>
 
