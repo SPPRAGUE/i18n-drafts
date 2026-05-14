@@ -236,7 +236,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-letter_spacing .test_lines').style.fontFamily = this.value;"></p>
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-letter_spacing .test_lines').style.fontFamily = this.value;"></label></p>
 </div>
 
 
@@ -497,7 +497,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-autospace .test_lines').style.fontFamily = this.value;"></p>
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-autospace .test_lines').style.fontFamily = this.value;"></label></p>
 </div>
 
 
@@ -667,7 +667,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-text_spacing_trim .test_lines').style.fontFamily = this.value;"></p>
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-text_spacing_trim .test_lines').style.fontFamily = this.value;"></label></p>
 </div>
 
 
@@ -973,12 +973,12 @@ p { margin-block: 1em; }</code></pre>
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-trim-start .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho">  &nbsp; 
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-trim-start .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho"></label>  &nbsp; 
 
-Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step=".5" value="10" 
+<label>Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step=".5" value="10" 
     oninput="document.getElementById('demo-trim-start_test').style.height = this.value+'em';
          document.getElementById('offsetSliderValue2').value=this.value+'em';"
-         style="width:8em; height:1em;" placeholder="">
+         style="width:8em; height:1em;" placeholder=""></label>
 <input value="10em" id="offsetSliderValue2" style="width:3em;"></p>
 </div>
 
@@ -995,7 +995,7 @@ Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step
 
 
 <section id="punc_hanging">
-<h3>Scenario #2: Hanging punctuation</h3>
+<h3>Scenario #2: ‘Hanging’ punctuation</h3>
 
 
 <figure id="fig_op_halfspace" style="/*float:right*/">
@@ -1089,12 +1089,12 @@ Adjust line length: <input id="offsetSlider2" type="range" min="5" max="20" step
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-indent .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho">  &nbsp; 
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-indent .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho"></label>  &nbsp; 
 
-Adjust line length: <input id="offsetSlider3" type="range" min="5" max="20" step=".5" value="10.5" 
+<label>Adjust line length: <input id="offsetSlider3" type="range" min="5" max="20" step=".5" value="10.5" 
     oninput="document.getElementById('demo-indent_test').style.height = this.value+'em';
          document.getElementById('offsetSliderValue3').value=this.value+'em';"
-         style="width:8em; height:1em;" placeholder="">
+         style="width:8em; height:1em;" placeholder=""></label>
 <input value="10.5em" id="offsetSliderValue3" style="width:3em;"></p>
 </div>
 
@@ -1177,12 +1177,12 @@ Adjust line length: <input id="offsetSlider3" type="range" min="5" max="20" step
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-chinese .test_lines').style.fontFamily = this.value;">  &nbsp; 
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-chinese .test_lines').style.fontFamily = this.value;"></label>  &nbsp; 
 
-Adjust line length: <input id="offsetSlider4" type="range" min="5" max="20" step="1" value="10" 
+<label>Adjust line length: <input id="offsetSlider4" type="range" min="5" max="20" step="1" value="10" 
     oninput="document.getElementById('demo-chinese_test').style.height = this.value+'em';
          document.getElementById('offsetSliderValue4').value=this.value+'em';"
-         style="width:8em; height:1em;" placeholder="">
+         style="width:8em; height:1em;" placeholder=""></label>
 <input value="10em" id="offsetSliderValue4" style="width:3em;"></p>
 </div>
 
@@ -1270,12 +1270,12 @@ Adjust line length: <input id="offsetSlider4" type="range" min="5" max="20" step
 </div>
 </div>
 
-<p class="options">Choose a font: <input oninput="document.querySelector('#demo-spacefirst .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho">  &nbsp; 
+<p class="options"><label>Choose a font: <input oninput="document.querySelector('#demo-spacefirst .test_lines').style.fontFamily = this.value;" style="width:8em;" placeholder="YuMincho"></label>  &nbsp; 
 
-Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step="1" value="10" 
+<label>Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step="1" value="10" 
     oninput="document.getElementById('demo-spacefirst_test').style.height = this.value+'em';
          document.getElementById('offsetSliderValue5').value=this.value+'em';"
-         style="width:8em; height:1em;" placeholder="">
+         style="width:8em; height:1em;" placeholder=""></label>
 <input value="10em" id="offsetSliderValue5" style="width:3em;"></p>
 </div>
 
@@ -1293,14 +1293,40 @@ Adjust line length: <input id="offsetSlider5" type="range" min="5" max="20" step
 
 
 
+<section id="punc_space_all">
+<h3>Scenario #5: Space-all</h3>
+
+<p>Taiwanese content authors may prefer to use <code class="kw" translate="no">space-all</code>. In addition to keeping fullwidth glyphs at line start and end, <code class="kw" translate="no">space-all</code> also prohibits the collapse of space between adjacent, inline punctuation (see <a class="secref">punctuation_sequences</a>).</p>
+
+
+<figure id="fig_space_all">
+<img src="inline-space-data/fig_space_all.jpg" alt="" style="width:22rem;">
+</figure>
+</section>
+
+
+
+
+
+
+
+
+
+
 <section id="punc_other">
 <h3>Other values</h3>
 
-<p>The other values, <code class="kw" translate="no">normal</code>, <code class="kw" translate="no">space-all</code>, and <code class="kw" translate="no">trim-all</code>, produce effects illustrated in <a class="figref">fig_text_spacing_trim_values</a>.</p>
+<p>The other values, <code class="kw" translate="no">normal</code>, and <code class="kw" translate="no">trim-all</code>, produce effects illustrated in <a class="figref">fig_text_spacing_trim_values</a>.</p>
 
-<p>Note that, in addition to keeping fullwidth glyphs at line start and end, <code class="kw" translate="no">space-all</code> also prohibits the collapse of space between adjacent, inline punctuation (see <a class="secref">punctuation_sequences</a>).</p>
+<p><code class="kw" translate="no">trim-all</code> reduces the width of brackets and other punctuation with collapsible space <strong>everywhere</strong>, not just at line start and end positions, but wherever it occurs.  This is what distinguishes <code class="kw" translate="no">trim-all</code> from <code class="kw" translate="no">trim-both</code>.</p>
 
-<p>Similarly, <code class="kw" translate="no">trim-all</code> reduces the width of brackets and other punctuation with collapsible space <strong>everywhere</strong>, not just at line start and end positions, but wherever it occurs.  This is what distinguishes trim-all from trim-both; the latter </p>
+<p><code class="kw" translate="no">trim-both</code> trims excess space at line start and end, but leaves space intact within a line. For example:</p>
+
+<p><img src="inline-space-data/trim_both_internal.jpg" alt="" style="max-width:40em;"></p>
+
+<p>By contrast, <code class="kw" translate="no">trim-all</code> trims excess space everywhere. For example:</p>
+
+<p><img src="inline-space-data/trim_all_internal.jpg" alt="" style="max-width:40em;"></p>
 </section>
 </section>
 
