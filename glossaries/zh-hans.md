@@ -65,6 +65,8 @@
 | larynx | 喉 |  |  |
 | lexical item | 词项 |  |  |
 | ligature | 连字 |  |  |
+| line end | 行尾 |  |  |
+| line start | 行首 |  |  |
 | locale | 区域设置 |  |  |
 | manner of articulation | 调音方法 | 发音方法 |  |
 | mirrored character | 镜像字符 |  |  |
@@ -89,6 +91,7 @@
 | retroflex consonant | 卷舌音 |  |  |
 | rhyme (syllable) | 韵基 |  |  |
 | root | 词根 |  |  |
+| solid setting | 密排 |  |  |
 | specific language impairment (SLI) | 专门性语言障碍（SLI） |  |  |
 | syllabary | 音节文字 |  |  |
 | syllable structure | 音节结构 |  |  |
