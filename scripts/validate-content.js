@@ -30,6 +30,7 @@ const pageCount = { scanned: 0, validated: 0 };
 const translationCount = { validated: 0 };
 const translationsCache = new Map();
 const reportedTranslationFiles = new Set();
+const targetIdsCache = new Map();
 const todayIso = formatToday();
 
 if (cli.help) {
@@ -633,7 +634,7 @@ function validateLocalAssets(relativePath, absolutePath, html, textContext) {
 function validateLinks(relativePath, absolutePath, html, textContext) {
   const commentFreeHtml = stripHtmlComments(html);
   const ids = extractIds(commentFreeHtml);
-  const sameDirectoryReferences = new Map();
+  const localReferences = new Map();
 
   for (const tag of extractTags(commentFreeHtml, 'a', textContext)) {
     const attributes = parseAttributes(tag.markup);
@@ -650,28 +651,49 @@ function validateLinks(relativePath, absolutePath, html, textContext) {
       );
     }
 
-    const htmlReference = sameDirectoryHtmlReference(attributes.href);
+    const htmlReference = localInternalReference(attributes.href);
     if (!htmlReference) {
       continue;
     }
 
     const resolved = path.resolve(path.dirname(absolutePath), htmlReference);
-    const entry = sameDirectoryReferences.get(resolved) || {
-      ref: htmlReference,
+
+    // The key uses a null separator so foo.html and foo.html#bar are tracked separately
+    const key = `${resolved}\u0000${fragment || ''}`;
+    const entry = localReferences.get(key) || {
+      ref: attributes.href,
+      resolvedPath: resolved,
       relativePath: toPosix(path.relative(repoRoot, resolved)),
+      fragment,
       lines: [],
     };
     entry.lines.push(tag.line);
-    sameDirectoryReferences.set(resolved, entry);
+    localReferences.set(key, entry);
   }
 
-  for (const reference of sameDirectoryReferences.values()) {
-    if (!fs.existsSync(path.join(repoRoot, reference.relativePath))) {
+  for (const reference of localReferences.values()) {
+    if (!isInsideRepo(reference.resolvedPath)) {
+      continue;
+    }
+
+    if (!fs.existsSync(reference.resolvedPath)) {
       addIssue(
         relativePath,
-        `Missing same-directory HTML file referenced by \`${reference.ref}\` (${reference.relativePath}).`,
+        `Missing local HTML file referenced by \`${reference.ref}\` (${reference.relativePath}).`,
         reference.lines
       );
+      continue;
+    }
+
+    if (reference.fragment) {
+      const targetIds = loadTargetFileIds(reference.resolvedPath);
+      if (targetIds && !targetIds.has(reference.fragment)) {
+        addIssue(
+          relativePath,
+          `Anchor link \`${reference.ref}\` targets \`#${reference.fragment}\`, which does not match any \`id\` in \`${reference.relativePath}\`.`,
+          reference.lines
+        );
+      }
     }
   }
 }
@@ -705,13 +727,9 @@ function samePageFragment(reference) {
   return decodeReferenceFragment(fragment);
 }
 
-function sameDirectoryHtmlReference(reference) {
+function localInternalReference(reference) {
   const localPath = localRelativePath(reference);
-  if (!localPath || localPath.startsWith('./') || localPath.startsWith('../')) {
-    return null;
-  }
-
-  if (localPath.includes('/') || localPath.includes('\\')) {
+  if (!localPath) {
     return null;
   }
 
@@ -720,6 +738,30 @@ function sameDirectoryHtmlReference(reference) {
   }
 
   return localPath;
+}
+
+function loadTargetFileIds(absolutePath) {
+  const normalized = path.resolve(absolutePath);
+  const cached = targetIdsCache.get(normalized);
+  if (cached) {
+    return cached;
+  }
+
+  if (!fs.existsSync(normalized)) {
+    targetIdsCache.set(normalized, null);
+    return null;
+  }
+
+  const html = fs.readFileSync(normalized, 'utf8');
+  const ids = extractIds(stripHtmlComments(html));
+  targetIdsCache.set(normalized, ids);
+  return ids;
+}
+
+// For relative href outside the repo
+function isInsideRepo(absolutePath) {
+  const relativePath = path.relative(repoRoot, absolutePath);
+  return relativePath === '' || (!relativePath.startsWith('..') && !path.isAbsolute(relativePath));
 }
 
 function validateTranslations(relativePath, absolutePath, html, textContext) {
