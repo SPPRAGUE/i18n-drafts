@@ -63,7 +63,7 @@ f.additionalLinks = ''
 <div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script>
 </div>
 
-<p>In principle, Japanese and Chinese texts don't use space characters. However, sometimes it is necessary to increase or decrease gaps between characters to improve readability. This article looks at ways of using CSS to add gaps between certain types of text,  to reduce gaps between punctuation marks, and to manage paragraph-initial spacing. It does not look at the changes in spacing between characters that are introduced during full justification.</p>
+<p>In principle, Japanese and Chinese texts don't use space characters. However, sometimes it is necessary to increase or decrease gaps between characters to improve readability. This article looks at ways of using CSS to add gaps between certain types of text,  to reduce gaps within punctuation marks, and to manage paragraph-initial spacing. It does not look at the changes in spacing between characters that are introduced during full justification.</p>
 
 <p>Rather than simply reproducing the spec itself here, we provide task-oriented guidance to help content authors  achieve key techniques. We make the assumption that content authors know what they want to do, and this article helps them understand how to do it.</p>
 
@@ -524,7 +524,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 
 
 
-<p><a class="figref">fig_text_space_adjacent</a> shows the gap collapsed in real text. It shouldn't be necessary to use halfwidth characters for this; you should use normal characters and the application should remove the appropriate amount of space automatically.</p>
+<p><a class="figref">fig_text_space_adjacent</a> shows the gap collapsed in real text. It shouldn't be necessary to use halfwidth characters for this; you should use normal characters and the application should remove the appropriate amount of gapping automatically.</p>
 
 
 <figure id="fig_text_space_adjacent">
@@ -535,7 +535,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </figure>
 
 
-<p>Not all spaces are collapsed. While space is collapsed for colons and semicolons in horizontal text, it is not collapsed for those punctuation marks in vertical text. Space is not collapsed for question marks and exclamation marks whether they occur in horizontal or vertical contexts. For a list of what characters have their width reduced, when, and how, see the <a href="https://drafts.csswg.org/css-text-4/#fullwidth-collapsing">CSS specification</a>.</p>
+<p>Not all gaps are collapsed. While gaps are collapsed for colons and semicolons in horizontal text, they are not collapsed for those punctuation marks in vertical text. Gaps are not collapsed for question marks and exclamation marks whether they occur in horizontal or vertical contexts. For a list of what characters have their width reduced, when, and how, see the <a href="https://drafts.csswg.org/css-text-4/#fullwidth-collapsing">CSS specification</a>.</p>
 
 
 
@@ -544,10 +544,10 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 <!--<h3>How to do it</h3>-->
 
 
-<p><span class="leadin howto-header">How to do it.</span> The CSS Text specification proposes a way to remove superfluous gaps between punctuation marks using the <code class="kw" translate="no">text-spacing-trim</code> CSS property.</p>
+<p><span class="leadin howto-header">How to do it.</span> The CSS Text specification proposes a way to remove oversized gaps between punctuation marks using the <code class="kw" translate="no">text-spacing-trim</code> CSS property.</p>
 
 
-<p>You can indicate to the browser that you want to do this using <code class="kw" translate="no">text-spacing-trim:normal</code>, but in fact, any of the following additional values for that property remove space in punctuation clusters: <code class="kw" translate="no">trim-both</code>, <code class="kw" translate="no">space-first</code>, <code class="kw" translate="no">trim-start</code>, and <code class="kw" translate="no">trim-all</code>. The particular value you should choose depends on how you want to handle  space at the start of a paragraph, which is discussed below.</p>
+<p>You can indicate to the browser that you want to do this using <code class="kw" translate="no">text-spacing-trim:normal</code>, but in fact, any of the following additional values for that property reduce gaps in punctuation clusters: <code class="kw" translate="no">trim-both</code>, <code class="kw" translate="no">space-first</code>, <code class="kw" translate="no">trim-start</code>, and <code class="kw" translate="no">trim-all</code>. The particular value you should choose depends on how you want to handle  space at the start of a paragraph, which is discussed below.</p>
 
 
 <aside class="floatedImplnote">
@@ -645,7 +645,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 </div>
 
 
-<p>If, for some reason, you want to prevent the space collapsing you can use <code class="kw" translate="no">text-spacing-trim:space-all</code>.</p>
+<p>If, for some reason, you want to prevent the gap collapsing you can use <code class="kw" translate="no">text-spacing-trim:space-all</code>.</p>
 </section>
 
 
@@ -660,7 +660,7 @@ hanging-punctuation: none | [ first || [ force-end | allow-end ] || last ]</code
 
 <p>Blink browsers support gap reduction using the values mentioned above, but also reduce the gap by default — no styling needed.</p>
 
-<p>However, WebKit and Gecko browsers do not reduce space between punctuation marks.</p>
+<p>However, WebKit and Gecko browsers do not reduce gaps within punctuation marks.</p>
 </section>
 </section>
 
