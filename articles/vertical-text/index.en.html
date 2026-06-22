@@ -42,6 +42,8 @@ f.additionalLinks = ''
 <link rel="stylesheet" href="../../style/article-2022.css" />
 <link rel="copyright" href="#copyright"/>
 <script src="../../javascript/prism.js"></script>
+
+
 <link rel="stylesheet" href="../../style/prism.css">
 <link rel="stylesheet" href="index-data/local.css">
 <style>
@@ -49,8 +51,20 @@ figure pre {
 	margin: 16px 0 0 0;
 	}
 #testlinks td, #testlinks th { text-align: start; border: 0; padding: 0 0 0 30px; }
+
+#out_selectHack select {
+    appearance: base-select;
+    }
+#out_selectHack ::picker(select) {
+    appearance: base-select; 
+    }
 </style>
 </head>
+
+
+
+
+
 
 <body>
 <header>
@@ -700,6 +714,67 @@ figure pre {
   <p>See test results for major browsers: <a target="_blank" href="https://www.w3.org/International/i18n-tests/results/writing-mode-vertical#rl_forms">vertical-rl</a>, <a target="_blank" href="https://www.w3.org/International/tests/repo/results/writing-mode-vertical#lr_forms">vertical-lr</a>.</p>
 </aside>
 </div>
+
+
+
+
+
+
+
+<section id="selectHack">
+<h4>Workaround: Making select options display vertically</h4>
+
+<p>At the time of writing, no browser  displays the options for the <code class="kw" translate="no">select</code> element vertically. Until browsers do support this, it may be possible to work around this limitation using the following CSS, but it only works for some browsers.</p>
+
+<figure class="example">
+  <pre><code class="language-css">select { 
+    appearance: base-select; 
+    }
+::picker(select) {
+    appearance: base-select; 
+    }</code></pre>
+</figure>
+
+<p>The <code class="kw" translate="no">base-select</code> value allows you to style the components of the <code class="kw" translate="no">select</code> element. The <code class="kw" translate="no">::picker()</code> pseudo-element controls the styling for the option menu. If the CSS is supported by the browser, and the <code class="kw" translate="no">select</code> element is used in a vertical text context, the options will now also be displayed vertically.</p>
+
+
+<aside class="floatedImplnote">
+<p class="feature">appearance: base-select</p>
+<table class="implTable">
+<thead>
+<tr>
+<th><img src="../../icons/icon_blink.svg" class="browser_icon" alt="Blink" title="Blink"></th>
+<th><img src="../../icons/icon_gecko.svg" class="browser_icon" alt="Gecko" title="Gecko"></th>
+<th><img src="../../icons/icon_webkit.svg" class="browser_icon" alt="WebKit" title="WebKit"></th>
+</tr>
+</thead>
+<tbody>
+<tr><td>✅</td><td>❌</td><td>⚠️</td></tr>
+</tbody>
+</table>
+</aside>
+
+
+
+
+<div id="out_selectHack" class="browser_output">
+<p class="browser_output_title">Output in your browser:</p>
+<div class="browser_output_example" lang="zh-hans">
+<div style="writing-mode:vertical-rl;">
+  <p>语言 <select>
+	<option value="zh">中文</option>
+	<option value="ja">日本語</option>
+	<option value="en">English</option>
+	<option value="fr">français</option>
+	<option value="fa">فارسی</option>
+	</select></p>
+</div>
+</div>
+</div>
+
+
+<p>Unfortunately, Blink is the only browser engine that currently supports the <code class="kw" translate="no">base-select</code> value.  WebKit browsers will support it from version 27 (scheduled for release in Autumn 2026). It already works in Safari Technology Preview.  Gecko browsers don't currently support the workaround. However, this approach doesn't cause any harm —  it just improves the rendering for browsers that support the CSS — so it can be used straight away.</p>
+</section>
 </section>
 
 
